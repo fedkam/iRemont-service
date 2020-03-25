@@ -1,18 +1,22 @@
 import React from 'react';
-import './Header.scss';
-import { withDataService } from '../hoc-helpers';
+import './header.scss';
+import { Breakpoint } from 'react-socks';
+import MenuList from '../menu-list';
 
 const Header = (props) => {
-  const name = props.getMenuList()[0].name;
+  const {getMenuList} = props;
   return (
-    <h1>Name {name}</h1>
+    <>
+      <Breakpoint small down>
+        <h1>2</h1>
+      </Breakpoint>
+
+      <Breakpoint medium up>
+        <h1>1</h1>
+        <MenuList/>
+      </Breakpoint>
+    </>
   );
 }
 
-const mapMethodsToProps = (classDataService) => {
-  return {
-    getMenuList: classDataService.getMenuList
-  }
-};
-
-export default withDataService(mapMethodsToProps)(Header);
+export default Header;
