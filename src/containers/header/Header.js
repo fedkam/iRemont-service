@@ -1,16 +1,17 @@
 import React from 'react';
-import './Header.scss'
+import './Header.scss';
 import { withDataService } from '../hoc-helpers';
 
 const Header = (props) => {
+  const name = props.getMenuList()[0].name;
   return (
-    <h1>header</h1>
-  )
+    <h1>Name {name}</h1>
+  );
 }
 
-const mapMethodsToProps = (dataService) => {
+const mapMethodsToProps = (classDataService) => {
   return {
-    getMenuList: dataService.getMenunList
+    getMenuList: classDataService.getMenuList
   }
 };
 

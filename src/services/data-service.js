@@ -18,7 +18,7 @@ export default class DataService {
     },
   ];
 
-  getMenuList = async () => {
+  getMenuList = () => {
     return this.MENU_LIST;
   };
 }

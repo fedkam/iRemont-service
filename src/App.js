@@ -3,14 +3,14 @@ import './App.scss';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { BreakpointProvider } from "react-socks";
 import Header from "./containers/header";
-//import DataService from './services/data-service'
-//import DataServiceProvider from './services/data-service'
+import DataService from './services/data-service';
+import { DataServiceProvider } from './containers/service-context';
 
 function App() {
-  //const dataService = new DataService();
+  const dataService = new DataService();
   return (
     <div className="App">
-      //<DataServiceProvider value={dataService}>
+      <DataServiceProvider value={dataService}>
         <BreakpointProvider>
           <Router>
             <Header/>
@@ -19,7 +19,7 @@ function App() {
             </Switch>
           </Router>
         </BreakpointProvider>
-    //  </DataServiceProvider>
+      </DataServiceProvider>
     </div>
   );
 }
