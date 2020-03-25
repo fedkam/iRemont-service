@@ -16,6 +16,7 @@ function App() {
             <Header/>
             <Switch>
               <Route exact path="/" render={()=>(<h1>Home</h1>)} />
+              <Route exact path="/hu" render={()=>(<h1>hu</h1>)} />
             </Switch>
           </Router>
         </BreakpointProvider>
