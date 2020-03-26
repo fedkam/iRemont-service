@@ -1,10 +1,10 @@
 import React from 'react';
-import './App.scss';
+import './app.scss';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { BreakpointProvider } from "react-socks";
-import Header from "./containers/header";
-import DataService from './services/data-service';
-import { DataServiceProvider } from './containers/service-context';
+import Header from "../header";
+import DataService from '../../services/data-service';
+import { DataServiceProvider } from '../service-context';
 
 function App() {
   const dataService = new DataService();
@@ -16,7 +16,10 @@ function App() {
             <Header/>
             <Switch>
               <Route exact path="/" render={()=>(<h1>Home</h1>)} />
-              <Route exact path="/hu" render={()=>(<h1>hu</h1>)} />
+              <Route exact path="/repair" render={()=>(<h1>Ремонт</h1>)} />
+              <Route exact path="/modding" render={()=>(<h1>Моддинг</h1>)} />
+              <Route exact path="/about-modding" render={()=>(<h1>Все о запчастях</h1>)} />
+              <Route exact path="/about-us" render={()=>(<h1>О нас</h1>)} />
             </Switch>
           </Router>
         </BreakpointProvider>
