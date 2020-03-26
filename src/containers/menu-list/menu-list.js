@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './menu-list.scss';
 import { withDataService } from '../hoc-helpers';
 import { NavLink } from 'react-router-dom';
+import {ReactComponent as LogoIcon} from '../../assets/images/logo-iRemont.svg';
+import  {ReactComponent as HamburgerMenuIcon}  from '../../assets/images/icon-hamburgerMenu.svg';
 
-
-const MenuLink = ({ className='', onClick='', path, name, children}) => {
+const MenuElement = ({ className='', onClick='', path, name, children}) => {
   let navElement;
 
   if (!children){
@@ -22,28 +23,37 @@ const MenuLink = ({ className='', onClick='', path, name, children}) => {
 
 
 const MenuList = ({getMenuList, typeMenuLine=true}) => {
+  const [switcherHamburgerMenu, setSwitcherHamburgerMenu] = useState(false);
+  let className = typeMenuLine ? 'navbar-desktop-link' : 'navbar-mobile-link';
   let dataMenuList = getMenuList();
 
-  const menuList = dataMenuList && dataMenuList.map((row, index) => {
-    console.log('mass');
-  })
+  const menuLogo = (
+    <MenuElement
+      className={className}
+      onClick={() => setSwitcherHamburgerMenu(!switcherHamburgerMenu)}
+    >
+      <LogoIcon className='test'/>
+    </MenuElement>
+  );
+
+  const menuList = dataMenuList && dataMenuList.map((row, index) => (
+    <MenuElement
+      className={className}
+      onClick={() => setSwitcherHamburgerMenu(false)}
+      path={row.path}
+      name={row.name}/>
+  ));
 
   return (
     <>
-    <MenuLink
-      className='colorSt'
-      onClick={()=>console.log("Bam!")}
-      path='/'
-      name='Имя'/>
-    <MenuLink
-      className='colorSt'
-      onClick={()=>console.log("Bam!")}
-    >
-      {<h3>H3</h3>}
-    </MenuLink>
+      <div className='navbar-links'>
+        {menuLogo}
+        {menuList}
+      </div>
     </>
   );
 };
+
 
 const mapMethodsToProps = (classDataService) => {
   return {
