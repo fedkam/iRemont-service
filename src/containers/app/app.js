@@ -1,5 +1,5 @@
 import React from 'react';
-import './app.scss';
+//import './app.scss';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { BreakpointProvider } from "react-socks";
 import Header from "../header";

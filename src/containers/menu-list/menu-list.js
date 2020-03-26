@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './menu-list.scss';
+//import './menu-list.scss';
 import { withDataService } from '../hoc-helpers';
 import { NavLink } from 'react-router-dom';
 import {ReactComponent as LogoIcon} from '../../assets/images/logo-iRemont.svg';
