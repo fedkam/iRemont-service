@@ -1,10 +1,9 @@
 import React from 'react';
 //import './header.scss'
 import { Breakpoint } from 'react-socks';
-import MenuList from '../menu-list';
+import NavBar from '../navbar';
 
 const Header = (props) => {
-  const {getMenuList} = props;
   return (
     <>
       <Breakpoint small down>
@@ -13,7 +12,7 @@ const Header = (props) => {
 
       <Breakpoint medium up>
         <h6>Breakpoint medium</h6>
-        <MenuList/>
+        <NavBar/>
       </Breakpoint>
     </>
   );
