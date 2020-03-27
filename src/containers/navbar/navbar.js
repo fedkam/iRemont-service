@@ -18,21 +18,21 @@ const MenuElement = ({ className='', onClick='', path='/', name, children}) => {
 
 const NavBar = ({getMenuList, typeMenuDesktop=true}) => {
   const [switcherHamburgerMenu, setSwitcherHamburgerMenu] = useState(false);
-  let className = typeMenuDesktop ? 'navbar-desktop-link' : 'navbar-mobile-link';
+  const classNameElementMenu = typeMenuDesktop ? 'navbar-desktop-link' : 'navbar-mobile-link';
   let dataNavBar = getMenuList();
 
   const menuLogo = (
     <MenuElement
-      className={className}
+      className={classNameElementMenu}
       onClick={() => setSwitcherHamburgerMenu(!switcherHamburgerMenu)}
     >
-      <LogoIcon className='test'/>
+      <LogoIcon className='navbar-logo'/>
     </MenuElement>
   );
 
   const menuList = dataNavBar && dataNavBar.map((row, index) => (
     <MenuElement
-      className={className}
+      className={classNameElementMenu}
       onClick={() => setSwitcherHamburgerMenu(false)}
       path={row.path}
       name={row.name}/>
@@ -41,9 +41,11 @@ const NavBar = ({getMenuList, typeMenuDesktop=true}) => {
   return (
     <>
       <div className='navbar'>
-        {menuLogo}
-        <div className='navbar-links'>
-          {menuList}
+        <div className='navbar-wrap'>
+          {menuLogo}
+          <div className='navbar-links'>
+            {menuList}
+          </div>
         </div>
       </div>
     </>

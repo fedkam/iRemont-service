@@ -1,18 +1,40 @@
 
 .navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99;
+
+  &-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 24px 64px;
+  }
+
+  &-logo path{
+    fill: $color-darkGrey;
+  }
 
   &-links {
     display: flex;
   }
 
-  &-desktop-link {
-    margin-right: 20px;
-    & a{
-      text-decoration: none;
-      color: $color-grey;
+  &-desktop {
+    &-container {
+
+    }
+
+    &-link {
+      margin-right: 20px;
+
+      &:last-child { margin-right: 0; }
+
+      & a {
+        text-decoration: none;
+        color: $color-darkGrey;
+      }
     }
   }
 }
