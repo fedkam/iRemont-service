@@ -1,0 +1,10 @@
+
+@mixin font-regular($size) {
+	font-family: 'Open Sans Regular', sans-serif;
+  font-size: $size;
+}
+
+@mixin font-semibold($size) {
+  font-family: 'Open Sans SemiBold', sans-serif;
+  font-size: $size;
+}

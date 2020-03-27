@@ -40,9 +40,11 @@ const NavBar = ({getMenuList, typeMenuDesktop=true}) => {
 
   return (
     <>
-      <div className='navbar-links'>
+      <div className='navbar'>
         {menuLogo}
-        {menuList}
+        <div className='navbar-links'>
+          {menuList}
+        </div>
       </div>
     </>
   );

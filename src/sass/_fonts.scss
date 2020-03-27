@@ -18,13 +18,3 @@
 	font-weight: 600;
 	font-style: normal;
 }
-
-@mixin font-regular {
-  h1 {
-    color:red;
-  }
-}
-
-@mixin fontSemibold {
-  font-family: 'Open Sans SemiBold', sans-serif;
-}
