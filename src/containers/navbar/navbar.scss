@@ -3,12 +3,12 @@
   width: 100%;
   position: fixed;
   left: 0;
+  right: 0;
   top: 0;
   z-index: 99;
 
   &-wrap {
     display: flex;
-    min-width: 180px;
     align-items: center;
     justify-content: space-between;
     background: #ffffff;
@@ -26,7 +26,7 @@
 
   &-desktop {
     &-link {
-      margin-right: 20px;
+      margin-right: 56px;
 
       &:last-child { margin-right: 0; }
 
@@ -39,17 +39,26 @@
 }
 
 
-
-
-@media (min-width: $media-mobileSize-small) {
-  .navbar-wrap {
-    padding: 24px 64px;
+@media (min-width: $media-mobileSize-medium) {
+  .navbar{
+    &-wrap {
+      padding: 18px 64px;
+      border-bottom: none;
+      box-shadow: 0 6px 10px  rgba(0, 0, 0, .05);;
+    }
+    &-desktop-link {
+      @include font-regular(14px);
+    }
   }
 }
 
-@media (min-width: $media-mobileSize-medium) {
-  .navbar-wrap {
-    border-bottom: none;
-    box-shadow: 0 6px 10px  rgba(0, 0, 0, .05);;
+@media (min-width: $media-desktopSize-large) {
+  .navbar {
+    &-wrap {
+      padding: 24px 64px;
+    }
+    &-desktop-link {
+      @include font-regular(18px);
+    }
   }
 }
