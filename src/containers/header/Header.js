@@ -7,11 +7,10 @@ const Header = (props) => {
   return (
     <>
       <Breakpoint small down>
-        <h6>Breakpoint small</h6>
+        <NavBar typeMenuDesktop={false}/>
       </Breakpoint>
 
       <Breakpoint medium up>
-        <h6>Breakpoint medium</h6>
         <NavBar/>
       </Breakpoint>
     </>

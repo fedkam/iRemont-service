@@ -8,9 +8,12 @@
 
   &-wrap {
     display: flex;
+    min-width: 180px;
     align-items: center;
     justify-content: space-between;
-    margin: 24px 64px;
+    background: #ffffff;
+    padding: 16px 32px; //onlyMobile
+    border-bottom: .5px solid $color-darkGrey; //onlyMobile
   }
 
   &-logo path{
@@ -22,10 +25,6 @@
   }
 
   &-desktop {
-    &-container {
-
-    }
-
     &-link {
       margin-right: 20px;
 
@@ -36,5 +35,21 @@
         color: $color-darkGrey;
       }
     }
+  }
+}
+
+
+
+
+@media (min-width: $media-mobileSize-small) {
+  .navbar-wrap {
+    padding: 24px 64px;
+  }
+}
+
+@media (min-width: $media-mobileSize-medium) {
+  .navbar-wrap {
+    border-bottom: none;
+    box-shadow: 0 6px 10px  rgba(0, 0, 0, .05);;
   }
 }

@@ -3,7 +3,8 @@ import React, {useState} from 'react';
 import { withDataService } from '../hoc-helpers';
 import { NavLink } from 'react-router-dom';
 import {ReactComponent as LogoIcon} from '../../assets/images/logo-iRemont.svg';
-import  {ReactComponent as HamburgerMenuIcon}  from '../../assets/images/icon-hamburgerMenu.svg';
+import  {ReactComponent as HamburgerButtonIcon}  from '../../assets/images/icon-hamburgerMenu.svg';
+
 
 const MenuElement = ({ className='', onClick='', path='/', name, children}) => {
   return (
@@ -23,10 +24,17 @@ const NavBar = ({getMenuList, typeMenuDesktop=true}) => {
 
   const menuLogo = (
     <MenuElement
-      className={classNameElementMenu}
       onClick={() => setSwitcherHamburgerMenu(!switcherHamburgerMenu)}
     >
       <LogoIcon className='navbar-logo'/>
+    </MenuElement>
+  );
+
+  const menuHamburgerButton = (
+    <MenuElement
+      onClick={() => setSwitcherHamburgerMenu(!switcherHamburgerMenu)}
+    >
+      <HamburgerButtonIcon className='navbar-mobile-hamburgerButton'/>
     </MenuElement>
   );
 
@@ -35,7 +43,8 @@ const NavBar = ({getMenuList, typeMenuDesktop=true}) => {
       className={classNameElementMenu}
       onClick={() => setSwitcherHamburgerMenu(false)}
       path={row.path}
-      name={row.name}/>
+      name={row.name}
+      key={index} />
   ));
 
   return (
@@ -44,7 +53,7 @@ const NavBar = ({getMenuList, typeMenuDesktop=true}) => {
         <div className='navbar-wrap'>
           {menuLogo}
           <div className='navbar-links'>
-            {menuList}
+            {typeMenuDesktop ? menuList : menuHamburgerButton}
           </div>
         </div>
       </div>
