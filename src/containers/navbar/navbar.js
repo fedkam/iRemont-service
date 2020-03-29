@@ -6,11 +6,11 @@ import {ReactComponent as LogoIcon} from '../../assets/images/logo-iRemont.svg';
 import  {ReactComponent as HamburgerButtonIcon}  from '../../assets/images/icon-hamburgerMenu.svg';
 
 
-const MenuElement = ({ className='', onClick='', path='/', name, children}) => {
+const MenuElement = ({ className='', onClick='', path='/', children}) => {
   return (
     <div className={className} onClick={onClick}>
       <NavLink to={path}>
-        {children ? children : name}
+        {children}
       </NavLink>
     </div>
   );
@@ -43,8 +43,10 @@ const NavBar = ({getMenuList, typeMenuDesktop=true}) => {
       className={classNameElementMenu}
       onClick={() => setSwitcherHamburgerMenu(false)}
       path={row.path}
-      name={row.name}
-      key={index} />
+      key={index}
+    >
+      {row.name}
+    </MenuElement>
   ));
 
   return (
