@@ -5,7 +5,7 @@
   left: 0;
   right: 0;
   top: 0;
-  z-index: 99;
+  z-index: 98;
 
   &-wrap {
     display: flex;
@@ -29,13 +29,50 @@
       margin-right: 56px;
 
       &:last-child { margin-right: 0; }
+    }
+  }
 
-      & a {
-        text-decoration: none;
-        color: $color-darkGrey;
+  &-mobile {
+    &-link{
+      padding: 12px 0;
+      margin: 0 32px;
+      border-bottom: .5px solid $color-darkGrey;
+
+      &:last-child { border-bottom: none; }
+    }
+
+    &-hamburgerMenu {
+      &-csstransition {
+        &-enter {
+          opacity: 0;
+          &-done {
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+
+            opacity: 1;
+            transition: opacity 2000ms;
+          }
+        }
+        &-exit{
+          &-active {
+            opacity: 0;
+            transition: opacity 5000ms;
+          }
+        }
       }
     }
   }
+}
+
+
+a {
+  text-decoration: none;
+  color: $color-darkGrey;
 }
 
 

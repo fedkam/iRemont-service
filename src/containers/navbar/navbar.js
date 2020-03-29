@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 //import './menu-list.scss';
 import { withDataService } from '../hoc-helpers';
 import { NavLink } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
 import {ReactComponent as LogoIcon} from '../../assets/images/logo-iRemont.svg';
 import  {ReactComponent as HamburgerButtonIcon}  from '../../assets/images/icon-hamburgerMenu.svg';
 
@@ -20,11 +21,11 @@ const MenuElement = ({ className='', onClick='', path='/', children}) => {
 const NavBar = ({getMenuList, typeMenuDesktop=true}) => {
   const [switcherHamburgerMenu, setSwitcherHamburgerMenu] = useState(false);
   const classNameElementMenu = typeMenuDesktop ? 'navbar-desktop-link' : 'navbar-mobile-link';
-  let dataNavBar = getMenuList();
+  const dataNavBar = getMenuList();
 
   const menuLogo = (
     <MenuElement
-      onClick={() => setSwitcherHamburgerMenu(!switcherHamburgerMenu)}
+      onClick={() => setSwitcherHamburgerMenu(false)}
     >
       <LogoIcon className='navbar-logo'/>
     </MenuElement>
@@ -59,6 +60,16 @@ const NavBar = ({getMenuList, typeMenuDesktop=true}) => {
           </div>
         </div>
       </div>
+      <CSSTransition
+        in={switcherHamburgerMenu}
+        timeout={2000}
+        classNames="navbar-mobile-hamburgerMenu-csstransition"
+        unmountOnExit
+      >
+        <div className="navbar-mobile-hamburgerMenu">
+          <div>{menuList}</div>
+        </div>
+      </CSSTransition>
     </>
   );
 };
@@ -69,5 +80,6 @@ const mapMethodsToProps = (classDataService) => {
     getMenuList: classDataService.getMenuList
   }
 };
+
 
 export default withDataService(mapMethodsToProps)(NavBar);
