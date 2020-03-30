@@ -1,19 +1,44 @@
 
 .navbar {
-  width: 100%;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: 98;
+  &-container {
+    &-menuTop {
+      width: 100%;
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 99;
+    }
+
+    &-menuBottom {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 98;
+    }
+  }
 
   &-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #ffffff;
-    padding: 16px 32px; //onlyMobile
-    border-bottom: .5px solid $color-darkGrey; //onlyMobile
+    &-menuTop {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #ffffff;
+      padding: 16px 32px; //onlyMobile
+      border-bottom: .5px solid $color-darkGrey; //onlyMobile
+    }
+
+    &-menuBottom {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 98;
+      padding: 0 32px;
+    }
   }
 
   &-logo path{
@@ -34,35 +59,25 @@
 
   &-mobile {
     &-link{
+      width: 100%;
       padding: 12px 0;
-      margin: 0 32px;
       border-bottom: .5px solid $color-darkGrey;
 
       &:last-child { border-bottom: none; }
     }
 
-    &-hamburgerMenu {
-      &-csstransition {
-        &-enter {
-          opacity: 0;
-          &-done {
-            z-index: 100;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 100%;
-            width: 100%;
-            position: absolute;
-
-            opacity: 1;
-            transition: opacity 2000ms;
-          }
+    &-csstransition {
+      &-enter {
+        opacity: 0;
+        &-done {
+          opacity: 1;
+          transition: opacity 1000ms;
         }
-        &-exit{
-          &-active {
-            opacity: 0;
-            transition: opacity 5000ms;
-          }
+      }
+      &-exit{
+        &-active {
+          opacity: 0;
+          transition: opacity 1000ms;
         }
       }
     }
