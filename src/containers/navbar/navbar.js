@@ -54,10 +54,10 @@ const NavBar = ({getMenuList, typeMenuDesktop=true}) => {
   ));
 
   const socialIcons = (
-    <div>
-      <VkontakteIcon />
-      <InstagramIcon />
-      <WhatsAppIcon />
+    <div className="navbar-mobile-social-icons">
+      <VkontakteIcon className="navbar-mobile-social-icon"/>
+      <InstagramIcon className="navbar-mobile-social-icon"/>
+      <WhatsAppIcon className="navbar-mobile-social-icon"/>
     </div>
   )
 
@@ -78,7 +78,9 @@ const NavBar = ({getMenuList, typeMenuDesktop=true}) => {
         unmountOnExit
       >
         <div>
-          <div className="navbar-wrap-menuBottom"> {menuList}</div>
+          <div className="navbar-wrap-menuBottom">
+            {menuList} {socialIcons}
+          </div>
         </div>
       </CSSTransition>
     </>
