@@ -1,0 +1,11 @@
+.social {
+  &-icons{
+    display: flex;
+    margin-top: 32px;
+  }
+
+  &-icon {
+    margin-right: 48px;
+    &:last-child { margin-right: 0; }
+  }
+}

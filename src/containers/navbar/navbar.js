@@ -1,13 +1,11 @@
 import React, {useState} from 'react';
 //import './menu-list.scss';
-import { withDataService } from '../hoc-helpers';
-import { NavLink } from 'react-router-dom';
-import { CSSTransition } from 'react-transition-group';
+import {withDataService} from '../hoc-helpers';
+import {NavLink} from 'react-router-dom';
+import {CSSTransition} from 'react-transition-group';
+import Social from '../../components/social';
 import {ReactComponent as LogoIcon} from '../../assets/images/logo-iRemont.svg';
 import {ReactComponent as HamburgerButtonIcon} from '../../assets/images/icon-hamburgerMenu.svg';
-import {ReactComponent as VkontakteIcon} from '../../assets/images/icon-vkontakte.svg';
-import {ReactComponent as InstagramIcon} from '../../assets/images/icon-instagram.svg';
-import {ReactComponent as WhatsAppIcon} from '../../assets/images/icon-whatsapp.svg';
 
 
 const MenuElement = ({ className='', onClick='', path='/', children}) => {
@@ -53,14 +51,6 @@ const NavBar = ({getMenuList, typeMenuDesktop=true}) => {
     </MenuElement>
   ));
 
-  const socialIcons = (
-    <div className="navbar-mobile-social-icons">
-      <VkontakteIcon className="navbar-mobile-social-icon"/>
-      <InstagramIcon className="navbar-mobile-social-icon"/>
-      <WhatsAppIcon className="navbar-mobile-social-icon"/>
-    </div>
-  )
-
   return (
     <>
       <div className='navbar-container-menuTop'>
@@ -79,7 +69,8 @@ const NavBar = ({getMenuList, typeMenuDesktop=true}) => {
       >
         <div>
           <div className="navbar-wrap-menuBottom">
-            {menuList} {socialIcons}
+            {menuList}
+            <Social />
           </div>
         </div>
       </CSSTransition>
