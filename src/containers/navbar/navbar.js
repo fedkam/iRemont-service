@@ -33,11 +33,7 @@ const NavBar = ({getMenuList, typeMenuDesktop=true}) => {
   );
 
   const menuHamburgerButton = (
-    <MenuElement
-      onClick={() => setSwitcherHamburgerMenu(!switcherHamburgerMenu)}
-    >
-      <HamburgerButtonIcon className='navbar-mobile-hamburgerButton'/>
-    </MenuElement>
+    <HamburgerButtonIcon onClick={() => setSwitcherHamburgerMenu(!switcherHamburgerMenu)} className='navbar-mobile-hamburgerButton'/>
   );
 
   const menuList = dataNavBar && dataNavBar.map((row, index) => (
@@ -64,14 +60,12 @@ const NavBar = ({getMenuList, typeMenuDesktop=true}) => {
       <CSSTransition
         in={switcherHamburgerMenu}
         timeout={1000}
-        classNames="navbar-mobile-csstransition"
+        classNames="navbar-wrap-menuBottom navbar-mobile-csstransition"
         unmountOnExit
       >
         <div>
-          <div className="navbar-wrap-menuBottom">
-            {menuList}
-            <Social />
-          </div>
+          {menuList}
+          <Social />
         </div>
       </CSSTransition>
     </>

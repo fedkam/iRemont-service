@@ -1,5 +1,5 @@
 import React from 'react';
-import './social.scss';
+//import './social.scss';
 
 import {ReactComponent as VkontakteIcon} from '../../assets/images/icon-vkontakte.svg';
 import {ReactComponent as InstagramIcon} from '../../assets/images/icon-instagram.svg';

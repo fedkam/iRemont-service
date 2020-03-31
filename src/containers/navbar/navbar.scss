@@ -34,6 +34,8 @@
       align-items: center;
       justify-content: center;
       padding: 0 32px;
+      box-shadow: 0 6px 10px  $color-white;// тень цветом как фон для смягчения края блока
+      background: $color-white;
     }
   }
 
@@ -63,33 +65,23 @@
       &:last-child { border-bottom: none; }
     }
 
-    &-social {
-      &-icons{
-        display: flex;
-        margin-top: 32px;
-      }
-
-      &-icon {
-        margin-right: 48px;
-        &:last-child { margin-right: 0; }
-      }
-    }
-
     &-csstransition {
       &-enter {
-
         opacity: 0;
-
-        &-done {
+        transform: translateY(-20px);
+        &-active {
           opacity: 1;
-          height: 100vh;
-          transition: opacity 1000ms;
+          transform: translateY(0);
+          transition: all 300ms ease-out;
         }
       }
       &-exit{
+        opacity: 1;
+        transform: translateY(0);
         &-active {
           opacity: 0;
-          transition: opacity 1000ms;
+          transform: translateY(-20px);
+          transition: all 300ms ease-in;
         }
       }
     }
