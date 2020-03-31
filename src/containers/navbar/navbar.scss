@@ -77,9 +77,12 @@
 
     &-csstransition {
       &-enter {
+
         opacity: 0;
+
         &-done {
           opacity: 1;
+          height: 100vh;
           transition: opacity 1000ms;
         }
       }
