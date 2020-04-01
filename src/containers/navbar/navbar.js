@@ -1,3 +1,5 @@
+// как поддерживать все эти inline className непонятно
+
 import React, {useState} from 'react';
 //import './menu-list.scss';
 import {withDataService} from '../hoc-helpers';
@@ -5,7 +7,7 @@ import {NavLink} from 'react-router-dom';
 import {CSSTransition} from 'react-transition-group';
 import Social from '../../components/social';
 import {ReactComponent as LogoIcon} from '../../assets/images/logo-iRemont.svg';
-import {ReactComponent as HamburgerButtonIcon} from '../../assets/images/icon-hamburgerMenu.svg';
+import {ReactComponent as HamburgerButtonIcon1} from '../../assets/images/icon-hamburgerMenu.svg';
 
 
 const MenuElement = ({ className='', onClick='', path='/', children}) => {
@@ -14,6 +16,18 @@ const MenuElement = ({ className='', onClick='', path='/', children}) => {
       <NavLink to={path}>
         {children}
       </NavLink>
+    </div>
+  );
+}
+
+
+const HamburgerButton = ({setSwitcherHamburgerMenu, switcherHamburgerMenu}) => {
+  const classNameHambergerMenu = switcherHamburgerMenu ? 'navbar-mobile-hamburgerMenu-active' : 'navbar-mobile-hamburgerMenu';
+
+  return(
+    <div className={classNameHambergerMenu} onClick={() => setSwitcherHamburgerMenu(!switcherHamburgerMenu)}>
+      <div className='navbar-mobile-hamburgerMenu-line'/>
+      <div className='navbar-mobile-hamburgerMenu-line'/>
     </div>
   );
 }
@@ -33,7 +47,10 @@ const NavBar = ({getMenuList, typeMenuDesktop=true}) => {
   );
 
   const menuHamburgerButton = (
-    <HamburgerButtonIcon onClick={() => setSwitcherHamburgerMenu(!switcherHamburgerMenu)} className='navbar-mobile-hamburgerButton'/>
+    <HamburgerButton
+      setSwitcherHamburgerMenu={setSwitcherHamburgerMenu}
+      switcherHamburgerMenu={switcherHamburgerMenu}
+    />
   );
 
   const menuList = dataNavBar && dataNavBar.map((row, index) => (
@@ -49,12 +66,10 @@ const NavBar = ({getMenuList, typeMenuDesktop=true}) => {
 
   return (
     <>
-      <div className='navbar-container-menuTop'>
-        <div className='navbar-wrap-menuTop'>
-          {menuLogo}
-          <div className='navbar-links'>
-            {typeMenuDesktop ? menuList : menuHamburgerButton}
-          </div>
+      <div className='navbar-wrap-menuTop'>
+        {menuLogo}
+        <div className='navbar-links'>
+          {typeMenuDesktop ? menuList : menuHamburgerButton}
         </div>
       </div>
       <CSSTransition
