@@ -7,7 +7,6 @@ import {NavLink} from 'react-router-dom';
 import {CSSTransition} from 'react-transition-group';
 import Social from '../../components/social';
 import {ReactComponent as LogoIcon} from '../../assets/images/logo-iRemont.svg';
-import {ReactComponent as HamburgerButtonIcon1} from '../../assets/images/icon-hamburgerMenu.svg';
 
 
 const MenuElement = ({ className='', onClick='', path='/', children}) => {

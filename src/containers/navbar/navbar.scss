@@ -3,8 +3,9 @@
 .navbar {
   &-wrap {
     &__menuTop {
-      position: absolute;
-      z-index: 99;
+      position: sticky;
+      top:0;
+      z-index: 100;
       width: 100%;
       min-width: 240px;
       display: flex;
@@ -16,8 +17,9 @@
     }
 
     &__menuBottom {
-      position: absolute;
-      z-index: 98;
+      position: fixed;
+      top:0;
+      z-index: 90;
       width: 100%;
       min-width: 240px;
       height: 100%;

@@ -22,6 +22,31 @@ function App() {
               <Route exact path="/about-us" render={()=>(<h1>О нас</h1>)} />
             </Switch>
           </Router>
+          <h1>Home</h1>
+          <h1>Home</h1>
+          <h1>Home</h1>
+          <h1>Home</h1>
+          <h1>Home</h1>
+          <h1>Home</h1>
+          <h1>Home</h1>
+          <h1>Home</h1>
+          <h1>Home</h1>
+          <h1>Home</h1>
+          <h1>Home</h1>
+          <h1>Home</h1>
+          <h1>Home</h1>
+          <h1>Home</h1>
+          <h1>Home</h1>
+          <h1>Home</h1>
+          <h1>Home</h1>
+          <h1>Home</h1>
+          <h1>Home</h1>
+          <h1>Home</h1>
+          <h1>Home</h1>
+          <h1>Home</h1>
+          <h1>Home</h1>
+          <h1>Home</h1>
+
         </BreakpointProvider>
       </DataServiceProvider>
     </div>
