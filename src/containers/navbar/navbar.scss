@@ -2,7 +2,7 @@
 
 .navbar {
   &-wrap {
-    &-menuTop {
+    &__menuTop {
       position: absolute;
       z-index: 99;
       width: 100%;
@@ -15,7 +15,7 @@
       background: #ffffff;
     }
 
-    &-menuBottom {
+    &__menuBottom {
       position: absolute;
       z-index: 98;
       width: 100%;
@@ -31,16 +31,16 @@
     }
   }
 
-  &-logo path{
-    fill: $color-darkGrey;
-  }
-
-  &-links {
-    display: flex;
-  }
-
   &-desktop {
-    &-link {
+    &__logo path{
+      fill: $color-darkGrey;
+    }
+
+    &__links {
+      display: flex;
+    }
+
+    &__link {
       margin-right: 56px;
 
       &:last-child { margin-right: 0; }
@@ -48,7 +48,7 @@
   }
 
   &-mobile {
-    &-link{
+    &__link{
       width: 100%;
       max-width: 496px;
       padding: 12px 0;
@@ -57,35 +57,47 @@
       &:last-child { border-bottom: none; }
     }
 
-    &-hamburgerMenu {
+    &__hamburgerMenu {
       width: 22px;
       height: 11px;
       position: relative;
+      $speed-animation: .1s;
 
       &-line {
         width: 22px;
         height: 3px;
         background: $color-darkGrey;
         position: absolute;
-        top: 0; bottom: 0; left: 0; right: 0;
-        margin: none;
+        right: 0; left: 0;
       }
 
-
-
-      &-active {
+      &_inactive {
+        transition: transform $speed-animation ease-in, top $speed-animation ease-out $speed-animation, bottom $speed-animation ease-out $speed-animation, margin-top $speed-animation ease-out $speed-animation, margin-bottom $speed-animation ease-out $speed-animation;
 
         &:first-child {
-
+          top: 0; margin-top: 0px; // анимация по вертикали
+          transform: rotate(0deg); //поворот
         }
-
         &:last-child {
+          bottom: 0; margin-bottom: 0px;
+          transform: rotate(0deg);
+        }
+      }
+      &_active {
+        transition: top $speed-animation ease-in, bottom $speed-animation ease-in, margin-top $speed-animation ease-in, margin-bottom $speed-animation ease-in, transform $speed-animation ease-out $speed-animation;
 
+        &:first-child {
+          top: 50%; margin-top: -1.5px;
+          transform: rotate(45deg);
+        }
+        &:last-child {
+          bottom: 50%; margin-bottom: -1.5px;
+          transform: rotate(-45deg);
         }
       }
     }
 
-    &-csstransition {
+    &__csstransition {
       &-enter {
         opacity: 0;
         transform: translateY(-20px);
@@ -118,12 +130,12 @@ a {
 
 @media (min-width: $media-mobileSize-medium) {
   .navbar{
-    &-wrap-menuTop {
+    &-wrap__menuTop {
       padding: 18px 64px;
       border-bottom: none;
       box-shadow: 0 6px 10px  rgba(0, 0, 0, .05);;
     }
-    &-desktop-link {
+    &-desktop__link {
       @include font-regular(14px);
     }
   }
@@ -131,10 +143,10 @@ a {
 
 @media (min-width: $media-desktopSize-large) {
   .navbar {
-    &-wrap-menuTop {
+    &-wrap__menuTop {
       padding: 24px 64px;
     }
-    &-desktop-link {
+    &-desktop__link {
       @include font-regular(18px);
     }
   }

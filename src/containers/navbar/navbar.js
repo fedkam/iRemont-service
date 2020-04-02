@@ -22,12 +22,12 @@ const MenuElement = ({ className='', onClick='', path='/', children}) => {
 
 
 const HamburgerButton = ({setSwitcherHamburgerMenu, switcherHamburgerMenu}) => {
-  const classNameHambergerMenu = switcherHamburgerMenu ? 'navbar-mobile-hamburgerMenu-active' : 'navbar-mobile-hamburgerMenu';
+  const classNameHambergerMenu = switcherHamburgerMenu ? 'navbar-mobile__hamburgerMenu_active' : 'navbar-mobile__hamburgerMenu_inactive';
 
   return(
-    <div className={classNameHambergerMenu} onClick={() => setSwitcherHamburgerMenu(!switcherHamburgerMenu)}>
-      <div className='navbar-mobile-hamburgerMenu-line'/>
-      <div className='navbar-mobile-hamburgerMenu-line'/>
+    <div className='navbar-mobile__hamburgerMenu' onClick={() => setSwitcherHamburgerMenu(!switcherHamburgerMenu)}>
+      <div className={`navbar-mobile__hamburgerMenu-line ${classNameHambergerMenu}`}/>
+      <div className={`navbar-mobile__hamburgerMenu-line ${classNameHambergerMenu}`}/>
     </div>
   );
 }
@@ -35,14 +35,14 @@ const HamburgerButton = ({setSwitcherHamburgerMenu, switcherHamburgerMenu}) => {
 
 const NavBar = ({getMenuList, typeMenuDesktop=true}) => {
   const [switcherHamburgerMenu, setSwitcherHamburgerMenu] = useState(false);
-  const classNameElementMenu = typeMenuDesktop ? 'navbar-desktop-link' : 'navbar-mobile-link';
+  const classNameElementMenu = typeMenuDesktop ? 'navbar-desktop__link' : 'navbar-mobile__link';
   const dataNavBar = getMenuList();
 
   const menuLogo = (
     <MenuElement
       onClick={() => setSwitcherHamburgerMenu(false)}
     >
-      <LogoIcon className='navbar-logo'/>
+      <LogoIcon className='navbar-desktop__logo'/>
     </MenuElement>
   );
 
@@ -66,16 +66,16 @@ const NavBar = ({getMenuList, typeMenuDesktop=true}) => {
 
   return (
     <>
-      <div className='navbar-wrap-menuTop'>
+      <div className='navbar-wrap__menuTop'>
         {menuLogo}
-        <div className='navbar-links'>
+        <div className='navbar-desktop__links'>
           {typeMenuDesktop ? menuList : menuHamburgerButton}
         </div>
       </div>
       <CSSTransition
         in={switcherHamburgerMenu}
         timeout={1000}
-        classNames="navbar-wrap-menuBottom navbar-mobile-csstransition"
+        classNames="navbar-wrap__menuBottom navbar-mobile__csstransition"
         unmountOnExit
       >
         <div>
