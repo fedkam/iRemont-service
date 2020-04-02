@@ -1,90 +1,87 @@
 // как поддерживать все эти inline className непонятно
 
-import React, {useState} from 'react';
 //import './menu-list.scss';
+import React, {useState} from 'react';
+import {Breakpoint} from 'react-socks';
 import {withDataService} from '../hoc-helpers';
-import {NavLink} from 'react-router-dom';
 import {CSSTransition} from 'react-transition-group';
-import Social from '../../components/social';
 import {ReactComponent as LogoIcon} from '../../assets/images/logo-iRemont.svg';
+import Social from '../../components/social';
+import HamburgerButton from '../hamburger-button';
+import MenuElement from '../../components/menu-element';
 
 
-const MenuElement = ({ className='', onClick='', path='/', children}) => {
-  return (
-    <div className={className} onClick={onClick}>
-      <NavLink to={path}>
-        {children}
-      </NavLink>
-    </div>
-  );
-}
 
-
-const HamburgerButton = ({setSwitcherHamburgerMenu, switcherHamburgerMenu}) => {
-  const classNameHambergerMenu = switcherHamburgerMenu ? 'navbar-mobile__hamburgerMenu_active' : 'navbar-mobile__hamburgerMenu_inactive';
-
-  return(
-    <div className='navbar-mobile__hamburgerMenu' onClick={() => setSwitcherHamburgerMenu(!switcherHamburgerMenu)}>
-      <div className={`navbar-mobile__hamburgerMenu-line ${classNameHambergerMenu}`}/>
-      <div className={`navbar-mobile__hamburgerMenu-line ${classNameHambergerMenu}`}/>
-    </div>
-  );
-}
-
-
-const NavBar = ({getMenuList, typeMenuDesktop=true}) => {
+const NavBar = ({getMenuList}) => {
   const [switcherHamburgerMenu, setSwitcherHamburgerMenu] = useState(false);
-  const classNameElementMenu = typeMenuDesktop ? 'navbar-desktop__link' : 'navbar-mobile__link';
   const dataNavBar = getMenuList();
 
-  const menuLogo = (
-    <MenuElement
-      onClick={() => setSwitcherHamburgerMenu(false)}
-    >
-      <LogoIcon className='navbar-desktop__logo'/>
+  const menuLeft = (
+    <MenuElement onClick={() => setSwitcherHamburgerMenu(false)}>
+      <LogoIcon className='navbar__logo'/>
     </MenuElement>
   );
 
-  const menuHamburgerButton = (
-    <HamburgerButton
-      setSwitcherHamburgerMenu={setSwitcherHamburgerMenu}
-      switcherHamburgerMenu={switcherHamburgerMenu}
-    />
+  const menuList = (classNameElementMenu) => {
+    return (
+        dataNavBar && dataNavBar.map((row, index) => (
+          <MenuElement
+            className={classNameElementMenu}
+            onClick={() => setSwitcherHamburgerMenu(false)}
+            path={row.path}
+            key={index}
+          >
+            {row.name}
+          </MenuElement>)));
+  };
+
+  const menuRight = (
+    <>
+      <Breakpoint small down>
+        <HamburgerButton
+          setSwitcherHamburgerMenu={setSwitcherHamburgerMenu}
+          switcherHamburgerMenu={switcherHamburgerMenu}/>
+      </Breakpoint>
+
+      <Breakpoint medium up>
+        <div className='navbar-desktop__links'>
+          {menuList('navbar-desktop__link')}
+        </div>
+      </Breakpoint>
+    </>
   );
 
-  const menuList = dataNavBar && dataNavBar.map((row, index) => (
-    <MenuElement
-      className={classNameElementMenu}
-      onClick={() => setSwitcherHamburgerMenu(false)}
-      path={row.path}
-      key={index}
+  const menuTop = (
+    <>
+      {menuLeft}
+      {menuRight}
+    </>
+  );
+
+  const menuBottom = (
+    <CSSTransition
+      in={switcherHamburgerMenu}
+      timeout={1000}
+      classNames="navbar-wrap__menuBottom navbar-mobile__csstransition"
+      unmountOnExit
     >
-      {row.name}
-    </MenuElement>
-  ));
+      <div>
+        {menuList('navbar-mobile__link')}
+        <Social />
+      </div>
+    </CSSTransition>
+  );
 
   return (
     <>
       <div className='navbar-wrap__menuTop'>
-        {menuLogo}
-        <div className='navbar-desktop__links'>
-          {typeMenuDesktop ? menuList : menuHamburgerButton}
-        </div>
+        {menuTop}
       </div>
-      <CSSTransition
-        in={switcherHamburgerMenu}
-        timeout={1000}
-        classNames="navbar-wrap__menuBottom navbar-mobile__csstransition"
-        unmountOnExit
-      >
-        <div>
-          {menuList}
-          <Social />
-        </div>
-      </CSSTransition>
+      {menuBottom}
     </>
   );
 };
+
 
 
 const mapMethodsToProps = (classDataService) => {
@@ -92,6 +89,7 @@ const mapMethodsToProps = (classDataService) => {
     getMenuList: classDataService.getMenuList
   }
 };
+
 
 
 export default withDataService(mapMethodsToProps)(NavBar);

@@ -1,6 +1,10 @@
 // лучше передалать scss вложенность по bem
 
 .navbar {
+  &__logo path{
+    fill: $color-darkGrey;
+  }
+
   &-wrap {
     &__menuTop {
       position: sticky;
@@ -18,10 +22,11 @@
 
     &__menuBottom {
       position: fixed;
-      top:0;
+      top:0; left:0; bottom:0; right:0;
       z-index: 90;
       width: 100%;
       min-width: 240px;
+      min-height: 184px;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -34,10 +39,6 @@
   }
 
   &-desktop {
-    &__logo path{
-      fill: $color-darkGrey;
-    }
-
     &__links {
       display: flex;
     }
@@ -57,46 +58,6 @@
       border-bottom: .5px solid $color-darkGrey;
 
       &:last-child { border-bottom: none; }
-    }
-
-    &__hamburgerMenu {
-      width: 22px;
-      height: 11px;
-      position: relative;
-      $speed-animation: .1s;
-
-      &-line {
-        width: 22px;
-        height: 3px;
-        background: $color-darkGrey;
-        position: absolute;
-        right: 0; left: 0;
-      }
-
-      &_inactive {
-        transition: transform $speed-animation ease-in, top $speed-animation ease-out $speed-animation, bottom $speed-animation ease-out $speed-animation, margin-top $speed-animation ease-out $speed-animation, margin-bottom $speed-animation ease-out $speed-animation;
-
-        &:first-child {
-          top: 0; margin-top: 0px; // анимация по вертикали
-          transform: rotate(0deg); //поворот
-        }
-        &:last-child {
-          bottom: 0; margin-bottom: 0px;
-          transform: rotate(0deg);
-        }
-      }
-      &_active {
-        transition: top $speed-animation ease-in, bottom $speed-animation ease-in, margin-top $speed-animation ease-in, margin-bottom $speed-animation ease-in, transform $speed-animation ease-out $speed-animation;
-
-        &:first-child {
-          top: 50%; margin-top: -1.5px;
-          transform: rotate(45deg);
-        }
-        &:last-child {
-          bottom: 50%; margin-bottom: -1.5px;
-          transform: rotate(-45deg);
-        }
-      }
     }
 
     &__csstransition {

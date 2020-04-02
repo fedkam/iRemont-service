@@ -1,0 +1,39 @@
+.hamburgerMenu {
+  width: 22px;
+  height: 11px;
+  position: relative;
+  $speed-animation: .1s;
+
+  &-line {
+    width: 22px;
+    height: 3px;
+    background: $color-darkGrey;
+    position: absolute;
+    right: 0; left: 0;
+  }
+
+  &_inactive {
+    transition: transform $speed-animation ease-in, top $speed-animation ease-out $speed-animation, bottom $speed-animation ease-out $speed-animation, margin-top $speed-animation ease-out $speed-animation, margin-bottom $speed-animation ease-out $speed-animation;
+
+    &:first-child {
+      top: 0; margin-top: 0px; // анимация по вертикали
+      transform: rotate(0deg); //поворот
+    }
+    &:last-child {
+      bottom: 0; margin-bottom: 0px;
+      transform: rotate(0deg);
+    }
+  }
+  &_active {
+    transition: top $speed-animation ease-in, bottom $speed-animation ease-in, margin-top $speed-animation ease-in, margin-bottom $speed-animation ease-in, transform $speed-animation ease-out $speed-animation;
+
+    &:first-child {
+      top: 50%; margin-top: -1.5px;
+      transform: rotate(45deg);
+    }
+    &:last-child {
+      bottom: 50%; margin-bottom: -1.5px;
+      transform: rotate(-45deg);
+    }
+  }
+}

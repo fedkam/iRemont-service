@@ -2,7 +2,7 @@ import React from 'react';
 import './app.scss';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { BreakpointProvider } from "react-socks";
-import Header from "../header";
+import NavBar from '../navbar';
 import DataService from '../../services/data-service';
 import { DataServiceProvider } from '../service-context';
 
@@ -13,7 +13,7 @@ function App() {
       <DataServiceProvider value={dataService}>
         <BreakpointProvider>
           <Router>
-            <Header/>
+            <NavBar/>
             <Switch>
               <Route exact path="/" render={()=>(<h1>Home</h1>)} />
               <Route exact path="/repair" render={()=>(<h1>Ремонт</h1>)} />
