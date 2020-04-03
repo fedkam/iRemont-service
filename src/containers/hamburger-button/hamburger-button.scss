@@ -13,27 +13,31 @@
   }
 
   &_inactive {
-    transition: transform $speed-animation ease-in, top $speed-animation ease-out $speed-animation, bottom $speed-animation ease-out $speed-animation, margin-top $speed-animation ease-out $speed-animation, margin-bottom $speed-animation ease-out $speed-animation;
+    transition: transform $speed-animation ease-in, top $speed-animation ease-out $speed-animation, bottom $speed-animation ease-out $speed-animation, margin-top $speed-animation ease-out $speed-animation, margin-bottom $speed-animation ease-out $speed-animation, background .7s linear;
 
     &:first-child {
       top: 0; margin-top: 0px; // анимация по вертикали
       transform: rotate(0deg); //поворот
+      background: $color-darkGrey;
     }
     &:last-child {
       bottom: 0; margin-bottom: 0px;
       transform: rotate(0deg);
+      background: $color-darkGrey;
     }
   }
   &_active {
-    transition: top $speed-animation ease-in, bottom $speed-animation ease-in, margin-top $speed-animation ease-in, margin-bottom $speed-animation ease-in, transform $speed-animation ease-out $speed-animation;
+    transition: top $speed-animation ease-in, bottom $speed-animation ease-in, margin-top $speed-animation ease-in, margin-bottom $speed-animation ease-in, transform $speed-animation ease-out $speed-animation, background .7s linear;
 
     &:first-child {
       top: 50%; margin-top: -1.5px;
       transform: rotate(45deg);
+      background:$color-black;
     }
     &:last-child {
       bottom: 50%; margin-bottom: -1.5px;
       transform: rotate(-45deg);
+      background:$color-black;
     }
   }
 }

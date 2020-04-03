@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 
-const MenuElement = ({ className='', onClick='', path='/', children}) => {
+const LinkElement = ({ className='', onClick='', path='/', children}) => {
   return (
     <div className={className} onClick={onClick}>
       <NavLink to={path}>
@@ -11,4 +11,4 @@ const MenuElement = ({ className='', onClick='', path='/', children}) => {
   );
 }
 
-export default MenuElement;
+export default LinkElement;

@@ -1,3 +1,3 @@
-import MenuElement from './menu-element';
+import LinkElement from './menu-element';
 
-export default MenuElement;
+export default LinkElement;

@@ -1,8 +1,16 @@
 // лучше передалать scss вложенность по bem
 
 .navbar {
-  &__logo path{
-    fill: $color-darkGrey;
+  &__logo {
+    &_inactive path {
+      fill: $color-darkGrey;
+      transition: all .7s linear;;
+    }
+
+    &_active path {
+      fill: $color-black;
+      transition: all .7s linear;;
+    }
   }
 
   &-wrap {

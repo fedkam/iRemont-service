@@ -1,4 +1,4 @@
-// как поддерживать все эти inline className непонятно
+// как поддерживать все эти inline className непонятно => Перейти на CssInJS.
 
 //import './menu-list.scss';
 import React, {useState} from 'react';
@@ -8,7 +8,7 @@ import {CSSTransition} from 'react-transition-group';
 import {ReactComponent as LogoIcon} from '../../assets/images/logo-iRemont.svg';
 import Social from '../../components/social';
 import HamburgerButton from '../hamburger-button';
-import MenuElement from '../../components/menu-element';
+import LinkElement from '../../components/menu-element';
 
 
 
@@ -16,26 +16,24 @@ const NavBar = ({getMenuList}) => {
   const [switcherHamburgerMenu, setSwitcherHamburgerMenu] = useState(false);
   const dataNavBar = getMenuList();
 
-  const menuLeft = (
-    <MenuElement onClick={() => setSwitcherHamburgerMenu(false)}>
-      <LogoIcon className='navbar__logo'/>
-    </MenuElement>
-  );
-
   const menuList = (classNameElementMenu) => {
     return (
         dataNavBar && dataNavBar.map((row, index) => (
-          <MenuElement
+          <LinkElement
             className={classNameElementMenu}
             onClick={() => setSwitcherHamburgerMenu(false)}
             path={row.path}
             key={index}
           >
             {row.name}
-          </MenuElement>)));
-  };
+          </LinkElement>)));};
 
-  const menuRight = (
+  const menuTopLeft = (
+    <LinkElement onClick={() => setSwitcherHamburgerMenu(false)}>
+      <LogoIcon className={switcherHamburgerMenu ? 'navbar__logo_active' : 'navbar__logo_inactive'}/>
+    </LinkElement>);
+
+  const menuTopRight = (
     <>
       <Breakpoint small down>
         <HamburgerButton
@@ -48,35 +46,30 @@ const NavBar = ({getMenuList}) => {
           {menuList('navbar-desktop__link')}
         </div>
       </Breakpoint>
-    </>
-  );
+    </>);
 
   const menuTop = (
-    <>
-      {menuLeft}
-      {menuRight}
-    </>
-  );
+    <div className='navbar-wrap__menuTop'>
+      {menuTopLeft}
+      {menuTopRight}
+    </div>);
 
   const menuBottom = (
     <CSSTransition
       in={switcherHamburgerMenu}
       timeout={1000}
-      classNames="navbar-wrap__menuBottom navbar-mobile__csstransition"
+      classNames='navbar-wrap__menuBottom navbar-mobile__csstransition'
       unmountOnExit
     >
       <div>
         {menuList('navbar-mobile__link')}
         <Social />
       </div>
-    </CSSTransition>
-  );
+    </CSSTransition>);
 
   return (
     <>
-      <div className='navbar-wrap__menuTop'>
-        {menuTop}
-      </div>
+      {menuTop}
       {menuBottom}
     </>
   );
