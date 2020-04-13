@@ -1,0 +1,15 @@
+.title {
+  &__title {
+    @include font-semibold(48px);
+    line-height: 65px;
+    letter-spacing: -0.08em;
+    text-align: center;
+  }
+
+  &__subtitle {
+    @include font-regular(24px);
+    line-height: 33px;
+    letter-spacing: -0.01em;
+    text-align: center;
+  }
+}

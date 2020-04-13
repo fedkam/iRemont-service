@@ -5,6 +5,7 @@ import { BreakpointProvider } from "react-socks";
 import NavBar from '../navbar';
 import DataService from '../../services/data-service';
 import { DataServiceProvider } from '../service-context';
+import {OfferPage} from '../../components/pages';
 
 function App() {
   const dataService = new DataService();
@@ -15,7 +16,7 @@ function App() {
           <Router>
             <NavBar/>
             <Switch>
-              <Route exact path="/" render={()=>(<h1>Home</h1>)} />
+              <Route exact path="/" render={()=>(<OfferPage/>)} />
               <Route exact path="/repair" render={()=>(<h1>Ремонт</h1>)} />
               <Route exact path="/modding" render={()=>(<h1>Моддинг</h1>)} />
               <Route exact path="/about-modding" render={()=>(<h1>Все о запчастях</h1>)} />
