@@ -1,4 +1,4 @@
-// как поддерживать все эти inline className непонятно => Перейти на CssInJS.
+// как поддерживать все эти inline className непонятно => ~CssInJS или bem-react
 
 //import './menu-list.scss';
 import React, {useState} from 'react';
@@ -8,13 +8,12 @@ import {CSSTransition} from 'react-transition-group';
 import {ReactComponent as LogoIcon} from '../../assets/images/logo-iRemont.svg';
 import Social from '../../components/social';
 import HamburgerButton from '../hamburger-button';
-import LinkElement from '../../components/menu-element';
+import LinkElement from '../../components/link-element';
 
 
 
-const NavBar = ({getMenuList}) => {
+const NavBar = ({dataNavBar}) => {
   const [switcherHamburgerMenu, setSwitcherHamburgerMenu] = useState(false);
-  const dataNavBar = getMenuList();
 
   const menuList = (classNameElementMenu) => {
     return (
@@ -79,7 +78,7 @@ const NavBar = ({getMenuList}) => {
 
 const mapMethodsToProps = (classDataService) => {
   return {
-    getMenuList: classDataService.getMenuList
+    dataNavBar: classDataService.getMenuList()
   }
 };
 
