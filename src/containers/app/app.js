@@ -2,7 +2,7 @@ import React from 'react';
 import './app.scss';
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { BreakpointProvider } from "react-socks";
-import NavBar from '../navbar';
+import {NavBar} from '../navbar';
 import DataService from '../../services/data-service';
 import { DataServiceProvider } from '../service-context';
 import {OfferPage} from '../../components/pages';
@@ -23,32 +23,6 @@ function App() {
               <Route exact path="/about-us" render={()=>(<h1>О нас</h1>)} />
             </Switch>
           </Router>
-
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-
         </BreakpointProvider>
       </DataServiceProvider>
     </div>

@@ -1,3 +1,7 @@
-import NavBar from './navbar'
+import NavBar from './navbar';
+import NavBarContext from './navbar-context'
 
-export default NavBar;
+export{
+    NavBar,
+    NavBarContext
+};

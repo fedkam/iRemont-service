@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {NavBarContext} from '../navbar';
 
-const HamburgerButton = ({setSwitcherHamburgerMenu, switcherHamburgerMenu}) => {
+const HamburgerButton = () => {
+  const {switcherHamburgerMenu, setSwitcherHamburgerMenu} = useContext(NavBarContext);
   const classNameHambergerMenu = switcherHamburgerMenu ? 'hamburgerMenu_active' : 'hamburgerMenu_inactive';
 
   return(
