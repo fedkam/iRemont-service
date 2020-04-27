@@ -3,9 +3,10 @@
 //import './menu-list.scss';
 import React, {useState,useContext} from 'react';
 import {Breakpoint} from 'react-socks';
-import {withDataService} from '../hoc-helpers';
 import {CSSTransition} from 'react-transition-group';
+import {useRouteMatch} from 'react-router-dom';
 import Social from '../../components/social';
+import {withDataService} from '../hoc-helpers';
 import HamburgerButton from '../hamburger-button';
 import LinkElement from '../../components/link-element';
 import {ReactComponent as LogoIcon} from '../../assets/images/logo-iRemont.svg';
@@ -58,10 +59,23 @@ const MenuTopRight = () => (
 
 
 const MenuTop = () => {
+  const match = useRouteMatch({
+    path: '/',
+    exact: true
+  });
+
+  let basicClassMenuTop = 'navbar-wrap__menuTop';
+
+  if(match){
+    basicClassMenuTop += '\tnavbar-wrap__menuTop_theme_clean'; //только на главной странице offerPage
+  }
+
   return (
-    <div className='navbar-wrap__menuTop'>
-      <MenuTopLeft/>
-      <MenuTopRight/>
+    <div className={basicClassMenuTop}>
+      <div className='navbar-wrap__menuTop_size_base'>
+        <MenuTopLeft/>
+        <MenuTopRight/>
+      </div>
     </div>
   );
 };
@@ -89,7 +103,6 @@ const MenuBottom = () => {
 
 const NavBar = ({dataNavBar}) => {
   const [switcherHamburgerMenu, setSwitcherHamburgerMenu] = useState(false);
-
   return (
     <NavBarContext.Provider value={{dataNavBar, switcherHamburgerMenu, setSwitcherHamburgerMenu}}>
       <MenuTop/>

@@ -34,7 +34,6 @@ export default class DataService {
   }
 
   OFFER_PAGE = {
-    title: 'iPhone',
     subtitle: 'Подари вторую жизнь.'
   }
 

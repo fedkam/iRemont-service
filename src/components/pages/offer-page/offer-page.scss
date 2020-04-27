@@ -1,0 +1,18 @@
+.offer-page {
+    &__motivation{
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 10; //base layer
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-image: url(../../../assets/images/icon-apple.svg);
+        background-repeat: no-repeat;
+        background-position: bottom;
+        background-size: 85%;
+    }
+}
