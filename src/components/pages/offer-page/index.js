@@ -14,6 +14,9 @@ const OfferPage = ({dataOffer, dataLink}) => (
       />
       <OfferLinks dataLink={dataLink}/>
     </div>
+    <div className='offer-page__background-wrap'>
+      <IconApple className='offer-page__background'/>
+    </div>
   </>
 )
 

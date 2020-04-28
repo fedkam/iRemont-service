@@ -10,9 +10,59 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        background-image: url(../../../assets/images/icon-apple.svg);
-        background-repeat: no-repeat;
-        background-position: bottom;
-        background-size: 85%;
+    }
+    
+    &__background-wrap {
+        position: fixed;
+        display: none;
+    }
+
+    &__background {
+        width: 100%;
+        height: 100%;
+     }
+}
+
+
+
+@media (min-width: 280px) {
+    .offer-page__background-wrap {
+        display: block;
+        top: 66%;
+        left: -10%;
+        right: -10%;
+        bottom: -48%;
+        width: 120%;
+    }
+}
+
+
+
+@media (min-width: 400px) {
+    .offer-page__background-wrap {
+        top: 20%;
+        left: 0;
+        right: 0;
+        bottom: -120%;
+        width: 100%;
+    }
+}
+
+
+@media (min-width: $media-mobileSize-medium) {
+    .offer-page__background-wrap {
+        top: 30%;
+        left: 0;
+        right: 0;
+        bottom: -120%;
+    }
+}
+
+
+
+@media (min-width: 1300px) {
+    .offer-page__background-wrap {
+        top: 26%;
+        bottom: -138%;
     }
 }

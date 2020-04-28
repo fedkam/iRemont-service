@@ -1,6 +1,6 @@
 import React from 'react';
 import './app.scss';
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import { BreakpointProvider } from "react-socks";
 import {NavBar} from '../navbar';
 import DataService from '../../services/data-service';
