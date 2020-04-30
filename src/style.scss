@@ -4,11 +4,15 @@
 @import 'sass/variables';
 @import 'sass/base-config';
 
-@import 'components/social/social';
 @import 'components/title/title';
-@import 'components/offer-links/offer-links';
-@import 'components/pages/offer-page/offer-page';
+@import 'components/social/social';
+@import 'components/device/device';
+@import 'components/motivation-links/motivation-links';
+
 
 @import 'containers/app/app';
 @import 'containers/navbar/navbar';
 @import 'containers/hamburger-button/hamburger-button';
+@import 'containers/pages/offer-page/offer-page';
+@import 'containers/pages/repair-page/repair-page';
+

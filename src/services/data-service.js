@@ -1,3 +1,5 @@
+import { iPhone_8, iPhone_8_Plus } from './data-iphones';
+
 export default class DataService {
   MENU_LIST = [
     {
@@ -37,6 +39,11 @@ export default class DataService {
     subtitle: 'Подари вторую жизнь.'
   }
 
+  IPHONE_LIST = [
+    iPhone_8,
+    iPhone_8_Plus
+  ]
+
   getMenuList = () => {
     return this.MENU_LIST;
   };
@@ -47,5 +54,9 @@ export default class DataService {
 
   getLinkData = () => {
     return this.LINK;
+  }
+
+  getIphoneList = () => {
+    return this.IPHONE_LIST;
   }
 }

@@ -1,0 +1,13 @@
+.device {
+    &__wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__title {
+        @include font-regular(14px);
+        margin-top: 16px;
+    }
+}

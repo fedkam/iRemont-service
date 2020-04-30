@@ -40,6 +40,18 @@
 
 @media (min-width: 400px) {
     .offer-page__background-wrap {
+        top: 2%;
+        left: 0;
+        right: 0;
+        bottom: -120%;
+        width: 100%;
+    }
+}
+
+
+
+@media (min-width: 600px) {
+    .offer-page__background-wrap {
         top: 20%;
         left: 0;
         right: 0;
@@ -49,12 +61,14 @@
 }
 
 
+
 @media (min-width: $media-mobileSize-medium) {
     .offer-page__background-wrap {
         top: 30%;
         left: 0;
         right: 0;
         bottom: -120%;
+        width: 100%;
     }
 }
 

@@ -1,8 +1,8 @@
 //import './title.scss';
 import React from 'react';
 
-const Title = ({title, subtitle}) => (
-    <div>
+const Title = ({title, subtitle, className}) => (
+    <div className={className}>
       <div className='title__title'>
         {title}
       </div>

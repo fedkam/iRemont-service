@@ -14,8 +14,9 @@ import NavBarContext from './navbar-context';
 
 
 
-const MenuList = ({classNameElementMenu}) => {
+const MenuList = ({classNameElementMenu, isMobile=true}) => {
   const {dataNavBar, setSwitcherHamburgerMenu} = useContext(NavBarContext);
+  (!isMobile) && setSwitcherHamburgerMenu(false); // если mobileMenu открыто, то закрыть при desktop
   return(
     dataNavBar && dataNavBar.map((row, index) => (
       <LinkElement
@@ -50,7 +51,10 @@ const MenuTopRight = () => (
 
     <Breakpoint medium up>
       <div className='navbar-desktop__links'>
-        <MenuList classNameElementMenu='navbar-desktop__link' />
+        <MenuList 
+          classNameElementMenu='navbar-desktop__link' 
+          isMobile={false}
+        />
       </div>
     </Breakpoint>
   </>

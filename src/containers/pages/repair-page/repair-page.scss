@@ -1,0 +1,15 @@
+.repair-page {
+    &__title {
+        margin-top: 105px;
+        margin-bottom: 80px;
+    }
+
+    &__list-devices {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-column-gap: 44px;
+        grid-row-gap: 72px;
+        max-width: 622px;
+        margin: 0 auto;   
+    }
+}
