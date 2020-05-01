@@ -14,9 +14,12 @@
       color: $color-blye;
     }
 
-    &:first-child {
-      margin-right: 48px;
+    &_theme_indent {
+      &:first-child {
+        margin-right: 48px;
+      }
     }
+      
   }
 
   &__arrow { 

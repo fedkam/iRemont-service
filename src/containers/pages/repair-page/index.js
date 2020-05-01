@@ -3,7 +3,7 @@ import React from 'react';
 import { withDataService } from '../../hoc-helpers';
 import Title from '../../../components/title';
 import IphoneList from '../../iphone-list';
-import {MotivationLink} from '../../../components/motivation-links';
+import { MotivationLink } from '../../../components/motivation-links';
 
 
 const RepairPage = ({ dataRepairPage, dataIphones, dataLink }) => (
@@ -17,9 +17,7 @@ const RepairPage = ({ dataRepairPage, dataIphones, dataLink }) => (
       className='repair-page__list-devices'
       dataIphones={dataIphones}
     />
-    <div className='repair-page__motivation-list'>
-      <MotivationLink data={dataLink.other}/>
-    </div>
+    <MotivationLink className='repair-page__motivation-list' data={dataLink.other} />
   </div>
 )
 
