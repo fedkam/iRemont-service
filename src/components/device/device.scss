@@ -4,9 +4,10 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        color: $color-black;
     }
 
-    &__title {
+    &__model {
         @include font-regular(14px);
         margin-top: 16px;
     }

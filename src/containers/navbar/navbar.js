@@ -52,7 +52,7 @@ const MenuTopRight = () => (
     <Breakpoint medium up>
       <div className='navbar-desktop__links'>
         <MenuList 
-          classNameElementMenu='navbar-desktop__link' 
+          classNameElementMenu='navbar-desktop__link navbar__link_theme_basic' 
           isMobile={false}
         />
       </div>
@@ -96,7 +96,7 @@ const MenuBottom = () => {
       unmountOnExit
     >
       <div>
-        <MenuList classNameElementMenu='navbar-mobile__link'/>
+        <MenuList classNameElementMenu='navbar-mobile__link navbar__link_theme_basic'/>
         <Social />
       </div>
     </CSSTransition>

@@ -2,16 +2,16 @@
 import React from 'react';
 import {withDataService} from '../../hoc-helpers';
 import Title from '../../../components/title';
-import MotivationLinks from '../../../components/motivation-links';
+import {MotivationLinks} from '../../../components/motivation-links';
 import {ReactComponent as LogoIphone} from '../../../assets/images/logo-iPhone.svg';
 import {ReactComponent as IconApple} from '../../../assets/images/icon-apple.svg';
 
-const OfferPage = ({dataOffer, dataLink}) => (
+const OfferPage = ({dataOfferPage, dataLink}) => (
   <>
     <div className='offer-page__motivation'>
       <Title
         title={<LogoIphone/>}
-        subtitle={dataOffer.subtitle}
+        subtitle={dataOfferPage.subtitle}
       />
       <MotivationLinks dataLink={dataLink}/>
     </div>
@@ -23,7 +23,7 @@ const OfferPage = ({dataOffer, dataLink}) => (
 
 const mapMethodsToProps = (classDataService) => {
   return {
-    dataOffer: classDataService.getOfferData(),
+    dataOfferPage: classDataService.getOfferPageData(),
     dataLink: classDataService.getLinkData()
   }
 };

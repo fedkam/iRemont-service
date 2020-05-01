@@ -1,4 +1,23 @@
-import { iPhone_8, iPhone_8_Plus } from './data-iphones';
+import {
+  iPhone_6,
+  iPhone_6_Plus,
+  iPhone_6s,
+  iPhone_6s_Plus,
+  iPhone_7,
+  iPhone_7_Plus,
+  iPhone_8,
+  iPhone_8_Plus,
+  iPhone_X,
+  iPhone_XR,
+  iPhone_XS,
+  iPhone_XS_Max,
+  iPhone_11,
+  iPhone_11_Pro,
+  iPhone_11_Pro_Max,
+  iPhone_SE_v2
+} from './data-iphones';
+
+
 
 export default class DataService {
   MENU_LIST = [
@@ -32,6 +51,10 @@ export default class DataService {
     whatIsModding: {
       name: 'Что это такое',
       path: 'ссылка'
+    },
+    other: {
+      name: 'Остальные',
+      path: 'ссылка'
     }
   }
 
@@ -39,17 +62,40 @@ export default class DataService {
     subtitle: 'Подари вторую жизнь.'
   }
 
+  REPAIR_PAGE = {
+    title: 'Ремонт',
+    subtitle: 'Найди свой.'
+  }
+
   IPHONE_LIST = [
+    iPhone_6,
+    iPhone_6_Plus,
+    iPhone_6s,
+    iPhone_6s_Plus,
+    iPhone_7,
+    iPhone_7_Plus,
     iPhone_8,
-    iPhone_8_Plus
+    iPhone_8_Plus,
+    iPhone_X,
+    iPhone_XR,
+    iPhone_XS,
+    iPhone_XS_Max,
+    iPhone_11,
+    iPhone_11_Pro,
+    iPhone_11_Pro_Max,
+    iPhone_SE_v2
   ]
 
   getMenuList = () => {
-    return this.MENU_LIST;
+    return this.MENU_LIST.slice();
   };
 
-  getOfferData = () => {
+  getOfferPageData = () => {
     return this.OFFER_PAGE;
+  };
+
+  getRepairPageData = () => {
+    return this.REPAIR_PAGE;
   };
 
   getLinkData = () => {
@@ -57,6 +103,6 @@ export default class DataService {
   }
 
   getIphoneList = () => {
-    return this.IPHONE_LIST;
+    return this.IPHONE_LIST.slice().reverse();
   }
 }

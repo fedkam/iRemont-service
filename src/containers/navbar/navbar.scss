@@ -1,6 +1,16 @@
 // лучше передалать scss вложенность по bem
 
 .navbar {
+
+  &__link_theme_basic {
+    & > a {
+      color: $color-darkGrey;
+    }
+    & > a.active {
+      color: $color-black;
+    }
+  }
+
   &__logo {
     &_inactive path {
       fill: $color-darkGrey;
@@ -103,16 +113,6 @@
 
 
 
-a {
-  text-decoration: none;
-  color: $color-darkGrey;
-}
-a.active {
-  color: $color-black;
-}
-
-
-
 @media (min-width: $media-mobileSize-medium) {
   .navbar{
     &-wrap__menuTop {
@@ -130,7 +130,6 @@ a.active {
     }
   }
 }
-
 
 
 
