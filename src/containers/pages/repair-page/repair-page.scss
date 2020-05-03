@@ -1,20 +1,27 @@
 .repair-page {
-    &__title {
-        margin-top: 105px;
-        margin-bottom: 80px;
-    }
+    min-width: $min-width-component;
 
-    &__list-devices {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-column-gap: 44px;
-        grid-row-gap: 72px;
-        max-width: 622px;
-        margin: 0 auto;   
+    &__title {
+        margin-top: 40px;
+        margin-bottom: 40px;
     }
 
     &__motivation-list {
-        margin-top: 48px;
-        margin-bottom: 156px;
+        margin-top: 40px;
+        margin-bottom: 100px;
+    }
+}
+
+@media (min-width: $media-mobileSize-medium) {
+    .repair-page {
+        &__title {
+            margin-top: 105px;
+            margin-bottom: 80px;
+        }
+
+        &__motivation-list {
+            margin-top: 48px;
+            margin-bottom: 156px;
+        }
     }
 }

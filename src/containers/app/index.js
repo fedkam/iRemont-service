@@ -1,11 +1,11 @@
 import React from 'react';
 //import './app.scss';
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import {BreakpointProvider} from "react-socks";
-import {NavBar} from '../navbar';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BreakpointProvider } from "react-socks";
+import { NavBar } from '../navbar';
 import DataService from '../../services/data-service';
-import {DataServiceProvider} from '../service-context';
-import {OfferPage, RepairPage} from '../pages';
+import { DataServiceProvider } from '../service-context';
+import { OfferPage, RepairPage } from '../pages';
 
 function App() {
   const dataService = new DataService();
@@ -14,13 +14,13 @@ function App() {
       <DataServiceProvider value={dataService}>
         <BreakpointProvider>
           <Router>
-            <NavBar/>
+            <NavBar />
             <Switch>
-              <Route exact path="/" render={()=>(<OfferPage/>)} />
-              <Route exact path="/repair" render={()=>(<RepairPage/>)} />
-              <Route exact path="/modding" render={()=>(<h1>Моддинг</h1>)} />
-              <Route exact path="/about-modding" render={()=>(<h1>Все о запчастях</h1>)} />
-              <Route exact path="/about-us" render={()=>(<h1>О нас</h1>)} />
+              <Route exact path="/" render={() => (<OfferPage />)} />
+              <Route exact path="/repair" render={() => (<RepairPage />)} />
+              <Route exact path="/modding" render={() => (<h1>Моддинг</h1>)} />
+              <Route exact path="/about-modding" render={() => (<h1>Все о запчастях</h1>)} />
+              <Route exact path="/about-us" render={() => (<h1>О нас</h1>)} />
             </Switch>
           </Router>
         </BreakpointProvider>

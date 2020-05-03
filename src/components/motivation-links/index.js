@@ -3,6 +3,8 @@ import React from 'react';
 import LinkElement from '../link-element';
 import { ReactComponent as IconArrow } from '../../assets/images/icon-arrow.svg';
 
+
+
 export const MotivationLink = ({ className, data }) => (
   <div className={className}>
     <LinkElement className={'motivation-links__link'} path={data.path}>
@@ -11,6 +13,8 @@ export const MotivationLink = ({ className, data }) => (
     </LinkElement>
   </div>
 )
+
+
 
 export const MotivationLinks = ({ dataLink }) => (
   <div className='motivation-links__links'>

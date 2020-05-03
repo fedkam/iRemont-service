@@ -1,23 +1,23 @@
 // как поддерживать все эти inline className непонятно => ~CssInJS или bem-react
 
 //import './menu-list.scss';
-import React, {useState,useContext} from 'react';
-import {Breakpoint} from 'react-socks';
-import {CSSTransition} from 'react-transition-group';
-import {useRouteMatch} from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { Breakpoint } from 'react-socks';
+import { CSSTransition } from 'react-transition-group';
+import { useRouteMatch, useLocation } from 'react-router-dom';
 import Social from '../../components/social';
-import {withDataService} from '../hoc-helpers';
+import { withDataService } from '../hoc-helpers';
 import HamburgerButton from '../hamburger-button';
 import LinkElement from '../../components/link-element';
-import {ReactComponent as LogoIcon} from '../../assets/images/logo-iRemont.svg';
+import { ReactComponent as LogoIcon } from '../../assets/images/logo-iRemont.svg';
 import NavBarContext from './navbar-context';
 
 
 
-const MenuList = ({classNameElementMenu, isMobile=true}) => {
-  const {dataNavBar, setSwitcherHamburgerMenu} = useContext(NavBarContext);
+const MenuList = ({ classNameElementMenu, isMobile = true }) => {
+  const { dataNavBar, setSwitcherHamburgerMenu } = useContext(NavBarContext);
   (!isMobile) && setSwitcherHamburgerMenu(false); // если mobileMenu открыто, то закрыть при desktop
-  return(
+  return (
     dataNavBar && dataNavBar.map((row, index) => (
       <LinkElement
         className={classNameElementMenu}
@@ -33,10 +33,10 @@ const MenuList = ({classNameElementMenu, isMobile=true}) => {
 
 
 const MenuTopLeft = () => {
-  const {switcherHamburgerMenu, setSwitcherHamburgerMenu} = useContext(NavBarContext);
+  const { switcherHamburgerMenu, setSwitcherHamburgerMenu } = useContext(NavBarContext);
   return (
     <LinkElement onClick={() => setSwitcherHamburgerMenu(false)}>
-        <LogoIcon className={switcherHamburgerMenu ? 'navbar__logo_active' : 'navbar__logo_inactive'}/>
+      <LogoIcon className={switcherHamburgerMenu ? 'navbar__logo_active' : 'navbar__logo_inactive'} />
     </LinkElement>
   );
 };
@@ -46,13 +46,13 @@ const MenuTopLeft = () => {
 const MenuTopRight = () => (
   <>
     <Breakpoint small down>
-      <HamburgerButton/>
+      <HamburgerButton />
     </Breakpoint>
 
     <Breakpoint medium up>
       <div className='navbar-desktop__links'>
-        <MenuList 
-          classNameElementMenu='navbar-desktop__link navbar__link_theme_basic' 
+        <MenuList
+          classNameElementMenu='navbar-desktop__link navbar__link_theme_basic'
           isMobile={false}
         />
       </div>
@@ -70,15 +70,15 @@ const MenuTop = () => {
 
   let basicClassMenuTop = 'navbar-wrap__menuTop';
 
-  if(match){
+  if (match) {
     basicClassMenuTop += '\tnavbar-wrap__menuTop_theme_clean'; //только на главной странице offerPage
   }
 
   return (
     <div className={basicClassMenuTop}>
       <div className='navbar-wrap__menuTop_size_base'>
-        <MenuTopLeft/>
-        <MenuTopRight/>
+        <MenuTopLeft />
+        <MenuTopRight />
       </div>
     </div>
   );
@@ -87,8 +87,8 @@ const MenuTop = () => {
 
 
 const MenuBottom = () => {
-  const {switcherHamburgerMenu} = useContext(NavBarContext);
-  return(  
+  const { switcherHamburgerMenu } = useContext(NavBarContext);
+  return (
     <CSSTransition
       in={switcherHamburgerMenu}
       timeout={1000}
@@ -96,7 +96,7 @@ const MenuBottom = () => {
       unmountOnExit
     >
       <div>
-        <MenuList classNameElementMenu='navbar-mobile__link navbar__link_theme_basic'/>
+        <MenuList classNameElementMenu='navbar-mobile__link navbar__link_theme_basic' />
         <Social />
       </div>
     </CSSTransition>
@@ -105,12 +105,14 @@ const MenuBottom = () => {
 
 
 
-const NavBar = ({dataNavBar}) => {
+const NavBar = ({ dataNavBar }) => {
   const [switcherHamburgerMenu, setSwitcherHamburgerMenu] = useState(false);
+  let loc = useLocation();
+  console.log(loc);
   return (
-    <NavBarContext.Provider value={{dataNavBar, switcherHamburgerMenu, setSwitcherHamburgerMenu}}>
-      <MenuTop/>
-      <MenuBottom/>
+    <NavBarContext.Provider value={{ dataNavBar, switcherHamburgerMenu, setSwitcherHamburgerMenu }}>
+      <MenuTop />
+      <MenuBottom />
     </NavBarContext.Provider>
   );
 };

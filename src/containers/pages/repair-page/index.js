@@ -13,11 +13,10 @@ const RepairPage = ({ dataRepairPage, dataIphones, dataLink }) => (
       title={dataRepairPage.title}
       subtitle={dataRepairPage.subtitle}
     />
-    <IphoneList
-      className='repair-page__list-devices'
-      dataIphones={dataIphones}
-    />
-    <MotivationLink className='repair-page__motivation-list' data={dataLink.other} />
+    <IphoneList dataIphones={dataIphones} />
+    <MotivationLink
+      className='repair-page__motivation-list'
+      data={dataLink.other} />
   </div>
 )
 

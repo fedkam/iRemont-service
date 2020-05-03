@@ -1,3 +1,24 @@
 .iphone-list {
+    &__list-devices {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 44px;
+        grid-row-gap: 72px;
+        max-width: 250px;
+        margin: 0 auto;
+    }
+}
 
+@media (min-width: $media-mobileSize-small) {
+    .iphone-list__list-devices {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 400px;
+    }
+}
+
+@media (min-width: $media-mobileSize-medium) {
+    .iphone-list__list-devices {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 622px;
+    }
 }

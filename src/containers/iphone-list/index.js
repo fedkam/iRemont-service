@@ -4,15 +4,18 @@ import Device from '../../components/device';
 import LinkElement from '../../components/link-element'
 
 
-const IphoneList = ({ className, dataIphones}) => {
+const IphoneList = ({ dataIphones }) => {
   return (
-    <div className={className}>
-      {dataIphones.map((iphone, index)=>(
-        <LinkElement 
+    <div className='iphone-list__list-devices'>
+      {dataIphones.map((iphone, index) => (
+        <LinkElement
           path={{
             pathname: `/repair/${iphone.model.replace(/ /gi, "")}`,
-            state: iphone.price
-          }} 
+            state: {
+              model: `iPhone ${iphone.model}`,
+              price: iphone.price
+            }
+          }}
           key={index}
         >
           <Device
