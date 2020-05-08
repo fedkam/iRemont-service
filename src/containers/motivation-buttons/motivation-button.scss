@@ -1,0 +1,27 @@
+.motivation-button {
+  display: block;
+  padding: 8px 0;
+  border: 1px solid $color-blue-border;
+  border-radius: 4px;
+  @include font-semibold(18px);
+
+  &_theme_primary {
+    background: $color-blue-linear-gradient;
+    color: $color-pure-white;
+  }
+
+  &_theme_outline {
+    background: none;
+    color: $color-blue-border;
+  }
+}
+
+.motivation-buttons {
+  max-width: 312px;
+  margin: 0 auto;
+  margin-bottom: 100px;
+
+  & :nth-child(1) {
+    margin-bottom: 16px;
+  }
+}

@@ -2,9 +2,18 @@
 @mixin font-regular($size) {
 	font-family: 'Open Sans Regular', sans-serif;
   font-size: $size;
+  letter-spacing: -0.01em;
 }
 
 @mixin font-semibold($size) {
   font-family: 'Open Sans SemiBold', sans-serif;
   font-size: $size;
+  letter-spacing: -0.01em;
 }
+
+@mixin font-bold($size) {
+  font-family: 'Open Sans Bold', sans-serif;
+  font-size: $size;
+  letter-spacing: -0.01em;
+}
+

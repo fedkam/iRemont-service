@@ -5,9 +5,11 @@ import { BreakpointProvider } from "react-socks";
 import { NavBar } from '../navbar';
 import DataService from '../../services/data-service';
 import { DataServiceProvider } from '../service-context';
-import { OfferPage, RepairPage } from '../pages';
+import { OfferPage, RepairPage, ModdingPage } from '../pages';
 
-function App() {
+
+
+export default function App() {
   const dataService = new DataService();
   return (
     <div className="App">
@@ -18,7 +20,7 @@ function App() {
             <Switch>
               <Route exact path="/" render={() => (<OfferPage />)} />
               <Route exact path="/repair" render={() => (<RepairPage />)} />
-              <Route exact path="/modding" render={() => (<h1>Моддинг</h1>)} />
+              <Route exact path="/modding" render={() => (<ModdingPage/>)} />
               <Route exact path="/about-modding" render={() => (<h1>Все о запчастях</h1>)} />
               <Route exact path="/about-us" render={() => (<h1>О нас</h1>)} />
             </Switch>
@@ -29,4 +31,3 @@ function App() {
   );
 }
 
-export default App;

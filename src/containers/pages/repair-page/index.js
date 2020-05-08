@@ -6,10 +6,11 @@ import IphoneList from '../../iphone-list';
 import { MotivationLink } from '../../../components/motivation-links';
 
 
+
 const RepairPage = ({ dataRepairPage, dataIphones, dataLink }) => (
   <div className='repair-page'>
     <Title
-      className='repair-page__title'
+      className='pages__title_theme_indent'
       title={dataRepairPage.title}
       subtitle={dataRepairPage.subtitle}
     />

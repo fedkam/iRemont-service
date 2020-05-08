@@ -1,0 +1,40 @@
+.modding-page {
+    min-width: $min-width-component;
+    padding: 0 16px;
+
+    &__detail {
+        margin-bottom: 64px;
+    }
+
+    &__list-elements {
+        display: grid;
+        grid-template-columns: 160px;
+        grid-column-gap: 12px;
+        margin: 0 auto;
+        margin-bottom: 40px;
+        max-width: 160px;
+    }
+
+    &__element {
+        width: 160px;
+    }
+}
+
+@media (min-width: 350px) {
+    .modding-page {
+        &__list-elements {
+            grid-template-columns: repeat(2, 160px);
+            grid-column-gap: 12px;
+            max-width: 331px;
+        }
+    }
+}
+
+@media (min-width: 560px) {
+    .modding-page {
+        &__list-elements {
+            grid-column-gap: 122px;
+            max-width: 441px;
+        }
+    }
+}

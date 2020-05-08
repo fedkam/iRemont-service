@@ -20,6 +20,8 @@ import {
 
 
 export default class DataService {
+  WHATS_APP_LINK = 'https://wa.me/79146267319';
+
   MENU_LIST = [
     {
       name: 'Ремонт',
@@ -48,10 +50,6 @@ export default class DataService {
       name: 'Моддинг',
       path: '/modding'
     },
-    whatIsModding: {
-      name: 'Что это такое',
-      path: 'ссылка'
-    },
     other: {
       name: 'Остальные',
       path: 'ссылка'
@@ -65,6 +63,38 @@ export default class DataService {
   REPAIR_PAGE = {
     title: 'Ремонт',
     subtitle: 'Найди свой.'
+  }
+
+  MODDING_PAGE = {
+    header: {
+      title: 'Моддинг',
+      subtitle: 'Стань уникальным.'
+    },
+    details: {
+      title: 'Моддинг.',
+      info: 'Это внесение изменений в дизайн или конструкцию iPhone для улучшения внешнего вида или функциональности.'
+    },
+    elements: {
+      materialAndColor: {
+        title: 'Материал и цвет',
+        subtitle: 'Также возможна установка накладок на заднюю крышку.'
+      },
+      lightApple: {
+        title: 'Светояблоко',
+        subtitle: 'Специальный тип корпуса, со светящимся яблоком позади.'
+      }
+    },
+    motivatilonButtons: {
+      write: {
+        name: 'Написать',
+        url: this.WHATS_APP_LINK,
+        message: 'Здравствуйте, хочу сделать моддинг iPhone '
+      },
+      call: {
+        name: 'Позвонить',
+        tel: '+79619671403'
+      }
+    }
   }
 
   IPHONE_LIST = [
@@ -91,15 +121,19 @@ export default class DataService {
   };
 
   getOfferPageData = () => {
-    return this.OFFER_PAGE;
+    return Object.assign({}, this.OFFER_PAGE);
   };
 
   getRepairPageData = () => {
-    return this.REPAIR_PAGE;
+    return Object.assign({}, this.REPAIR_PAGE);
+  };
+
+  getModdingPageData = () => {
+    return Object.assign({}, this.MODDING_PAGE);
   };
 
   getLinkData = () => {
-    return this.LINK;
+    return Object.assign({}, this.LINK);
   }
 
   getIphoneList = () => {

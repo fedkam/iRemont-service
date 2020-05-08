@@ -1,0 +1,15 @@
+.element {
+    &__image {
+        margin-bottom: 8px;
+    }
+
+    &__title {
+        @include font-bold(18px);
+    }
+    
+    &__subtitle {
+        @include font-semibold(12px);
+        line-height: 160%;
+        color: $color-darkGrey;
+    }
+}

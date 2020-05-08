@@ -5,15 +5,19 @@
 @import 'sass/base-config';
 
 @import 'components/title/title';
-@import 'components/social/social';
 @import 'components/device/device';
+@import 'components/detail/detail';
+@import 'components/social/social';
+@import 'components/element/element';
 @import 'components/motivation-links/motivation-links';
 
-
 @import 'containers/app/app';
+@import 'containers/pages/pages';
 @import 'containers/iphone-list/iphone-list';
 @import 'containers/navbar/navbar';
 @import 'containers/hamburger-button/hamburger-button';
 @import 'containers/pages/offer-page/offer-page';
 @import 'containers/pages/repair-page/repair-page';
+@import 'containers/pages/modding-page/modding-page';
+@import 'containers/motivation-buttons/motivation-button';
 

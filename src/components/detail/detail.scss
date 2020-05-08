@@ -1,0 +1,12 @@
+.detail {
+    max-width: 400px;
+    margin: 0 auto;
+
+    &__title {
+        @include font-semibold(18px);
+    }
+
+    &__info {
+        @include font-regular(18px);
+    }
+}

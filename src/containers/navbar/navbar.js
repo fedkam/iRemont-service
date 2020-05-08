@@ -4,7 +4,7 @@
 import React, { useState, useContext } from 'react';
 import { Breakpoint } from 'react-socks';
 import { CSSTransition } from 'react-transition-group';
-import { useRouteMatch, useLocation } from 'react-router-dom';
+import { useRouteMatch} from 'react-router-dom';
 import Social from '../../components/social';
 import { withDataService } from '../hoc-helpers';
 import HamburgerButton from '../hamburger-button';
@@ -107,8 +107,6 @@ const MenuBottom = () => {
 
 const NavBar = ({ dataNavBar }) => {
   const [switcherHamburgerMenu, setSwitcherHamburgerMenu] = useState(false);
-  let loc = useLocation();
-  console.log(loc);
   return (
     <NavBarContext.Provider value={{ dataNavBar, switcherHamburgerMenu, setSwitcherHamburgerMenu }}>
       <MenuTop />
