@@ -16,10 +16,12 @@ export const MotivationLink = ({ className, data }) => (
 
 
 
-export const MotivationLinks = ({ dataLink }) => (
-  <div className='motivation-links__links'>
-    <MotivationLink className='motivation-links__link_theme_indent' data={dataLink.repair} />
-    <MotivationLink className='motivation-links__link_theme_indent' data={dataLink.modding} />
+export const MotivationLinks = ({ className, dataLink }) => (
+  <div className={className}>
+    <div className='motivation-links__links'>
+      <MotivationLink className='motivation-links__link_theme_indent' data={dataLink.repair} />
+      <MotivationLink className='motivation-links__link_theme_indent' data={dataLink.modding} />
+    </div>
   </div>
 );
 

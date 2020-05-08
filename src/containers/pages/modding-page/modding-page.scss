@@ -3,7 +3,10 @@
     padding: 0 16px;
 
     &__detail {
+        max-width: 400px;
+        margin: 0 auto;
         margin-bottom: 64px;
+        text-align: center;
     }
 
     &__list-elements {

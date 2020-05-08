@@ -1,0 +1,22 @@
+.spare-parts-page {
+    min-width: $min-width-component;
+    padding: 0 16px;
+
+    &__detail {
+        max-width: 620px;
+        margin: 0 auto;
+        text-align: justify;
+        margin-bottom: 32px;
+        &:last-child {
+            margin-bottom: 64px;
+        }
+    }
+
+    &__title_theme_indent {
+        margin-bottom: 16px;
+    }
+
+    &__motivation-links {
+        margin-bottom: 100px;
+    }
+}

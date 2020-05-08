@@ -1,6 +1,4 @@
 .detail {
-    max-width: 400px;
-    margin: 0 auto;
 
     &__title {
         @include font-semibold(18px);

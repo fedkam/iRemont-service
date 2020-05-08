@@ -21,6 +21,7 @@ import {
 
 export default class DataService {
   WHATS_APP_LINK = 'https://wa.me/79146267319';
+  PHONE_NUMBER =  '+7 (961) 967-14-03';
 
   MENU_LIST = [
     {
@@ -88,12 +89,34 @@ export default class DataService {
       write: {
         name: 'Написать',
         url: this.WHATS_APP_LINK,
-        message: 'Здравствуйте, хочу сделать моддинг iPhone '
+        message: 'Здравствуйте, хочу сделать моддинг iPhone'
       },
       call: {
         name: 'Позвонить',
-        tel: '+79619671403'
+        tel: this.PHONE_NUMBER
       }
+    }
+  }
+
+  SPARE_PARTS_PAGE = {
+    header: {
+      title: 'О запчастях',
+      subtitle: 'Как вас обманывают.'
+    },
+    details_original: {
+      title: 'Оригинальные.',
+      info: 'Данные запчасти есть только в авторизованных сервисных центрах компании Apple. Поэтому когда вы обращаетесь в обычный сервисный центр (не Apple) и вам говорят что эти детали оригинальные, вам либо впихивают оригинальные детали снятые с чужого телефона(БУ), либо китайский аналог.'
+    },
+    details_сhineseСounterpart: {
+      title: 'Китайский аналог.',
+      info: 'В большинстве сервисных центрах, когда говорят “оригинальные запчасти” имеют ввиду именно качественный китайский аналог,  а  “китайскими запчастями” называют некачественный китайский аналог.'
+    },
+    details_offer: {
+      title: 'Что предлагаем мы?',
+      info: 'У нас имеется многолетний опыт сотрудничества с китайскими поставщиками, и мы знаем у кого самые качественные китайские аналоги. Уверяем, вы не сможете их отличить от оригинала.'
+    },
+    motivation: {
+      title: 'Пора начать!'
     }
   }
 
@@ -131,6 +154,10 @@ export default class DataService {
   getModdingPageData = () => {
     return Object.assign({}, this.MODDING_PAGE);
   };
+
+  getSparePartsPageData = () => {
+    return  Object.assign({}, this.SPARE_PARTS_PAGE);
+  }
 
   getLinkData = () => {
     return Object.assign({}, this.LINK);

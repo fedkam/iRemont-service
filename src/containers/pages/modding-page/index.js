@@ -10,7 +10,7 @@ import { ReactComponent as LightAppleIcon } from '../../../assets/images/icon-li
 
 
 
-const ModdingPage = ({ dataModdingPage, dataLink }) => {
+const ModdingPage = ({ dataModdingPage }) => {
   const { header, details, elements, motivatilonButtons } = dataModdingPage;
   return (
     <div className='modding-page'>
@@ -50,8 +50,7 @@ const ModdingPage = ({ dataModdingPage, dataLink }) => {
 
 const mapMethodsToProps = (classDataService) => {
   return {
-    dataModdingPage: classDataService.getModdingPageData(),
-    dataLink: classDataService.getLinkData()
+    dataModdingPage: classDataService.getModdingPageData()
   }
 };
 
