@@ -21,7 +21,7 @@ import {
 
 export default class DataService {
   WHATS_APP_LINK = 'https://wa.me/79146267319';
-  PHONE_NUMBER =  '+7 (961) 967-14-03';
+  PHONE_NUMBER = '+7 (961) 967-14-03';
 
   MENU_LIST = [
     {
@@ -120,6 +120,32 @@ export default class DataService {
     }
   }
 
+  ABOUT_US_PAGE = {
+    header: {
+      title: 'О нас',
+      subtitle: 'Коротко и по делу.'
+    },
+    details_quality: {
+      title: 'Качество работ.',
+      info: 'Мы работаем с 2013 года, и за этот период наладили поставку самых качественых запчастей для любого iPhone.'
+    },
+    details_efficiency: {
+      title: 'Оперативность.',
+      info: 'Наш склад содержит большинство ходовых запчастей, и мы не тратим время на их доставку, поэтому ремонт длится недолго.'
+    },
+    details_responsiveness: {
+      title: 'Отзывчивость.',
+      info: 'Мы всегда идем на встречу клиенту, и готовы оказать качественную помощь даже в нерабочее время и праздничные дни.'
+    },
+    details_office: {
+      title: 'Офис.',
+      info: 'Мы находимся по адресу г.Петропавловск-Камчатский ул.Тельмана 1А.'
+    },
+    motivation: {
+      title: 'Пора начать!'
+    }
+  }
+
   IPHONE_LIST = [
     iPhone_6,
     iPhone_6_Plus,
@@ -156,7 +182,11 @@ export default class DataService {
   };
 
   getSparePartsPageData = () => {
-    return  Object.assign({}, this.SPARE_PARTS_PAGE);
+    return Object.assign({}, this.SPARE_PARTS_PAGE);
+  }
+
+  getAboutUsPageData = () => {
+    return Object.assign({}, this.ABOUT_US_PAGE);
   }
 
   getLinkData = () => {

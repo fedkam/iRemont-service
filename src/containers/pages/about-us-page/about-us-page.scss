@@ -1,4 +1,4 @@
-.spare-parts-page {
+.about-us-page {
     min-width: $min-width-component;
     padding: 0 16px;
 
@@ -14,6 +14,12 @@
         &:last-child {
             margin-bottom: 0;
         }
+    }
+
+    &__map {
+        width: 100%;
+        height: 400px;
+        margin-bottom: 64px;
     }
 
     &__title_theme_indent {

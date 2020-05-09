@@ -1,0 +1,67 @@
+// import './about-us-page.scss';
+import React from 'react'
+import { withDataService } from '../../hoc-helpers';
+import Title from '../../../components/title';
+import Detail from '../../../components/detail';
+import { MotivationLinks } from '../../../components/motivation-links';
+import { MapGoogle } from '../../../components/map';
+
+export const AboutUsPage = ({ dataAboutUsPage, dataLink }) => {
+    const { header, details_quality, details_efficiency, details_responsiveness, details_office, motivation } = dataAboutUsPage
+    return (
+        <div className='about-us-page'>
+            <Title
+                className='pages__title_theme_indent'
+                title={header.title}
+                subtitle={header.subtitle}
+            />
+            <div className='about-us-page__details'>
+                <Detail
+                    className='about-us-page__detail'
+                    title={details_quality.title}
+                    info={details_quality.info}
+                />
+                <Detail
+                    className='about-us-page__detail'
+                    title={details_efficiency.title}
+                    info={details_efficiency.info}
+                />
+                <Detail
+                    className='about-us-page__detail'
+                    title={details_responsiveness.title}
+                    info={details_responsiveness.info}
+                />
+                <Detail
+                    className='about-us-page__detail'
+                    title={details_office.title}
+                    info={details_office.info}
+                />
+            </div>
+            <MapGoogle
+                className='about-us-page__map'
+                url='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2398.589918351368!2d158.65046952889685!3d53.04570705495119!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x58e1974a679aaaab%3A0x96bffc57d9b4355a!2si%20remont%2041!5e0!3m2!1sru!2sru!4v1588991540393!5m2!1sru!2sru'
+            />
+            <Title
+                className='about-us-page__title_theme_indent'
+                title={motivation.title}
+            />
+            <MotivationLinks
+                className='about-us-page__motivation-links'
+                dataLink={dataLink}
+            />
+        </div>
+    )
+}
+
+
+
+const mapMethodsToProps = (classDataService) => {
+    return {
+        dataAboutUsPage: classDataService.getAboutUsPageData(),
+        dataLink: classDataService.getLinkData()
+    }
+};
+
+
+
+export default withDataService(mapMethodsToProps)(AboutUsPage);

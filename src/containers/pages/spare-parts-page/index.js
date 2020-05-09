@@ -15,21 +15,23 @@ export const SparePartsPage = ({ dataSparePartsPage, dataLink }) => {
                 title={header.title}
                 subtitle={header.subtitle}
             />
-            <Detail
-                className='spare-parts-page__detail'
-                title={details_original.title}
-                info={details_original.info}
-            />
-            <Detail
-                className='spare-parts-page__detail'
-                title={details_сhineseСounterpart.title}
-                info={details_сhineseСounterpart.info}
-            />
-            <Detail
-                className='spare-parts-page__detail'
-                title={details_offer.title}
-                info={details_offer.info}
-            />
+            <div className='spare-parts-page__details'>
+                <Detail
+                    className='spare-parts-page__detail'
+                    title={details_original.title}
+                    info={details_original.info}
+                />
+                <Detail
+                    className='spare-parts-page__detail'
+                    title={details_сhineseСounterpart.title}
+                    info={details_сhineseСounterpart.info}
+                />
+                <Detail
+                    className='spare-parts-page__detail'
+                    title={details_offer.title}
+                    info={details_offer.info}
+                />
+            </div>
             <Title
                 className='spare-parts-page__title_theme_indent'
                 title={motivation.title}
