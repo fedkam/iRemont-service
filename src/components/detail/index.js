@@ -1,5 +1,7 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types'
 //import './details.scss'
+
 
 
 const Detail = ({ className, title, info }) => (
@@ -8,6 +10,15 @@ const Detail = ({ className, title, info }) => (
         <span className='detail__info'>{info}</span>
     </div>
 )
+
+
+
+Detail.propTypes = {
+    className: PropTypes.string,
+    title: PropTypes.string,
+    info: PropTypes.string
+}
+
 
 
 export default Detail

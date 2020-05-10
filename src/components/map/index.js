@@ -1,9 +1,13 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types'
+
+
 
 export const MapGoogle = ({ className, url }) => {
     return (
         <div className={className}>
             <iframe
+                title="Google Map"
                 src={url}
                 width='100%'
                 height='100%'
@@ -15,4 +19,11 @@ export const MapGoogle = ({ className, url }) => {
             </iframe>
         </div>
     )
+}
+
+
+
+MapGoogle.propTypes = {
+    className: PropTypes.string,
+    url: PropTypes.string
 }

@@ -1,5 +1,6 @@
 // import './repair-page.scss';
 import React from 'react';
+import PropTypes from 'prop-types'
 import { withDataService } from '../../hoc-helpers';
 import Title from '../../../components/title';
 import IphoneList from '../../iphone-list';
@@ -23,11 +24,19 @@ const RepairPage = ({ dataRepairPage, dataIphones, dataLink }) => (
 
 
 
+RepairPage.propTypes = {
+  dataLink: PropTypes.object,
+  dataIphones: PropTypes.array,
+  dataRepairPage: PropTypes.object
+}
+
+
+
 const mapMethodsToProps = (classDataService) => {
   return {
-    dataRepairPage: classDataService.getRepairPageData(),
+    dataLink: classDataService.getLinkData(),
     dataIphones: classDataService.getIphoneList(),
-    dataLink: classDataService.getLinkData()
+    dataRepairPage: classDataService.getRepairPageData()
   }
 };
 

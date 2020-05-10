@@ -2,9 +2,10 @@
 
 //import './menu-list.scss';
 import React, { useState, useContext } from 'react';
+import PropTypes from 'prop-types';
 import { Breakpoint } from 'react-socks';
 import { CSSTransition } from 'react-transition-group';
-import { useRouteMatch} from 'react-router-dom';
+import { useRouteMatch } from 'react-router-dom';
 import Social from '../../components/social';
 import { withDataService } from '../hoc-helpers';
 import HamburgerButton from '../hamburger-button';
@@ -114,6 +115,21 @@ const NavBar = ({ dataNavBar }) => {
     </NavBarContext.Provider>
   );
 };
+
+
+
+MenuList.propTypes = {
+  classNameElementMenu: PropTypes.string,
+  isMobile: PropTypes.bool
+}
+
+NavBar.propTypes = {
+  dataNavBar: PropTypes.array
+}
+
+NavBar.propTypes = {
+  dataNavBar: PropTypes.array
+}
 
 
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { DataServiceConsumer } from '../service-context';
 
 
@@ -19,6 +20,12 @@ const withDataService = (mapMethodsToProps) => (Wrapped) => {
     );
   }
 };
+
+
+
+withDataService.propTypes = {
+  mapMethodsToProps: PropTypes.func
+}
 
 
 

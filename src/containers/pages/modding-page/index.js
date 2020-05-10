@@ -1,5 +1,6 @@
 // import './modding-page.scss';
 import React from 'react';
+import PropTypes from 'prop-types'
 import { withDataService } from '../../hoc-helpers';
 import Title from '../../../components/title';
 import Detail from '../../../components/detail';
@@ -11,7 +12,12 @@ import { ReactComponent as LightAppleIcon } from '../../../assets/images/icon-li
 
 
 const ModdingPage = ({ dataModdingPage }) => {
-  const { header, details, elements, motivatilonButtons } = dataModdingPage;
+  const {
+    header,
+    details,
+    elements,
+    motivatilonButtons
+  } = dataModdingPage;
   return (
     <div className='modding-page'>
       <Title
@@ -44,6 +50,12 @@ const ModdingPage = ({ dataModdingPage }) => {
       />
     </div>
   )
+}
+
+
+
+ModdingPage.propTypes = {
+  dataModdingPage: PropTypes.object,
 }
 
 

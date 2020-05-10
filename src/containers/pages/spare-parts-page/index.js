@@ -1,9 +1,11 @@
 // import './spare-parts-page.scss';
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 import { withDataService } from '../../hoc-helpers';
 import Title from '../../../components/title';
 import Detail from '../../../components/detail';
 import { MotivationLinks } from '../../../components/motivation-links';
+
 
 
 export const SparePartsPage = ({ dataSparePartsPage, dataLink }) => {
@@ -46,10 +48,17 @@ export const SparePartsPage = ({ dataSparePartsPage, dataLink }) => {
 
 
 
+SparePartsPage.propTypes = {
+    dataLink: PropTypes.object,
+    dataSparePartsPage: PropTypes.object
+}
+
+
+
 const mapMethodsToProps = (classDataService) => {
     return {
-        dataSparePartsPage: classDataService.getSparePartsPageData(),
-        dataLink: classDataService.getLinkData()
+        dataLink: classDataService.getLinkData(),
+        dataSparePartsPage: classDataService.getSparePartsPageData()
     }
 };
 

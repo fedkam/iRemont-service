@@ -1,13 +1,24 @@
 // import './about-us-page.scss';
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types'
 import { withDataService } from '../../hoc-helpers';
 import Title from '../../../components/title';
 import Detail from '../../../components/detail';
 import { MotivationLinks } from '../../../components/motivation-links';
 import { MapGoogle } from '../../../components/map';
 
+
+
+
 export const AboutUsPage = ({ dataAboutUsPage, dataLink }) => {
-    const { header, details_quality, details_efficiency, details_responsiveness, details_office, motivation } = dataAboutUsPage
+    const {
+        header,
+        motivation,
+        details_office,
+        details_quality,
+        details_efficiency,
+        details_responsiveness,
+    } = dataAboutUsPage;
     return (
         <div className='about-us-page'>
             <Title
@@ -51,6 +62,13 @@ export const AboutUsPage = ({ dataAboutUsPage, dataLink }) => {
             />
         </div>
     )
+}
+
+
+
+AboutUsPage.propTypes = {
+    dataAboutUsPage: PropTypes.object,
+    dataLink: PropTypes.object
 }
 
 

@@ -1,7 +1,9 @@
 // import './repair-page.scss';
 import React from 'react';
+import PropTypes from 'prop-types'
 import Device from '../../components/device';
 import LinkElement from '../../components/link-element'
+
 
 
 const IphoneList = ({ dataIphones }) => {
@@ -27,6 +29,12 @@ const IphoneList = ({ dataIphones }) => {
       ))}
     </div>
   );
+}
+
+
+
+IphoneList.propTypes = {
+  dataIphones: PropTypes.array
 }
 
 

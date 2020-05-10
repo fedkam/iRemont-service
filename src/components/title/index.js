@@ -1,5 +1,6 @@
 //import './title.scss';
 import React from 'react';
+import PropTypes, { string } from 'prop-types'
 
 
 
@@ -17,6 +18,20 @@ const Title = ({ title, subtitle, className }) => (
     )}
   </div>
 );
+
+
+
+Title.propTypes = {
+  className: string,
+  title: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element
+  ]),
+  subtitle: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element
+  ])
+}
 
 
 

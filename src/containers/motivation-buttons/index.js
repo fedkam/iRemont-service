@@ -1,5 +1,6 @@
 //import './motivation-buttons.scss';
 import React, { useState } from 'react';
+import PropTypes from 'prop-types'
 
 
 
@@ -64,3 +65,24 @@ export const MotivationButtons = ({ write, call }) => {
   )
 };
 
+
+
+createWhatsAppUrl.propTypes = {
+  url: PropTypes.string,
+  message: PropTypes.string
+}
+
+HoverWrapper.propTypes = {
+  children: PropTypes.func
+}
+
+MotivationButton.propTypes = {
+  classNameButtonStyle: PropTypes.string,
+  link: PropTypes.string,
+  children: PropTypes.node
+}
+
+MotivationButtons.propTypes = {
+  write: PropTypes.object,
+  call: PropTypes.object
+}

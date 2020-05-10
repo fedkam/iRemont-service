@@ -1,25 +1,37 @@
 // import './offer-page.scss';
 import React from 'react';
-import {withDataService} from '../../hoc-helpers';
+import PropTypes from 'prop-types';
+import { withDataService } from '../../hoc-helpers';
 import Title from '../../../components/title';
-import {MotivationLinks} from '../../../components/motivation-links';
-import {ReactComponent as LogoIphone} from '../../../assets/images/logo-iPhone.svg';
-import {ReactComponent as IconApple} from '../../../assets/images/icon-apple.svg';
+import { MotivationLinks } from '../../../components/motivation-links';
+import { ReactComponent as LogoIphone } from '../../../assets/images/logo-iPhone.svg';
+import { ReactComponent as IconApple } from '../../../assets/images/icon-apple.svg';
 
-const OfferPage = ({dataOfferPage, dataLink}) => (
+
+
+const OfferPage = ({ dataOfferPage, dataLink }) => (
   <>
     <div className='offer-page__motivation'>
       <Title
-        title={<LogoIphone/>}
+        title={<LogoIphone />}
         subtitle={dataOfferPage.subtitle}
       />
-      <MotivationLinks dataLink={dataLink}/>
+      <MotivationLinks dataLink={dataLink} />
     </div>
     <div className='offer-page__background-wrap'>
-      <IconApple className='offer-page__background'/>
+      <IconApple className='offer-page__background' />
     </div>
   </>
 )
+
+
+
+OfferPage.propTypes = {
+  dataOfferPage: PropTypes.object,
+  dataLink: PropTypes.object
+}
+
+
 
 const mapMethodsToProps = (classDataService) => {
   return {
@@ -27,5 +39,7 @@ const mapMethodsToProps = (classDataService) => {
     dataLink: classDataService.getLinkData()
   }
 };
+
+
 
 export default withDataService(mapMethodsToProps)(OfferPage);

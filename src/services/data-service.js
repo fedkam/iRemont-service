@@ -20,29 +20,8 @@ import {
 
 
 export default class DataService {
-  WHATS_APP_LINK = 'https://wa.me/79146267319';
-  PHONE_NUMBER = '+7 (961) 967-14-03';
 
-  MENU_LIST = [
-    {
-      name: 'Ремонт',
-      path: '/repair'
-    },
-    {
-      name: 'Моддинг',
-      path: '/modding'
-    },
-    {
-      name: 'Важное о запчастях',
-      path: '/about-modding'
-    },
-    {
-      name: 'О нас',
-      path: '/about-us'
-    },
-  ];
-
-  LINK = {
+  LINKS = {
     repair: {
       name: 'Ремонт',
       path: '/repair'
@@ -51,11 +30,28 @@ export default class DataService {
       name: 'Моддинг',
       path: '/modding'
     },
+    aboutModding: {
+      name: 'Важное о запчастях',
+      path: '/about-modding'
+    },
+    aboutUs: {
+      name: 'О нас',
+      path: '/about-us'
+    },
     other: {
       name: 'Остальные',
       path: 'ссылка'
-    }
+    },
+    whatsApp: 'https://wa.me/79146267319',
+    phoneNumber: '+7 (961) 967-14-03',
   }
+
+  MENU_LIST = [
+    this.LINKS.repair,
+    this.LINKS.modding,
+    this.LINKS.aboutModding,
+    this.LINKS.aboutUs
+  ];
 
   OFFER_PAGE = {
     subtitle: 'Подари вторую жизнь.'
@@ -88,12 +84,12 @@ export default class DataService {
     motivatilonButtons: {
       write: {
         name: 'Написать',
-        url: this.WHATS_APP_LINK,
+        url: this.LINKS.whatsApp,
         message: 'Здравствуйте, хочу сделать моддинг iPhone'
       },
       call: {
         name: 'Позвонить',
-        tel: this.PHONE_NUMBER
+        tel: this.LINKS.phoneNumber
       }
     }
   }
@@ -190,7 +186,7 @@ export default class DataService {
   }
 
   getLinkData = () => {
-    return Object.assign({}, this.LINK);
+    return Object.assign({}, this.LINKS);
   }
 
   getIphoneList = () => {
