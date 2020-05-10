@@ -11,11 +11,11 @@ export const MapGoogle = ({ className, url }) => {
                 src={url}
                 width='100%'
                 height='100%'
-                frameborder='0'
+                frameBorder='0'
                 tyle='border:0;'
-                allowfullscreen=''
+                allowFullScreen=''
                 aria-hidden='false'
-                tabindex='0'>
+                tabIndex='0'>
             </iframe>
         </div>
     )
