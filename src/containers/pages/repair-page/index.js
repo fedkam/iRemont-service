@@ -1,7 +1,7 @@
 // import './repair-page.scss';
 import React from 'react';
 import PropTypes from 'prop-types'
-import { withDataService } from '../../hoc-helpers';
+import { withDataService, ResetScroll} from '../../dev-helpers';
 import Title from '../../../components/title';
 import IphoneList from '../../iphone-list';
 import { MotivationLink } from '../../../components/motivation-links';
@@ -10,6 +10,7 @@ import { MotivationLink } from '../../../components/motivation-links';
 
 const RepairPage = ({ dataRepairPage, dataIphones, dataLink }) => (
   <div className='repair-page'>
+    <ResetScroll />
     <Title
       className='pages__title_theme_indent'
       title={dataRepairPage.title}
@@ -17,7 +18,7 @@ const RepairPage = ({ dataRepairPage, dataIphones, dataLink }) => (
     />
     <IphoneList dataIphones={dataIphones} />
     <MotivationLink
-      className='repair-page__motivation-list'
+      addCssClassName={'\trepair-page__motivation-list'}
       data={dataLink.other} />
   </div>
 )

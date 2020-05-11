@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 
 
-const LinkElement = ({ className = '', onClick, path = '/', children }) => (
+const LinkElement = ({ className, onClick, path = '/', children }) => (
   <div className={className} onClick={onClick}>
     <NavLink to={path}>
       {children}

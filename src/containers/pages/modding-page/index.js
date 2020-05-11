@@ -1,7 +1,7 @@
 // import './modding-page.scss';
 import React from 'react';
 import PropTypes from 'prop-types'
-import { withDataService } from '../../hoc-helpers';
+import { withDataService, ResetScroll } from '../../dev-helpers';
 import Title from '../../../components/title';
 import Detail from '../../../components/detail';
 import Element from '../../../components/element';
@@ -20,6 +20,7 @@ const ModdingPage = ({ dataModdingPage }) => {
   } = dataModdingPage;
   return (
     <div className='modding-page'>
+      <ResetScroll />
       <Title
         className='pages__title_theme_indent'
         title={header.title}

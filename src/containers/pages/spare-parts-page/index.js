@@ -1,7 +1,7 @@
 // import './spare-parts-page.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withDataService } from '../../hoc-helpers';
+import { withDataService, ResetScroll } from '../../dev-helpers';
 import Title from '../../../components/title';
 import Detail from '../../../components/detail';
 import { MotivationLinks } from '../../../components/motivation-links';
@@ -12,6 +12,7 @@ export const SparePartsPage = ({ dataSparePartsPage, dataLink }) => {
     const { header, details_original, details_сhineseСounterpart, details_offer, motivation } = dataSparePartsPage
     return (
         <div className='spare-parts-page'>
+            <ResetScroll />
             <Title
                 className='pages__title_theme_indent'
                 title={header.title}
@@ -39,7 +40,7 @@ export const SparePartsPage = ({ dataSparePartsPage, dataLink }) => {
                 title={motivation.title}
             />
             <MotivationLinks
-                className='spare-parts-page__motivation-links'
+                addCssClassName={'\tspare-parts-page__motivation-links'}
                 dataLink={dataLink}
             />
         </div>

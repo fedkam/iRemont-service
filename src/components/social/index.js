@@ -6,8 +6,8 @@ import { ReactComponent as WhatsAppIcon } from '../../assets/images/icon-whatsap
 
 
 
-const Social = () => (
-  <div className='social-icons'>
+const Social = ({ addCssClassNames='' }) => (
+  <div className={'social-icons' + addCssClassNames}>
     <a className='social-icon' href='https://www.google.com/' >
       <VkontakteIcon />
     </a>

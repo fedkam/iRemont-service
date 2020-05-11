@@ -1,7 +1,8 @@
 // import './about-us-page.scss';
 import React from 'react';
 import PropTypes from 'prop-types'
-import { withDataService } from '../../hoc-helpers';
+import { withDataService, ResetScroll} from '../../dev-helpers';
+import Social from '../../../components/social';
 import Title from '../../../components/title';
 import Detail from '../../../components/detail';
 import { MotivationLinks } from '../../../components/motivation-links';
@@ -20,6 +21,7 @@ export const AboutUsPage = ({ dataAboutUsPage, dataLink }) => {
     } = dataAboutUsPage;
     return (
         <div className='about-us-page'>
+            <ResetScroll/>
             <Title
                 className='pages__title_theme_indent'
                 title={header.title}
@@ -56,9 +58,10 @@ export const AboutUsPage = ({ dataAboutUsPage, dataLink }) => {
                 title={motivation.title}
             />
             <MotivationLinks
-                className='about-us-page__motivation-links'
+                addCssClassName={'\tabout-us-page__motivation-links'}
                 dataLink={dataLink}
             />
+            <Social addCssClassNames={'\tabout-us-page__social'}/>
         </div>
     )
 }
