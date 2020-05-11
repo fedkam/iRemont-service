@@ -9,7 +9,6 @@ import { MapGoogle } from '../../../components/map';
 
 
 
-
 export const AboutUsPage = ({ dataAboutUsPage, dataLink }) => {
     const {
         header,

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 //import './element.scss'
 
 
+
 const Element = ({ className, image_svg, title, subtitle }) => (
     <div className={className}>
         <div className='element__image'>

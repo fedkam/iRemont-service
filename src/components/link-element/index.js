@@ -17,11 +17,11 @@ const LinkElement = ({ className = '', onClick, path = '/', children }) => (
 LinkElement.propTypes = {
   className: PropTypes.string,
   onClick: PropTypes.func,
+  children: PropTypes.node,
   path: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object
-  ]),
-  children: PropTypes.node
+  ])
 }
 
 

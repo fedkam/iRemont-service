@@ -1,5 +1,5 @@
-import React from 'react';
 //import './app.scss';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { BreakpointProvider } from "react-socks";
 import { NavBar } from '../navbar';

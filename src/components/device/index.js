@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
+
 const Device = (props) => {
   let {
     className = 'device__wrap',
@@ -36,4 +37,7 @@ Device.propTypes = {
   image_1x: PropTypes.string,
   image_2x: PropTypes.string
 }
+
+
+
 export default Device;
