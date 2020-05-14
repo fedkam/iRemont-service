@@ -54,6 +54,7 @@ BreadCumbsItem.propTypes = {
 
 
 BreadCumbs.propTypes = {
+    addCssClassName: PropTypes.string,
     breadCrumbs: PropTypes.array
 }
 

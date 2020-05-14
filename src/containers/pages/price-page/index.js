@@ -8,10 +8,10 @@ import Title from '../../../components/title';
 
 const PricePage = ({ dataPricePage, dataLink }) => {
     const { header } = dataPricePage;
-    const currentLocation = useLocation();
-    const currentHierarchyLinks = findUrlName(currentLocation.pathname, dataLink);
-    currentHierarchyLinks.push({ title: currentLocation.state.model });
-    
+    const { pathname, state } = useLocation();
+    const currentHierarchyLinks = findUrlName(pathname, dataLink);
+    currentHierarchyLinks.push({ title: state.model });
+
     return (
         <div className='price-page_containder'>
             <ResetScroll />
@@ -33,7 +33,8 @@ const PricePage = ({ dataPricePage, dataLink }) => {
 
 
 PricePage.propTypes = {
-    dataPricePage: PropTypes.object
+    dataPricePage: PropTypes.object,
+    dataLink: PropTypes.object
 }
 
 

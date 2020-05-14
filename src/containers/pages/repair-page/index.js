@@ -1,9 +1,9 @@
 // import './repair-page.scss';
 import React from 'react';
 import PropTypes from 'prop-types'
-import { withDataService, ResetScroll} from '../../dev-helpers';
+import { withDataService, ResetScroll } from '../../dev-helpers';
 import Title from '../../../components/title';
-import IphoneList from '../../iphone-list';
+import DeviceList from '../../device-list';
 import { MotivationLink } from '../../../components/motivation-links';
 
 
@@ -16,7 +16,10 @@ const RepairPage = ({ dataRepairPage, dataIphones, dataLink }) => (
       title={dataRepairPage.title}
       subtitle={dataRepairPage.subtitle}
     />
-    <IphoneList dataIphones={dataIphones} />
+    <DeviceList
+      deviceName='iPhone'
+      dataDevices={dataIphones}
+    />
     <MotivationLink
       addCssClassName={'\trepair-page__motivation-list'}
       data={dataLink.other} />
