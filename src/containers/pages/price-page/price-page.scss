@@ -1,0 +1,21 @@
+.price-page {
+    &_containder {
+        min-width: $min-width-component;
+        max-width: 612px;
+        margin: 0 auto;
+    }
+
+    &__title_theme_indent {
+        margin-bottom: 64px;
+    }
+
+    &__subtitle_theme {
+        &_size_r {
+            margin-top: 10px;
+            @include font-regular(18px);
+        }
+        &_size_b {
+            @include font-bold(18px);
+        }
+    }
+}

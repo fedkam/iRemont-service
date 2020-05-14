@@ -1,0 +1,21 @@
+.bread-crumbs {
+    text-align: left;
+    margin: 40px auto 48px;
+}
+
+.bread-crumbs-item {
+    &__link {
+        display: inline;
+        @include font-regular(12px);
+        margin-right: 8px;
+        color: $color-darkGrey;
+
+        & a {
+            color: $color-darkGrey;
+        }
+
+        &_theme_active {
+            @include font-semibold(12px);
+        }
+    }
+}

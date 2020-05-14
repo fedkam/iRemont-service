@@ -62,6 +62,14 @@ export default class DataService {
     subtitle: 'Найди свой.'
   }
 
+  PRICE_PAGE = {
+    header: {
+      title: 'Прайс',
+      subtitle_regular: 'Запчасти включены в стоимость работы.',
+      subtitle_bold: 'Это окончательная цена.'
+    }
+  }
+
   MODDING_PAGE = {
     header: {
       title: 'Моддинг',
@@ -171,6 +179,10 @@ export default class DataService {
 
   getRepairPageData = () => {
     return Object.assign({}, this.REPAIR_PAGE);
+  };
+
+  getPricePageData = () => {
+    return Object.assign({}, this.PRICE_PAGE);
   };
 
   getModdingPageData = () => {

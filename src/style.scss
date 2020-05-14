@@ -9,12 +9,14 @@
 @import 'components/detail/detail';
 @import 'components/social/social';
 @import 'components/element/element';
+@import 'components/bread-crumbs/bread-crumbs';
 @import 'components/motivation-links/motivation-links';
 
 @import 'containers/app/app';
 @import 'containers/pages/pages';
 @import 'containers/navbar/navbar';
 @import 'containers/iphone-list/iphone-list';
+@import 'containers/pages/price-page/price-page';
 @import 'containers/pages/offer-page/offer-page';
 @import 'containers/pages/repair-page/repair-page';
 @import 'containers/pages/modding-page/modding-page';
