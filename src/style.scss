@@ -9,12 +9,14 @@
 @import 'components/detail/detail';
 @import 'components/social/social';
 @import 'components/element/element';
+@import 'components/price-item/price-item';
 @import 'components/bread-crumbs/bread-crumbs';
 @import 'components/motivation-links/motivation-links';
 
 @import 'containers/app/app';
 @import 'containers/pages/pages';
 @import 'containers/navbar/navbar';
+@import 'containers/price-list/price-list';
 @import 'containers/device-list/device-list';
 @import 'containers/pages/price-page/price-page';
 @import 'containers/pages/offer-page/offer-page';

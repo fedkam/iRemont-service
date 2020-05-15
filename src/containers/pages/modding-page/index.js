@@ -11,12 +11,11 @@ import { ReactComponent as LightAppleIcon } from '../../../assets/images/icon-li
 
 
 
-const ModdingPage = ({ dataModdingPage }) => {
+const ModdingPage = ({ dataModdingPage, dataMotivationButtons }) => {
   const {
     header,
     details,
     elements,
-    motivatilonButtons
   } = dataModdingPage;
   return (
     <div className='modding-page'>
@@ -46,8 +45,8 @@ const ModdingPage = ({ dataModdingPage }) => {
         />
       </div>
       <MotivationButtons
-        write={motivatilonButtons.write}
-        call={motivatilonButtons.call}
+        write={dataMotivationButtons.write}
+        call={dataMotivationButtons.call}
       />
     </div>
   )
@@ -63,7 +62,8 @@ ModdingPage.propTypes = {
 
 const mapMethodsToProps = (classDataService) => {
   return {
-    dataModdingPage: classDataService.getModdingPageData()
+    dataModdingPage: classDataService.getModdingPageData(),
+    dataMotivationButtons: classDataService.getMotivationButtonData()
   }
 };
 

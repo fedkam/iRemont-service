@@ -31,6 +31,49 @@ import iPhone_11_Pro_Max_2x from '../assets/images/iphones/iphone-11-Pro-Max-2x.
 import iPhone_SE_v2_1x from '../assets/images/iphones/iphone-SE-v2-1x.png';
 import iPhone_SE_v2_2x from '../assets/images/iphones/iphone-SE-v2-2x.png';
 
+export const PRICE_LABEL = {
+  safetyGlass: {
+    title: 'Замена защитного стекла',
+    subtitle: ''
+  },
+  display: {
+    title: 'Замена дисплея',
+    subtitle: ''
+  },
+  battery: {
+    title: 'Замена аккумулятора',
+    subtitle: ''
+  },
+  phoneCase: {
+    title: 'Замена корпуса',
+    subtitle: ''
+  },
+  camera: {
+    title: 'Замена камеры',
+    subtitle: ''
+  },
+  homeButton: {
+    title: 'Замена кнопки Home',
+    subtitle: ''
+  },
+  powerButton: {
+    title: 'Замена кнопки вкл/выкл',
+    subtitle: ''
+  },
+  volumeButtons: {
+    title: 'Замена кнопок громкости',
+    subtitle: ''
+  },
+  speaker: {
+    title: 'Замена динамика',
+    subtitle: ''
+  },
+  chargingСonnector: {
+    title: 'Замена разьема зарядки',
+    subtitle: ''
+  }
+}
+
 export const iPhone_6 = {
   model: '6',
   image_1x: iPhone_6_1x,

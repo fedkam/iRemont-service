@@ -1,4 +1,5 @@
 import {
+  PRICE_LABEL,
   iPhone_6,
   iPhone_6_Plus,
   iPhone_6s,
@@ -53,6 +54,18 @@ export default class DataService {
     this.LINKS.aboutUs
   ];
 
+  MOTIVATION_BUTTONS = {
+    write: {
+      name: 'Написать',
+      url: this.LINKS.whatsApp,
+      message: 'Здравствуйте, хочу сделать моддинг iPhone'
+    },
+    call: {
+      name: 'Позвонить',
+      tel: this.LINKS.phoneNumber
+    }
+  };
+
   OFFER_PAGE = {
     subtitle: 'Подари вторую жизнь.'
   }
@@ -67,7 +80,8 @@ export default class DataService {
       title: 'Прайс',
       subtitle_regular: 'Запчасти включены в стоимость работы.',
       subtitle_bold: 'Это окончательная цена.'
-    }
+    },
+    priceLabel: PRICE_LABEL
   }
 
   MODDING_PAGE = {
@@ -87,17 +101,6 @@ export default class DataService {
       lightApple: {
         title: 'Светояблоко',
         subtitle: 'Специальный тип корпуса, со светящимся яблоком позади.'
-      }
-    },
-    motivatilonButtons: {
-      write: {
-        name: 'Написать',
-        url: this.LINKS.whatsApp,
-        message: 'Здравствуйте, хочу сделать моддинг iPhone'
-      },
-      call: {
-        name: 'Позвонить',
-        tel: this.LINKS.phoneNumber
       }
     }
   }
@@ -130,7 +133,7 @@ export default class DataService {
       subtitle: 'Коротко и по делу.'
     },
     details_quality: {
-      title: 'Качество работ.',
+      title: 'Качество.',
       info: 'Мы работаем с 2013 года, и за этот период наладили поставку самых качественых запчастей для любого iPhone.'
     },
     details_efficiency: {
@@ -171,6 +174,10 @@ export default class DataService {
 
   getMenuList = () => {
     return this.MENU_LIST.slice();
+  };
+
+  getMotivationButtonData = () => {
+    return Object.assign({}, this.MOTIVATION_BUTTONS);
   };
 
   getOfferPageData = () => {
