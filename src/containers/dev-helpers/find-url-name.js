@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 
 export default function findUrlName(pathname = '/', dataLink) {
-    //получение масиива из объектов link:{name,pathname} по pathname
+    //получение массива из объектов link:{name,pathname} по pathname
     let currentHierarchyLinks = [];
     let currentPathNames = pathname.split('/'); //разделить на массив
     currentPathNames.shift();                   //удалить первый эл

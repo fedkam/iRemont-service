@@ -17,7 +17,7 @@ const DeviceList = ({ dataDevices, deviceName}) => {
             pathname: `${curentUrl.pathname}/${device.model.replace(/ /gi, "")}`,
             state: {
               model: `${deviceName} ${device.model}`,
-              price: device.price
+              priceCost: device.priceCost
             }
           }}
           key={index}

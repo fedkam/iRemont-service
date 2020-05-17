@@ -1,9 +1,13 @@
+//import './price-item.scss'
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const PriceItem = ({ title, subtitle, cost, currency }) => {
+const PriceItem = ({ id, title, subtitle, cost, currency, handleClick, isActive }) => {
     return (
-        <div className='price-item'>
+        <div
+            className={'price-item' + ((isActive && '\tprice-item_theme_active') || '')}
+            onClick={() => handleClick(id)}
+        >
             <div className='price-item__description-block'>
                 {title && (
                     <div className='price-item__title'>
@@ -33,7 +37,13 @@ const PriceItem = ({ title, subtitle, cost, currency }) => {
 }
 
 PriceItem.propTypes = {
-
+    id: PropTypes.number,
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    cost: PropTypes.number,
+    currency: PropTypes.string,
+    handleClick: PropTypes.func,
+    isActive: PropTypes.bool
 }
 
 export default PriceItem

@@ -1,44 +1,31 @@
+//import './price-list.scss'
 import React from 'react'
 import PropTypes from 'prop-types'
 import PriceItem from '../../components/price-item'
 
-const PriceList = ({className, priceLabel, priceCost }) => {
-    const generatePrice = (priceLabel, priceCost) => {
-        let devicePrice = [];
-        for (let label in priceLabel) {
-            if (priceCost[label]) {
-                devicePrice.push(
-                    <PriceItem
-                        title={priceLabel[label].title}
-                        subtitle={priceLabel[label].subtitle}
-                        cost={priceCost[label]}
-                        currency='руб.'
-                    />
-                )
-            }
-        }
-        return (devicePrice)
-    }
-
+const PriceList = ({ className, price, handleClick }) => {
     return (
         <div className={className}>
-            <PriceItem
-                title='Диагностика'
-                subtitle='Бесплатно, в случае ремонта'
-                cost='500'
-                currency='руб.'
-            />
-            {generatePrice(priceLabel, priceCost)}
-            <PriceItem
-                title={'\u00ABМоей поломки нет в прайсе\u00BB'}
-                subtitle='Уточните в чате или по телефону'
-            />
+            {price.map((priceItem, index) => (
+                <PriceItem
+                    key={index}
+                    id={index}
+                    title={priceItem.title}
+                    subtitle={priceItem.subtitle}
+                    cost={priceItem.cost}
+                    currency='руб.'
+                    handleClick={handleClick}
+                    isActive={priceItem.isActive}
+                />
+            ))}
         </div>
     )
 }
 
 PriceList.propTypes = {
-
+    className: PropTypes.string,
+    price: PropTypes.array,
+    handleClick: PropTypes.func
 }
 
 export default PriceList

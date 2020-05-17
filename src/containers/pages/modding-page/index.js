@@ -17,6 +17,7 @@ const ModdingPage = ({ dataModdingPage, dataMotivationButtons }) => {
     details,
     elements,
   } = dataModdingPage;
+  dataMotivationButtons.write.message='Здравствуйте, хочу сделать моддинг iPhone';
   return (
     <div className='modding-page'>
       <ResetScroll />

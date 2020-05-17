@@ -58,7 +58,7 @@ export default class DataService {
     write: {
       name: 'Написать',
       url: this.LINKS.whatsApp,
-      message: 'Здравствуйте, хочу сделать моддинг iPhone'
+      message: ''
     },
     call: {
       name: 'Позвонить',
@@ -173,42 +173,42 @@ export default class DataService {
   ]
 
   getMenuList = () => {
-    return this.MENU_LIST.slice();
+    return JSON.parse(JSON.stringify(this.MENU_LIST));
   };
 
   getMotivationButtonData = () => {
-    return Object.assign({}, this.MOTIVATION_BUTTONS);
+    return JSON.parse(JSON.stringify(this.MOTIVATION_BUTTONS));
   };
 
   getOfferPageData = () => {
-    return Object.assign({}, this.OFFER_PAGE);
+    return JSON.parse(JSON.stringify(this.OFFER_PAGE));
   };
 
   getRepairPageData = () => {
-    return Object.assign({}, this.REPAIR_PAGE);
+    return JSON.parse(JSON.stringify(this.REPAIR_PAGE));
   };
 
   getPricePageData = () => {
-    return Object.assign({}, this.PRICE_PAGE);
+    return JSON.parse(JSON.stringify(this.PRICE_PAGE));
   };
 
   getModdingPageData = () => {
-    return Object.assign({}, this.MODDING_PAGE);
+    return JSON.parse(JSON.stringify(this.MODDING_PAGE));
   };
 
   getSparePartsPageData = () => {
-    return Object.assign({}, this.SPARE_PARTS_PAGE);
+    return JSON.parse(JSON.stringify(this.SPARE_PARTS_PAGE));
   }
 
   getAboutUsPageData = () => {
-    return Object.assign({}, this.ABOUT_US_PAGE);
+    return JSON.parse(JSON.stringify(this.ABOUT_US_PAGE));
   }
 
   getLinkData = () => {
-    return Object.assign({}, this.LINKS);
+    return JSON.parse(JSON.stringify(this.LINKS));
   }
 
   getIphoneList = () => {
-    return this.IPHONE_LIST.slice().reverse();
+    return JSON.parse(JSON.stringify(this.IPHONE_LIST)).reverse();
   }
 }
