@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 import BreadCrumbs from '../../../components/bread-crumbs'
 import Title from '../../../components/title'
 import PriceList from '../../price-list'
-import { MotivationButtons } from '../../../containers/motivation-buttons'
+import { MotivationButtons, generateWhatsAppUrl, generateMessage } from '../../../containers/motivation-buttons'
 
 
 
@@ -15,7 +15,6 @@ const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons }) => {
     const { header, priceLabel } = dataPricePage;
     const { pathname, state } = useLocation();
     const [price, setPrice] = useState(generatePrice());
-    dataMotivationButtons.write.message = 'Здравствуйте,';
 
     function generateHierarchyLinks() {
         let currentHierarchyLinks = findUrlName(pathname, dataLink);
@@ -40,22 +39,36 @@ const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons }) => {
         return devicePrice;
     }
 
-    const handleClick = (id) => {
-        let modifPrice = JSON.parse(JSON.stringify(price));
+    const handleClick_Price = (id) => {
+        let modifPrice = JSON.parse(JSON.stringify(price)); // глубокая копия state
         if (modifPrice[id].singleSelection) {
-            let currentSelected = modifPrice[id].isActive; // сохранить значение
+            let currentSelected = modifPrice[id].isActive; // запомнить значение
             modifPrice.map((priceItem) => priceItem.isActive = false); // сброс всех isActive, по нажатию "диагностика" или "нет в прайсе"
             modifPrice[id].isActive = currentSelected; // восстановить значение
         } else {
             modifPrice.map((priceItem) => priceItem.singleSelection && (priceItem.isActive = false)) // сброс всех singleSelection
         }
-        modifPrice[id].isActive = !modifPrice[id].isActive;
+        modifPrice[id].isActive = !modifPrice[id].isActive; //инверсия значения
         setPrice(modifPrice);
+    }
+
+    const handleClick_MotivationButtons = (action) => {
+        switch (action) {
+            case 'write':
+                let url = generateWhatsAppUrl(dataMotivationButtons.write.url, generateMessage(price, state.model));
+                document.location.href = url;
+                break;
+            case 'call':
+                break;
+            default:
+                console.error(`Error: function handleClick_MotivationButtons() doesn"t contain "${action}" argument`);
+                break
+        }
     }
 
     return (
         <div className='price-page_containder'>
-            <button onClick={() => (document.location.href = "https://yandex.ru/")}>test</button>
+            <button onClick={() => handleClick_MotivationButtons('writeц')}>test</button>
             <ResetScroll />
             <BreadCrumbs breadCrumbs={generateHierarchyLinks()} />
             <Title
@@ -71,11 +84,13 @@ const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons }) => {
             <PriceList
                 className='price-page__price-list_theme_indent'
                 price={price}
-                handleClick={handleClick}
+                handleClick={handleClick_Price}
             />
             <MotivationButtons
-                write={dataMotivationButtons.write}
-                call={dataMotivationButtons.call}
+                writeLabel={dataMotivationButtons.write.name}
+                handleClick_Write={() => handleClick_MotivationButtons('write')}
+                callLabel={dataMotivationButtons.call.name}
+                callHoverLabel={dataMotivationButtons.call.tel}
             />
         </div>
     )

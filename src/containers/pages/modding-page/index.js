@@ -17,7 +17,18 @@ const ModdingPage = ({ dataModdingPage, dataMotivationButtons }) => {
     details,
     elements,
   } = dataModdingPage;
-  dataMotivationButtons.write.message='Здравствуйте, хочу сделать моддинг iPhone';
+  dataMotivationButtons.write.message = 'Здравствуйте, хочу сделать моддинг iPhone';
+  const handleClick_MotivationButtons = (action) => {
+    switch (action) {
+      case 'write':
+        document.location.href = "https://yandex.ru/";
+        break;
+
+      default:
+        console.error(`Error: function handleClick_MotivationButtons() doesn"t contain "${action}" argument`);
+        break;
+    }
+  }
   return (
     <div className='modding-page'>
       <ResetScroll />
@@ -46,8 +57,10 @@ const ModdingPage = ({ dataModdingPage, dataMotivationButtons }) => {
         />
       </div>
       <MotivationButtons
-        write={dataMotivationButtons.write}
-        call={dataMotivationButtons.call}
+        writeLabel={dataMotivationButtons.write.name}
+        handleClick_Write={() => handleClick_MotivationButtons('write')}
+        callLabel={dataMotivationButtons.call.name}
+        callHoverLabel={dataMotivationButtons.call.tel}
       />
     </div>
   )

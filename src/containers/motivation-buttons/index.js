@@ -4,7 +4,40 @@ import PropTypes from 'prop-types'
 
 
 
-function createWhatsAppUrl(url, message) {
+export function generateMessage(price, model) {
+  const hello = 'Здравствуйте,';
+  if (price) {
+    let selectedServices = [], lengthSelectedServices, selectedService;
+    price.map((priceItem) => {
+      if (priceItem.isActive && priceItem.cost && selectedServices.length === 0) {
+        selectedServices.push(priceItem.title.toLowerCase());
+      } else if (priceItem.isActive && priceItem.cost && selectedServices.length !== 0) {
+        selectedServices.push(priceItem.title.replace(/Замена/gi, ""));
+      } else if (priceItem.singleSelection && priceItem.isActive && !priceItem.cost) {
+        selectedService = priceItem.title.toLowerCase().replace(/\u00AB|\u00BB/gi, "");
+      }
+      return 0;
+    })
+    lengthSelectedServices = selectedServices.length;
+    if (lengthSelectedServices) {
+      let listSelectedServices;
+      if (lengthSelectedServices < 2) {
+        listSelectedServices = selectedServices.join(',');
+      } else {
+        listSelectedServices = `${selectedServices.slice(0, lengthSelectedServices - 1).join(',')} и ${selectedServices[lengthSelectedServices - 1]}`;
+      }
+      return (`${hello} для ${model} требуется ${listSelectedServices}.`);
+    } else if (selectedService) {
+      return (`${hello} ${selectedService} для ${model}. Описание поломки:`);
+    }
+  } else {
+    return (`${hello} интересует ремонт ${model}`);
+  }
+}
+
+
+
+export function generateWhatsAppUrl(url, message) {
   if (message) {
     return (url + '?text=' + encodeURIComponent(message));
   } else {
@@ -31,33 +64,39 @@ export const HoverWrapper = ({ children }) => {
 export const MotivationButton = (props) => {
   const {
     classNameButtonStyle = 'motivation-button_theme_primary',
-    link,
+    handleClick,
     children
   } = props;
   const classNameTheme = 'motivation-button\t' + classNameButtonStyle;
   return (
-    <a className={classNameTheme} href={link}>
+    <div className={classNameTheme} onClick={handleClick}>
       {children}
-    </a>
+    </div>
   )
 }
 
 
 
-export const MotivationButtons = ({ write, call }) => {
-  let url = createWhatsAppUrl(write.url, write.message);
+export const MotivationButtons = (props) => {
+  const {
+    writeLabel,
+    handleClick_Write,
+    callLabel,
+    callHoverLabel,
+    handleClick_Call = (() => document.location.href = 'tel:' + callHoverLabel)
+  } = props;
   return (
     <div className='motivation-buttons'>
-      <MotivationButton link={url}>
-        {write.name}
+      <MotivationButton handleClick={handleClick_Write}>
+        {writeLabel}
       </MotivationButton>
       <HoverWrapper>
         {({ hover }) => (
           <MotivationButton
             classNameButtonStyle='motivation-button_theme_outline'
-            link={'tel:' + call.tel}
+            handleClick={handleClick_Call}
           >
-            {hover ? call.tel : call.name}
+            {hover ? callHoverLabel : callLabel}
           </MotivationButton>
         )}
       </HoverWrapper>
@@ -67,7 +106,7 @@ export const MotivationButtons = ({ write, call }) => {
 
 
 
-createWhatsAppUrl.propTypes = {
+generateWhatsAppUrl.propTypes = {
   url: PropTypes.string,
   message: PropTypes.string
 }

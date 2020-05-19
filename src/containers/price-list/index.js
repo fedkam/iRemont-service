@@ -3,6 +3,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import PriceItem from '../../components/price-item'
 
+
+
 const PriceList = ({ className, price, handleClick }) => {
     return (
         <div className={className}>
@@ -22,10 +24,14 @@ const PriceList = ({ className, price, handleClick }) => {
     )
 }
 
+
+
 PriceList.propTypes = {
     className: PropTypes.string,
     price: PropTypes.array,
     handleClick: PropTypes.func
 }
+
+
 
 export default PriceList
