@@ -1,5 +1,5 @@
 .price-page {
-    &_containder {
+    &_container {
         min-width: $min-width-component;
         max-width: 612px;
         margin: 0 auto;
@@ -7,7 +7,7 @@
     }
 
     &__title_theme_indent {
-        margin-bottom: 32px;
+        margin-bottom: 40px;
     }
 
     &__price-list_theme_indent {
@@ -27,7 +27,7 @@
 
 @media (min-width: $media-mobileSize-small) {
     .price-page {
-        &_containder {
+        &_container {
             padding: 0 32px;
         }
 

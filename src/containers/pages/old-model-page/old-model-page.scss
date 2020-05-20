@@ -21,10 +21,22 @@
     }
 
     &__title_theme_indent {
-        margin-bottom: 32px;
+        margin-bottom: 40px;
     }
 
     &__motivation-links {
         margin-bottom: 100px;
+    }
+}
+
+@media (min-width: $media-mobileSize-small) {
+    .old-model-page {
+        &_container {
+            padding: 0 32px;
+        }
+        
+        &__title_theme_indent {
+            margin-bottom: 64px;
+        }
     }
 }

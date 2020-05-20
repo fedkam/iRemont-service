@@ -61,7 +61,7 @@ const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons }) => {
     }
 
     return (
-        <div className='price-page_containder'>
+        <div className='price-page_container'>
             <ResetScroll />
             <BreadCrumbs breadCrumbs={generateHierarchyLinks(dataLink, pathname, state.model)} />
             <Title
