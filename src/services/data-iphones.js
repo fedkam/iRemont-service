@@ -73,7 +73,7 @@ export const PRICE_LABEL = {
     subtitle: ''
   },
   chargingСonnector: {
-    title: 'Замена разьема зарядки',
+    title: 'Замена разъема зарядки',
     subtitle: ''
   },
   notFound: {

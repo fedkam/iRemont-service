@@ -1,0 +1,30 @@
+.old-model-page {
+    &_container {
+        min-width: $min-width-component;
+        max-width: 612px;
+        margin: 0 auto;
+        padding: 0 16px;
+    }
+
+    &__details {
+        max-width: 620px;
+        margin: 0 auto;
+        margin-bottom: 64px;
+    }
+
+    &__detail {
+        text-align: justify;
+        margin-bottom: 32px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__title_theme_indent {
+        margin-bottom: 32px;
+    }
+
+    &__motivation-links {
+        margin-bottom: 100px;
+    }
+}

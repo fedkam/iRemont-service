@@ -1,30 +1,35 @@
-// import './repair-page.scss';
-import React from 'react';
+// import './repair-page.scss'
+import React from 'react'
 import PropTypes from 'prop-types'
-import { withDataService, ResetScroll } from '../../dev-helpers';
-import Title from '../../../components/title';
-import DeviceList from '../../device-list';
-import { MotivationLink } from '../../../components/motivation-links';
+import { useLocation } from 'react-router-dom'
+import { withDataService, ResetScroll } from '../../dev-helpers'
+import Title from '../../../components/title'
+import DeviceList from '../../device-list'
+import { MotivationLink } from '../../../components/motivation-links'
 
 
 
-const RepairPage = ({ dataRepairPage, dataIphones, dataLink }) => (
-  <div className='repair-page'>
-    <ResetScroll />
-    <Title
-      className='pages__title_theme_indent'
-      title={dataRepairPage.title}
-      subtitle={dataRepairPage.subtitle}
-    />
-    <DeviceList
-      deviceName='iPhone'
-      dataDevices={dataIphones}
-    />
-    <MotivationLink
-      addCssClassName={'\trepair-page__motivation-list'}
-      data={dataLink.other} />
-  </div>
-)
+const RepairPage = ({ dataRepairPage, dataIphones, dataLink }) => {
+  const { pathname } = useLocation()
+  return (
+    <div className='repair-page'>
+      <ResetScroll />
+      <Title
+        className='pages__title_theme_indent'
+        title={dataRepairPage.title}
+        subtitle={dataRepairPage.subtitle}
+      />
+      <DeviceList
+        deviceName='iPhone'
+        dataDevices={dataIphones}
+      />
+      <MotivationLink
+        addCssClassName={'\trepair-page__motivation-list'}
+        name={dataLink.other.name}
+        path={pathname + dataLink.other.path}
+      />
+    </div>)
+}
 
 
 

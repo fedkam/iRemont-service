@@ -5,7 +5,7 @@ import { BreakpointProvider } from "react-socks";
 import { NavBar } from '../navbar';
 import DataService from '../../services/data-service';
 import { DataServiceProvider } from '../service-context';
-import { OfferPage, RepairPage, ModdingPage, SparePartsPage, AboutUsPage, PricePage } from '../pages';
+import { OfferPage, RepairPage, OldModelPage, ModdingPage, SparePartsPage, AboutUsPage, PricePage } from '../pages';
 
 
 
@@ -20,6 +20,7 @@ export default function App() {
             <Switch>
               <Route exact path="/" render={() => (<OfferPage />)} />
               <Route exact path="/repair" render={() => (<RepairPage />)} />
+              <Route exact path="/repair/old-model" render={() => (<OldModelPage />)} />
               <Route exact path="/repair/:id" render={() => (<PricePage />)} />
               <Route exact path="/modding" render={() => (<ModdingPage />)} />
               <Route exact path="/about-modding" render={() => (<SparePartsPage />)} />

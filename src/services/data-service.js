@@ -41,7 +41,7 @@ export default class DataService {
     },
     other: {
       name: 'Остальные',
-      path: 'ссылка'
+      path: '/old-model'
     },
     whatsApp: 'https://wa.me/79146267319',
     phoneNumber: '+7 (961) 967-14-03',
@@ -75,11 +75,22 @@ export default class DataService {
     subtitle: 'Найди свой.'
   }
 
+  OLD_MODEL_PAGE = {
+    header: {
+      title: 'Устаревшие',
+      subtitle: 'Ремонтируем все модели.'
+    },
+    details_more_time: {
+      title: 'Дополнительное время.',
+      info: 'Мы готовы взяться за любой iPhone, но в связи возможным дефицитом запчастей, может понадобиться дополнительное время.'
+    },
+  }
+
   PRICE_PAGE = {
     header: {
       title: 'Прайс',
       subtitle_regular: 'Запчасти включены в стоимость работы.',
-      subtitle_bold: 'Это окончательная цена.'
+      //subtitle_bold: 'Это окончательная цена.'
     },
     priceLabel: PRICE_LABEL
   }
@@ -186,6 +197,10 @@ export default class DataService {
 
   getRepairPageData = () => {
     return JSON.parse(JSON.stringify(this.REPAIR_PAGE));
+  };
+
+  getOldModelPageData = () => {
+    return JSON.parse(JSON.stringify(this.OLD_MODEL_PAGE));
   };
 
   getPricePageData = () => {

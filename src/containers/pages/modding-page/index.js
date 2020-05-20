@@ -5,7 +5,7 @@ import { withDataService, ResetScroll } from '../../dev-helpers';
 import Title from '../../../components/title';
 import Detail from '../../../components/detail';
 import Element from '../../../components/element';
-import { MotivationButtons } from '../../motivation-buttons'
+import { MotivationButtons, generateWhatsAppUrl } from '../../motivation-buttons'
 import { ReactComponent as IphonesIcon } from '../../../assets/images/icon-iPhones.svg';
 import { ReactComponent as LightAppleIcon } from '../../../assets/images/icon-lightApple.svg';
 
@@ -17,11 +17,11 @@ const ModdingPage = ({ dataModdingPage, dataMotivationButtons }) => {
     details,
     elements,
   } = dataModdingPage;
-  dataMotivationButtons.write.message = 'Здравствуйте, хочу сделать моддинг iPhone';
   const handleClick_MotivationButtons = (action) => {
     switch (action) {
       case 'write':
-        document.location.href = "https://yandex.ru/";
+        let url = generateWhatsAppUrl(dataMotivationButtons.write.url, 'Здравствуйте, хочу сделать моддинг iPhone');
+        document.location.href = url;
         break;
 
       default:

@@ -3,10 +3,11 @@
         min-width: $min-width-component;
         max-width: 612px;
         margin: 0 auto;
+        padding: 0 16px;
     }
 
     &__title_theme_indent {
-        margin-bottom: 64px;
+        margin-bottom: 32px;
     }
 
     &__price-list_theme_indent {
@@ -16,10 +17,31 @@
     &__subtitle_theme {
         &_size_r {
             margin-top: 10px;
-            @include font-regular(18px);
+            @include font-regular(14px);
         }
-        &_size_b {
-            @include font-bold(18px);
+        // &_size_b {
+        //     @include font-bold(14px);
+        // }
+    }
+}
+
+@media (min-width: $media-mobileSize-small) {
+    .price-page {
+        &_containder {
+            padding: 0 32px;
+        }
+
+        // &__title_theme_indent {
+        //     margin-bottom: 64px;
+        // }
+
+        &__subtitle_theme {
+            &_size_r {
+                @include font-regular(18px);
+            }
+            // &_size_b {
+            //     @include font-bold(18px);
+            // }
         }
     }
 }

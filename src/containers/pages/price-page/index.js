@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { withDataService, ResetScroll, findUrlName } from '../../dev-helpers'
 import { useLocation } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import BreadCrumbs from '../../../components/bread-crumbs'
+import { BreadCrumbs, generateHierarchyLinks } from '../../../components/bread-crumbs'
 import Title from '../../../components/title'
 import PriceList from '../../price-list'
 import { MotivationButtons, generateWhatsAppUrl, generateMessage } from '../../../containers/motivation-buttons'
@@ -15,12 +15,6 @@ const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons }) => {
     const { header, priceLabel } = dataPricePage;
     const { pathname, state } = useLocation();
     const [price, setPrice] = useState(generatePrice());
-
-    function generateHierarchyLinks() {
-        let currentHierarchyLinks = findUrlName(pathname, dataLink);
-        currentHierarchyLinks.push({ title: state.model });
-        return currentHierarchyLinks;
-    }
 
     function generatePrice() {
         let devicePrice = [];
@@ -68,9 +62,8 @@ const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons }) => {
 
     return (
         <div className='price-page_containder'>
-            <button onClick={() => handleClick_MotivationButtons('writeц')}>test</button>
             <ResetScroll />
-            <BreadCrumbs breadCrumbs={generateHierarchyLinks()} />
+            <BreadCrumbs breadCrumbs={generateHierarchyLinks(dataLink, pathname, state.model)} />
             <Title
                 className='price-page__title_theme_indent'
                 title={header.title}

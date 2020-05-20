@@ -1,10 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import LinkElement from '../link-element'
+import { findUrlName } from '../../containers/dev-helpers'
 
+export function generateHierarchyLinks(dataLink, pathname, currentPage) {
+    let currentHierarchyLinks = findUrlName(pathname, dataLink);
+    currentHierarchyLinks.push({ title: currentPage });
+    return currentHierarchyLinks;
+}
 
-
-const BreadCumbsItem = ({ breadCrumbsItem }) => {
+const BreadCrumbsItem = ({ breadCrumbsItem }) => {
     if (breadCrumbsItem.path) {
         return (
             <>
@@ -28,12 +33,12 @@ const BreadCumbsItem = ({ breadCrumbsItem }) => {
 
 
 
-const BreadCumbs = ({ addCssClassName = '', breadCrumbs }) => {
+export const BreadCrumbs = ({ addCssClassName = '', breadCrumbs }) => {
     if (breadCrumbs.length >= 2) {
         return (
             <div className={'bread-crumbs' + addCssClassName}>
                 {breadCrumbs.map((breadCrumbsItem, index) => (
-                    <BreadCumbsItem
+                    <BreadCrumbsItem
                         breadCrumbsItem={breadCrumbsItem}
                         key={index}
                     />
@@ -47,17 +52,13 @@ const BreadCumbs = ({ addCssClassName = '', breadCrumbs }) => {
 
 
 
-BreadCumbsItem.propTypes = {
+BreadCrumbsItem.propTypes = {
     title: PropTypes.string
 }
 
 
 
-BreadCumbs.propTypes = {
+BreadCrumbs.propTypes = {
     addCssClassName: PropTypes.string,
     breadCrumbs: PropTypes.array
 }
-
-
-
-export default BreadCumbs
