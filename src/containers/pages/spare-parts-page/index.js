@@ -5,14 +5,16 @@ import { withDataService, ResetScroll } from '../../dev-helpers';
 import Title from '../../../components/title';
 import Detail from '../../../components/detail';
 import { MotivationLinks } from '../../../components/motivation-links';
+import Copyright from '../../../components/copyright'
 
 
-
-export const SparePartsPage = ({ dataSparePartsPage, dataLink }) => {
-    const { header, details_original, details_сhineseСounterpart, details_offer, motivation } = dataSparePartsPage
+export const SparePartsPage = ({ dataSparePartsPage, dataLink, generalInformation  }) => {
+    const { header, details_original, details_сhineseСounterpart, details_offer, motivation } = dataSparePartsPage;
+    const { copyright } = generalInformation;
     return (
-        <div className='spare-parts-page'>
+        <>
             <ResetScroll />
+        <div className='spare-parts-page'>
             <Title
                 className='pages__title_theme_indent'
                 title={header.title}
@@ -44,6 +46,11 @@ export const SparePartsPage = ({ dataSparePartsPage, dataLink }) => {
                 dataLink={dataLink}
             />
         </div>
+        <Copyright
+                addCssClassName={'\tpages__copyright'}
+                title={copyright}
+            />
+        </>
     )
 }
 
@@ -59,7 +66,8 @@ SparePartsPage.propTypes = {
 const mapMethodsToProps = (classDataService) => {
     return {
         dataLink: classDataService.getLinkData(),
-        dataSparePartsPage: classDataService.getSparePartsPageData()
+        dataSparePartsPage: classDataService.getSparePartsPageData(),
+        generalInformation: classDataService.getGeneralInformation()
     }
 };
 

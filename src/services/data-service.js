@@ -21,6 +21,9 @@ import {
 
 
 export default class DataService {
+  GENERAL_INFORMATION = {
+    copyright: 'Copyright ‎\u00a9 2020 iРемонт. All rights reserved.',
+  }
 
   LINKS = {
     repair: {
@@ -44,7 +47,7 @@ export default class DataService {
       path: '/old-model'
     },
     whatsApp: 'https://wa.me/79146267319',
-    phoneNumber: '+7 (961) 967-14-03',
+    phoneNumber: '+7 (914) 626 73-19',
     email: 'iremont41@mail.ru',
   }
 
@@ -163,8 +166,7 @@ export default class DataService {
     contacts: {
       title: 'Контакты',
       email: this.LINKS.email
-    },
-    copyright: 'Copyright © 2020 iРемонт. All rights reserved.'
+    }
   }
 
   IPHONE_LIST = [
@@ -185,6 +187,10 @@ export default class DataService {
     iPhone_11_Pro_Max,
     iPhone_SE_v2
   ]
+
+  getGeneralInformation = () => {
+    return JSON.parse(JSON.stringify(this.GENERAL_INFORMATION));
+  };
 
   getMenuList = () => {
     return JSON.parse(JSON.stringify(this.MENU_LIST));

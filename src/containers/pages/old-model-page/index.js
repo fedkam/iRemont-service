@@ -7,12 +7,13 @@ import { MotivationButtons, generateWhatsAppUrl } from '../../motivation-buttons
 import { BreadCrumbs, generateHierarchyLinks } from '../../../components/bread-crumbs'
 import Title from '../../../components/title'
 import Detail from '../../../components/detail'
+import Copyright from '../../../components/copyright'
 
 
-
-export const OldModelPage = ({ dataOldModelPage, dataMotivationButtons, dataLink }) => {
+export const OldModelPage = ({ dataOldModelPage, dataMotivationButtons, dataLink, generalInformation }) => {
     const { header, details_more_time } = dataOldModelPage;
     const { pathname } = useLocation();
+    const { copyright } = generalInformation;
     const handleClick_MotivationButtons = (action) => {
         switch (action) {
             case 'write':
@@ -26,28 +27,34 @@ export const OldModelPage = ({ dataOldModelPage, dataMotivationButtons, dataLink
         }
     }
     return (
-        <div className='old-model-page_container'>
+        <>
             <ResetScroll />
-            <BreadCrumbs breadCrumbs={generateHierarchyLinks(dataLink, pathname, header.title)} />
-            <Title
-                className='old-model-page__title_theme_indent'
-                title={header.title}
-                subtitle={header.subtitle}
-            />
-            <div className='old-model-page__details'>
-                <Detail
-                    className='old-model-page__detail'
-                    title={details_more_time.title}
-                    info={details_more_time.info}
+            <div className='old-model-page_container'>
+                <BreadCrumbs breadCrumbs={generateHierarchyLinks(dataLink, pathname, header.title)} />
+                <Title
+                    className='old-model-page__title_theme_indent'
+                    title={header.title}
+                    subtitle={header.subtitle}
+                />
+                <div className='old-model-page__details'>
+                    <Detail
+                        className='old-model-page__detail'
+                        title={details_more_time.title}
+                        info={details_more_time.info}
+                    />
+                </div>
+                <MotivationButtons
+                    writeLabel={dataMotivationButtons.write.name}
+                    handleClick_Write={() => handleClick_MotivationButtons('write')}
+                    callLabel={dataMotivationButtons.call.name}
+                    callHoverLabel={dataMotivationButtons.call.tel}
                 />
             </div>
-            <MotivationButtons
-                writeLabel={dataMotivationButtons.write.name}
-                handleClick_Write={() => handleClick_MotivationButtons('write')}
-                callLabel={dataMotivationButtons.call.name}
-                callHoverLabel={dataMotivationButtons.call.tel}
+            <Copyright
+                addCssClassName={'\tpages__copyright'}
+                title={copyright}
             />
-        </div>
+        </>
     )
 }
 
@@ -62,7 +69,8 @@ const mapMethodsToProps = (classDataService) => {
     return {
         dataLink: classDataService.getLinkData(),
         dataOldModelPage: classDataService.getOldModelPageData(),
-        dataMotivationButtons: classDataService.getMotivationButtonData()
+        dataMotivationButtons: classDataService.getMotivationButtonData(),
+        generalInformation: classDataService.getGeneralInformation()
     }
 };
 

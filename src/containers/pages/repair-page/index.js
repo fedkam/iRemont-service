@@ -6,29 +6,37 @@ import { withDataService, ResetScroll } from '../../dev-helpers'
 import Title from '../../../components/title'
 import DeviceList from '../../device-list'
 import { MotivationLink } from '../../../components/motivation-links'
+import Copyright from '../../../components/copyright'
 
 
-
-const RepairPage = ({ dataRepairPage, dataIphones, dataLink }) => {
-  const { pathname } = useLocation()
+const RepairPage = ({ dataRepairPage, dataIphones, dataLink, generalInformation }) => {
+  const { pathname } = useLocation();
+  const { copyright } = generalInformation;
   return (
-    <div className='repair-page'>
+    <>
       <ResetScroll />
-      <Title
-        className='pages__title_theme_indent'
-        title={dataRepairPage.title}
-        subtitle={dataRepairPage.subtitle}
+      <div className='repair-page'>
+        <Title
+          className='pages__title_theme_indent'
+          title={dataRepairPage.title}
+          subtitle={dataRepairPage.subtitle}
+        />
+        <DeviceList
+          deviceName='iPhone'
+          dataDevices={dataIphones}
+        />
+        <MotivationLink
+          addCssClassName={'\trepair-page__motivation-list'}
+          name={dataLink.other.name}
+          path={pathname + dataLink.other.path}
+        />
+      </div>
+      <Copyright
+        addCssClassName={'\trepair-page__copyright'}
+        title={copyright}
       />
-      <DeviceList
-        deviceName='iPhone'
-        dataDevices={dataIphones}
-      />
-      <MotivationLink
-        addCssClassName={'\trepair-page__motivation-list'}
-        name={dataLink.other.name}
-        path={pathname + dataLink.other.path}
-      />
-    </div>)
+    </>
+  )
 }
 
 
@@ -45,7 +53,8 @@ const mapMethodsToProps = (classDataService) => {
   return {
     dataLink: classDataService.getLinkData(),
     dataIphones: classDataService.getIphoneList(),
-    dataRepairPage: classDataService.getRepairPageData()
+    dataRepairPage: classDataService.getRepairPageData(),
+    generalInformation: classDataService.getGeneralInformation()
   }
 };
 

@@ -1,20 +1,21 @@
 // ОПТИМИЗИРОВАТЬ!
 //import './price-page.scss'
 import React, { useState } from 'react'
-import { withDataService, ResetScroll, findUrlName } from '../../dev-helpers'
+import { withDataService, ResetScroll } from '../../dev-helpers'
 import { useLocation } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { BreadCrumbs, generateHierarchyLinks } from '../../../components/bread-crumbs'
 import Title from '../../../components/title'
 import PriceList from '../../price-list'
 import { MotivationButtons, generateWhatsAppUrl, generateMessage } from '../../../containers/motivation-buttons'
+import Copyright from '../../../components/copyright'
 
 
-
-const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons }) => {
+const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons, generalInformation }) => {
     const { header, priceLabel } = dataPricePage;
     const { pathname, state } = useLocation();
     const [price, setPrice] = useState(generatePrice());
+    const { copyright } = generalInformation;
 
     function generatePrice() {
         let devicePrice = [];
@@ -61,31 +62,37 @@ const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons }) => {
     }
 
     return (
-        <div className='price-page_container'>
+        <>
             <ResetScroll />
-            <BreadCrumbs breadCrumbs={generateHierarchyLinks(dataLink, pathname, state.model)} />
-            <Title
-                className='price-page__title_theme_indent'
-                title={header.title}
-                subtitle={
-                    <>
-                        <div className='price-page__subtitle_theme_size_r'>{header.subtitle_regular}</div>
-                        <div className='price-page__subtitle_theme_size_b'>{header.subtitle_bold}</div>
-                    </>
-                }
+            <div className='price-page_container'>
+                <BreadCrumbs breadCrumbs={generateHierarchyLinks(dataLink, pathname, state.model)} />
+                <Title
+                    className='price-page__title_theme_indent'
+                    title={header.title}
+                    subtitle={
+                        <>
+                            <div className='price-page__subtitle_theme_size_r'>{header.subtitle_regular}</div>
+                            <div className='price-page__subtitle_theme_size_b'>{header.subtitle_bold}</div>
+                        </>
+                    }
+                />
+                <PriceList
+                    className='price-page__price-list_theme_indent'
+                    price={price}
+                    handleClick={handleClick_Price}
+                />
+                <MotivationButtons
+                    writeLabel={dataMotivationButtons.write.name}
+                    handleClick_Write={() => handleClick_MotivationButtons('write')}
+                    callLabel={dataMotivationButtons.call.name}
+                    callHoverLabel={dataMotivationButtons.call.tel}
+                />
+            </div>
+            <Copyright
+                addCssClassName={'\tpages__copyright'}
+                title={copyright}
             />
-            <PriceList
-                className='price-page__price-list_theme_indent'
-                price={price}
-                handleClick={handleClick_Price}
-            />
-            <MotivationButtons
-                writeLabel={dataMotivationButtons.write.name}
-                handleClick_Write={() => handleClick_MotivationButtons('write')}
-                callLabel={dataMotivationButtons.call.name}
-                callHoverLabel={dataMotivationButtons.call.tel}
-            />
-        </div>
+        </>
     )
 }
 
@@ -103,7 +110,8 @@ const mapMethodsToProps = (classDataService) => {
     return {
         dataLink: classDataService.getLinkData(),
         dataPricePage: classDataService.getPricePageData(),
-        dataMotivationButtons: classDataService.getMotivationButtonData()
+        dataMotivationButtons: classDataService.getMotivationButtonData(),
+        generalInformation: classDataService.getGeneralInformation()
     }
 };
 

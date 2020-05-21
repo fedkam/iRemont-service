@@ -77,6 +77,7 @@ export const MotivationButton = (props) => {
 
 export const MotivationButtons = (props) => {
   const {
+    addCssClassName = '',
     writeLabel,
     handleClick_Write,
     callLabel,
@@ -84,7 +85,7 @@ export const MotivationButtons = (props) => {
     handleClick_Call = (() => document.location.href = 'tel:' + callHoverLabel)
   } = props;
   return (
-    <div className='motivation-buttons'>
+    <div className={'motivation-buttons' + addCssClassName}>
       <MotivationButton handleClick={handleClick_Write}>
         {writeLabel}
       </MotivationButton>

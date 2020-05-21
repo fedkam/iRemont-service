@@ -8,15 +8,16 @@ import Element from '../../../components/element';
 import { MotivationButtons, generateWhatsAppUrl } from '../../motivation-buttons'
 import { ReactComponent as IphonesIcon } from '../../../assets/images/icon-iPhones.svg';
 import { ReactComponent as LightAppleIcon } from '../../../assets/images/icon-lightApple.svg';
+import Copyright from '../../../components/copyright'
 
 
-
-const ModdingPage = ({ dataModdingPage, dataMotivationButtons }) => {
+const ModdingPage = ({ dataModdingPage, dataMotivationButtons, generalInformation }) => {
   const {
     header,
     details,
     elements,
   } = dataModdingPage;
+  const { copyright } = generalInformation;
   const handleClick_MotivationButtons = (action) => {
     switch (action) {
       case 'write':
@@ -30,39 +31,45 @@ const ModdingPage = ({ dataModdingPage, dataMotivationButtons }) => {
     }
   }
   return (
-    <div className='modding-page'>
+    <>
       <ResetScroll />
-      <Title
-        className='pages__title_theme_indent'
-        title={header.title}
-        subtitle={header.subtitle}
-      />
-      <Detail
-        className='modding-page__detail'
-        title={details.title}
-        info={details.info}
-      />
-      <div className='modding-page__list-elements'>
-        <Element
-          className='modding-page__element'
-          image_svg={<IphonesIcon />}
-          title={elements.materialAndColor.title}
-          subtitle={elements.materialAndColor.subtitle}
+      <div className='modding-page'>
+        <Title
+          className='pages__title_theme_indent'
+          title={header.title}
+          subtitle={header.subtitle}
         />
-        <Element
-          className='modding-page__element'
-          image_svg={<LightAppleIcon />}
-          title={elements.lightApple.title}
-          subtitle={elements.lightApple.subtitle}
+        <Detail
+          className='modding-page__detail'
+          title={details.title}
+          info={details.info}
+        />
+        <div className='modding-page__list-elements'>
+          <Element
+            className='modding-page__element'
+            image_svg={<IphonesIcon />}
+            title={elements.materialAndColor.title}
+            subtitle={elements.materialAndColor.subtitle}
+          />
+          <Element
+            className='modding-page__element'
+            image_svg={<LightAppleIcon />}
+            title={elements.lightApple.title}
+            subtitle={elements.lightApple.subtitle}
+          />
+        </div>
+        <MotivationButtons
+          writeLabel={dataMotivationButtons.write.name}
+          handleClick_Write={() => handleClick_MotivationButtons('write')}
+          callLabel={dataMotivationButtons.call.name}
+          callHoverLabel={dataMotivationButtons.call.tel}
         />
       </div>
-      <MotivationButtons
-        writeLabel={dataMotivationButtons.write.name}
-        handleClick_Write={() => handleClick_MotivationButtons('write')}
-        callLabel={dataMotivationButtons.call.name}
-        callHoverLabel={dataMotivationButtons.call.tel}
+      <Copyright
+        addCssClassName={'\tpages__copyright'}
+        title={generalInformation.copyright}
       />
-    </div>
+    </>
   )
 }
 
@@ -77,7 +84,8 @@ ModdingPage.propTypes = {
 const mapMethodsToProps = (classDataService) => {
   return {
     dataModdingPage: classDataService.getModdingPageData(),
-    dataMotivationButtons: classDataService.getMotivationButtonData()
+    dataMotivationButtons: classDataService.getMotivationButtonData(),
+    generalInformation: classDataService.getGeneralInformation()
   }
 };
 

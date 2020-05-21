@@ -61,7 +61,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 0 32px;
+      padding: 68px 32px 0;
       box-shadow: 0 6px 10px $color-white; // тень цветом как фон для смягчения края блока
       background: $color-white;
     }
@@ -82,9 +82,12 @@
   }
 
   &-mobile {
-    &__link {
+    &__links {
       width: 100%;
       max-width: 496px;
+    }
+
+    &__link {
       padding: 12px 0;
       border-bottom: 0.5px solid $color-darkGrey;
 
@@ -117,6 +120,14 @@
           transition: all 300ms ease-in;
         }
       }
+    }
+  }
+}
+
+@media (max-width: 667px) and (orientation: landscape) {
+  .navbar {
+    &-mobile__social_theme_indent {
+      display: none;
     }
   }
 }

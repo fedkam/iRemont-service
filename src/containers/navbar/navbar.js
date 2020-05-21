@@ -7,7 +7,7 @@ import { Breakpoint } from 'react-socks';
 import { CSSTransition } from 'react-transition-group';
 import { useRouteMatch } from 'react-router-dom';
 import Social from '../../components/social';
-import { withDataService} from '../dev-helpers';
+import { withDataService } from '../dev-helpers';
 import HamburgerButton from '../hamburger-button';
 import LinkElement from '../../components/link-element';
 import { ReactComponent as LogoIcon } from '../../assets/images/logo-iRemont.svg';
@@ -93,7 +93,9 @@ const MenuBottom = () => {
       unmountOnExit
     >
       <div>
-        <MenuList classNameElementMenu='navbar-mobile__link navbar__link_theme_basic' />
+        <div className='navbar-mobile__links'>
+          <MenuList classNameElementMenu='navbar-mobile__link navbar__link_theme_basic' />
+        </div>
         <Social addCssClassNames={'\tnavbar-mobile__social_theme_indent'} />
       </div>
     </CSSTransition>
