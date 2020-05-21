@@ -20,6 +20,12 @@
         margin-bottom: 64px;
     }
 
+    &__email-contact {
+        @include font-regular(24px);
+        color: $color-blye;
+        margin: 8px 0 18px;
+    }
+
     &__map {
         width: 100%;
         height: 400px;
@@ -30,7 +36,9 @@
         margin-bottom: 16px;
     }
 
-    &__motivation-links {
-        margin-bottom: 100px;
+    &__copyright {
+        @include font-regular(14px);
+        color: $color-darkGrey;
+        margin-bottom: 32px;
     }
 }

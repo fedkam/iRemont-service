@@ -1,7 +1,6 @@
 // лучше передалать scss вложенность по bem
 
 .navbar {
-
   &__link_theme_basic {
     & > a {
       color: $color-darkGrey;
@@ -14,12 +13,12 @@
   &__logo {
     &_inactive path {
       fill: $color-darkGrey;
-      transition: all .7s linear;;
+      transition: all 0.7s linear;
     }
 
     &_active path {
       fill: $color-black;
-      transition: all .7s linear;;
+      transition: all 0.7s linear;
     }
   }
 
@@ -31,7 +30,7 @@
       width: 100%;
       min-width: 240px;
       padding: 16px 32px; //onlyMobile
-      border-bottom: .5px solid $color-darkGrey; //onlyMobile
+      border-bottom: 0.5px solid $color-darkGrey; //onlyMobile
       background: #ffffff;
 
       &_size_base {
@@ -49,7 +48,10 @@
 
     &__menuBottom {
       position: fixed;
-      top:0; left:0; bottom:0; right:0;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
       z-index: 90;
       width: 100%;
       min-width: 240px;
@@ -60,7 +62,7 @@
       align-items: center;
       justify-content: center;
       padding: 0 32px;
-      box-shadow: 0 6px 10px  $color-white; // тень цветом как фон для смягчения края блока
+      box-shadow: 0 6px 10px $color-white; // тень цветом как фон для смягчения края блока
       background: $color-white;
     }
   }
@@ -73,18 +75,26 @@
     &__link {
       margin-right: 56px;
 
-      &:last-child { margin-right: 0; }
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
 
   &-mobile {
-    &__link{
+    &__link {
       width: 100%;
       max-width: 496px;
       padding: 12px 0;
-      border-bottom: .5px solid $color-darkGrey;
+      border-bottom: 0.5px solid $color-darkGrey;
 
-      &:last-child { border-bottom: none; }
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    &__social_theme_indent {
+      margin-top: 32px;
     }
 
     &__csstransition {
@@ -98,7 +108,7 @@
         }
       }
 
-      &-exit{
+      &-exit {
         opacity: 1;
         transform: translateY(0);
         &-active {
@@ -111,14 +121,12 @@
   }
 }
 
-
-
 @media (min-width: $media-mobileSize-medium) {
-  .navbar{
+  .navbar {
     &-wrap__menuTop {
       padding: 18px 64px;
       border-bottom: none;
-      box-shadow: 0 6px 10px  rgba(0, 0, 0, .05);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.05);
 
       &_theme_clean {
         padding-top: 46px;
@@ -130,8 +138,6 @@
     }
   }
 }
-
-
 
 @media (min-width: $media-desktopSize-large) {
   .navbar {

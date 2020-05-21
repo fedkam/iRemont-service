@@ -94,7 +94,7 @@ const MenuBottom = () => {
     >
       <div>
         <MenuList classNameElementMenu='navbar-mobile__link navbar__link_theme_basic' />
-        <Social />
+        <Social addCssClassNames={'\tnavbar-mobile__social_theme_indent'} />
       </div>
     </CSSTransition>
   );

@@ -1,19 +1,19 @@
-// import './about-us-page.scss';
-import React from 'react';
+// import './about-us-page.scss'
+import React from 'react'
 import PropTypes from 'prop-types'
-import { withDataService, ResetScroll} from '../../dev-helpers';
-import Social from '../../../components/social';
-import Title from '../../../components/title';
-import Detail from '../../../components/detail';
-import { MotivationLinks } from '../../../components/motivation-links';
-import { MapGoogle } from '../../../components/map';
+import { withDataService, ResetScroll } from '../../dev-helpers'
+import Social from '../../../components/social'
+import Title from '../../../components/title'
+import Detail from '../../../components/detail'
+import { MapGoogle } from '../../../components/map'
 
 
 
 export const AboutUsPage = ({ dataAboutUsPage, dataLink }) => {
     const {
         header,
-        motivation,
+        contacts,
+        copyright,
         details_office,
         details_quality,
         details_efficiency,
@@ -21,7 +21,7 @@ export const AboutUsPage = ({ dataAboutUsPage, dataLink }) => {
     } = dataAboutUsPage;
     return (
         <div className='about-us-page'>
-            <ResetScroll/>
+            <ResetScroll />
             <Title
                 className='pages__title_theme_indent'
                 title={header.title}
@@ -54,14 +54,18 @@ export const AboutUsPage = ({ dataAboutUsPage, dataLink }) => {
                 url='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2398.589918351368!2d158.65046952889685!3d53.04570705495119!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x58e1974a679aaaab%3A0x96bffc57d9b4355a!2si%20remont%2041!5e0!3m2!1sru!2sru!4v1588991540393!5m2!1sru!2sru'
             />
             <Title
-                className='about-us-page__title_theme_indent'
-                title={motivation.title}
+                className='pages__title_theme_indent'
+                title={contacts.title}
+                subtitle={
+                    <>
+                        <div className='about-us-page__email-contact'>{contacts.email}</div>
+                        <Social addCssClassNames={'\tabout-us-page__social'} />
+                    </>
+                }
             />
-            <MotivationLinks
-                addCssClassName={'\tabout-us-page__motivation-links'}
-                dataLink={dataLink}
-            />
-            <Social addCssClassNames={'\tabout-us-page__social'}/>
+            <div className='about-us-page__copyright'>
+                {copyright}
+            </div>
         </div>
     )
 }

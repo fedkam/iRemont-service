@@ -45,6 +45,7 @@ export default class DataService {
     },
     whatsApp: 'https://wa.me/79146267319',
     phoneNumber: '+7 (961) 967-14-03',
+    email: 'iremont41@mail.ru',
   }
 
   MENU_LIST = [
@@ -159,9 +160,11 @@ export default class DataService {
       title: 'Офис.',
       info: 'Мы находимся по адресу г.Петропавловск-Камчатский ул.Тельмана 1А.'
     },
-    motivation: {
-      title: 'Пора начать!'
-    }
+    contacts: {
+      title: 'Контакты',
+      email: this.LINKS.email
+    },
+    copyright: 'Copyright © 2020 iРемонт. All rights reserved.'
   }
 
   IPHONE_LIST = [

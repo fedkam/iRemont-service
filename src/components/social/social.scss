@@ -1,12 +1,13 @@
 .social {
-  &-icons{
+  &-icons {
     display: flex;
     justify-content: center;
-    margin-top: 32px;
   }
 
   &-icon {
     margin-right: 48px;
-    &:last-child { margin-right: 0; }
+    &:last-child {
+      margin-right: 0;
+    }
   }
 }
