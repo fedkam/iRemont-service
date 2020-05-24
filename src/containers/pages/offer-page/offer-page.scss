@@ -1,5 +1,6 @@
 .offer-page {
     &__motivation{
+        min-width: $min-width-component;
         position: absolute;
         top: 0;
         right: 0;

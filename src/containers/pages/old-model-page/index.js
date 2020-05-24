@@ -10,6 +10,7 @@ import Detail from '../../../components/detail'
 import Copyright from '../../../components/copyright'
 
 
+
 export const OldModelPage = ({ dataOldModelPage, dataMotivationButtons, dataLink, generalInformation }) => {
     const { header, details_more_time } = dataOldModelPage;
     const { pathname } = useLocation();
@@ -61,6 +62,10 @@ export const OldModelPage = ({ dataOldModelPage, dataMotivationButtons, dataLink
 
 
 OldModelPage.propTypes = {
+    dataOldModelPage: PropTypes.object,
+    dataMotivationButtons: PropTypes.object,
+    dataLink: PropTypes.object,
+    generalInformation: PropTypes.object
 }
 
 

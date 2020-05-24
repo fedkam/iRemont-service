@@ -10,7 +10,8 @@ const Copyright = ({ addCssClassName = '', title }) => {
 }
 
 Copyright.propTypes = {
-
+    addCssClassName: PropTypes.string,
+    title: PropTypes.string
 }
 
 export default Copyright

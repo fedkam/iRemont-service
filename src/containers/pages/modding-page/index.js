@@ -67,7 +67,7 @@ const ModdingPage = ({ dataModdingPage, dataMotivationButtons, generalInformatio
       </div>
       <Copyright
         addCssClassName={'\tpages__copyright'}
-        title={generalInformation.copyright}
+        title={copyright}
       />
     </>
   )
