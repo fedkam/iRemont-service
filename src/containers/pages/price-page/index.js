@@ -9,6 +9,8 @@ import Title from '../../../components/title'
 import PriceList from '../../price-list'
 import { MotivationButtons, generateWhatsAppUrl, generateMessage } from '../../../containers/motivation-buttons'
 import Copyright from '../../../components/copyright'
+import { NavBar } from '../../navbar'
+
 
 
 const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons, generalInformation }) => {
@@ -64,6 +66,7 @@ const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons, generalInfo
     return (
         <>
             <ResetScroll />
+            <NavBar />
             <div className='price-page_container'>
                 <BreadCrumbs breadCrumbs={generateHierarchyLinks(dataLink, pathname, state.model)} />
                 <Title

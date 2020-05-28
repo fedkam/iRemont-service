@@ -7,6 +7,8 @@ import Title from '../../../components/title'
 import DeviceList from '../../device-list'
 import { MotivationLink } from '../../../components/motivation-links'
 import Copyright from '../../../components/copyright'
+import { NavBar } from '../../navbar'
+
 
 
 const RepairPage = ({ dataRepairPage, dataIphones, dataLink, generalInformation }) => {
@@ -15,6 +17,7 @@ const RepairPage = ({ dataRepairPage, dataIphones, dataLink, generalInformation 
   return (
     <>
       <ResetScroll />
+      <NavBar />
       <div className='repair-page'>
         <Title
           className='pages__title_theme_indent'

@@ -8,7 +8,7 @@ import { BreadCrumbs, generateHierarchyLinks } from '../../../components/bread-c
 import Title from '../../../components/title'
 import Detail from '../../../components/detail'
 import Copyright from '../../../components/copyright'
-
+import { NavBar } from '../../navbar'
 
 
 export const OldModelPage = ({ dataOldModelPage, dataMotivationButtons, dataLink, generalInformation }) => {
@@ -30,6 +30,7 @@ export const OldModelPage = ({ dataOldModelPage, dataMotivationButtons, dataLink
     return (
         <>
             <ResetScroll />
+            <NavBar />
             <div className='old-model-page_container'>
                 <BreadCrumbs breadCrumbs={generateHierarchyLinks(dataLink, pathname, header.title)} />
                 <Title

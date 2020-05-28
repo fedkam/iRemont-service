@@ -9,7 +9,7 @@ import { MotivationButtons, generateWhatsAppUrl } from '../../motivation-buttons
 import { ReactComponent as IphonesIcon } from '../../../assets/images/icon-iPhones.svg';
 import { ReactComponent as LightAppleIcon } from '../../../assets/images/icon-lightApple.svg';
 import Copyright from '../../../components/copyright'
-
+import { NavBar } from '../../navbar'
 
 const ModdingPage = ({ dataModdingPage, dataMotivationButtons, generalInformation }) => {
   const {
@@ -33,6 +33,7 @@ const ModdingPage = ({ dataModdingPage, dataMotivationButtons, generalInformatio
   return (
     <>
       <ResetScroll />
+      <NavBar/>
       <div className='modding-page'>
         <Title
           className='pages__title_theme_indent'

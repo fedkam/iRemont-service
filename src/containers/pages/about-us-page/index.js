@@ -7,7 +7,7 @@ import Title from '../../../components/title'
 import Detail from '../../../components/detail'
 import { MapGoogle } from '../../../components/map'
 import Copyright from '../../../components/copyright'
-
+import { NavBar } from '../../navbar'
 
 
 export const AboutUsPage = ({ dataAboutUsPage, generalInformation }) => {
@@ -23,6 +23,7 @@ export const AboutUsPage = ({ dataAboutUsPage, generalInformation }) => {
     return (
         <>
             <ResetScroll />
+            <NavBar/>
             <div className='about-us-page'>
                 <Title
                     className='pages__title_theme_indent'

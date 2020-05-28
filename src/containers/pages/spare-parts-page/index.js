@@ -6,47 +6,50 @@ import Title from '../../../components/title';
 import Detail from '../../../components/detail';
 import { MotivationLinks } from '../../../components/motivation-links';
 import Copyright from '../../../components/copyright'
+import { NavBar } from '../../navbar'
 
 
-export const SparePartsPage = ({ dataSparePartsPage, dataLink, generalInformation  }) => {
+
+export const SparePartsPage = ({ dataSparePartsPage, dataLink, generalInformation }) => {
     const { header, details_original, details_сhineseСounterpart, details_offer, motivation } = dataSparePartsPage;
     const { copyright } = generalInformation;
     return (
         <>
             <ResetScroll />
-        <div className='spare-parts-page'>
-            <Title
-                className='pages__title_theme_indent'
-                title={header.title}
-                subtitle={header.subtitle}
-            />
-            <div className='spare-parts-page__details'>
-                <Detail
-                    className='spare-parts-page__detail'
-                    title={details_original.title}
-                    info={details_original.info}
+            <NavBar />
+            <div className='spare-parts-page'>
+                <Title
+                    className='pages__title_theme_indent'
+                    title={header.title}
+                    subtitle={header.subtitle}
                 />
-                <Detail
-                    className='spare-parts-page__detail'
-                    title={details_сhineseСounterpart.title}
-                    info={details_сhineseСounterpart.info}
+                <div className='spare-parts-page__details'>
+                    <Detail
+                        className='spare-parts-page__detail'
+                        title={details_original.title}
+                        info={details_original.info}
+                    />
+                    <Detail
+                        className='spare-parts-page__detail'
+                        title={details_сhineseСounterpart.title}
+                        info={details_сhineseСounterpart.info}
+                    />
+                    <Detail
+                        className='spare-parts-page__detail'
+                        title={details_offer.title}
+                        info={details_offer.info}
+                    />
+                </div>
+                <Title
+                    className='spare-parts-page__title_theme_indent'
+                    title={motivation.title}
                 />
-                <Detail
-                    className='spare-parts-page__detail'
-                    title={details_offer.title}
-                    info={details_offer.info}
+                <MotivationLinks
+                    addCssClassName={'\tspare-parts-page__motivation-links'}
+                    dataLink={dataLink}
                 />
             </div>
-            <Title
-                className='spare-parts-page__title_theme_indent'
-                title={motivation.title}
-            />
-            <MotivationLinks
-                addCssClassName={'\tspare-parts-page__motivation-links'}
-                dataLink={dataLink}
-            />
-        </div>
-        <Copyright
+            <Copyright
                 addCssClassName={'\tpages__copyright'}
                 title={copyright}
             />

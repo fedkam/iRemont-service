@@ -5,6 +5,7 @@ import SparePartsPage from './spare-parts-page'
 import AboutUsPage from './about-us-page'
 import PricePage from './price-page'
 import OldModelPage from './old-model-page'
+import ErrorPage from './error-page'
 
 
 
@@ -15,5 +16,6 @@ export {
   SparePartsPage,
   AboutUsPage,
   PricePage,
-  OldModelPage
+  OldModelPage,
+  ErrorPage
 };

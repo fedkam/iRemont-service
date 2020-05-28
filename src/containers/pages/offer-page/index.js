@@ -6,11 +6,14 @@ import Title from '../../../components/title'
 import { MotivationLinks } from '../../../components/motivation-links'
 import { ReactComponent as LogoIphone } from '../../../assets/images/logo-iPhone.svg'
 import { ReactComponent as IconApple } from '../../../assets/images/icon-apple.svg'
+import { NavBar } from '../../navbar'
+
 
 
 const OfferPage = ({ dataOfferPage, dataLink }) => (
   <>
     <ResetScroll />
+    <NavBar />
     <div className='offer-page__motivation'>
       <Title
         title={<LogoIphone />}

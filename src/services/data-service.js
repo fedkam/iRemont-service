@@ -46,6 +46,10 @@ export default class DataService {
       name: 'Остальные',
       path: '/old-model'
     },
+    homePage: {
+      name: 'На главную',
+      path: '/'
+    },
     whatsApp: 'https://wa.me/79146267319',
     phoneNumber: '+7 (914) 626 73-19',
     email: 'iremont41@mail.ru',
@@ -188,6 +192,7 @@ export default class DataService {
     iPhone_SE_v2
   ]
 
+
   getGeneralInformation = () => {
     return JSON.parse(JSON.stringify(this.GENERAL_INFORMATION));
   };
@@ -235,4 +240,8 @@ export default class DataService {
   getIphoneList = () => {
     return JSON.parse(JSON.stringify(this.IPHONE_LIST)).reverse();
   }
+
+  getErr404PageData = () => {
+    return JSON.parse(JSON.stringify(this.ERR_404_PAGE));
+  };
 }
