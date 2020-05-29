@@ -1,7 +1,7 @@
 //import './device.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import Image from '../image'
 
 
 const Device = (props) => {
@@ -12,14 +12,13 @@ const Device = (props) => {
     image_1x,
     image_2x
   } = props;
-  image_2x && (image_2x += '\t2x');
   return (
     <div className={className}>
-      <img
+      <Image
         className='device__image'
-        src={image_1x}
-        srcSet={image_2x}
-        alt={model}
+        image_1x={image_1x}
+        image_2x={image_2x}
+        model={model}
       />
       <div className='device__model'>
         {device} {model}

@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ResetScroll } from '../../dev-helpers'
 import Title from '../../../components/title'
 import { MotivationLink } from '../../../components/motivation-links'
 

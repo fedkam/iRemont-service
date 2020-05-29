@@ -25,6 +25,8 @@
         &_theme_active {
             @include font-bold(14px);
             color: $color-blye;
+            transition: all 0.1s ease-in;
+            -webkit-transition: all 0.1s ease-in;
         }
     }
 
@@ -67,13 +69,13 @@
             background-color: white;
             border: 8px solid $color-blye;
             transition: all 0.1s ease-in;
-            -webkit-transition: all 0.1s ease-in;;
+            -webkit-transition: all 0.1s ease-in;
         }
         &_inactive {
             background-color: white;
             border: 1px solid $color-darkGrey;
             transition: all 0.1s;
-            -webkit-transition: all 0.1s ease-in;;
+            -webkit-transition: all 0.1s ease-in;
         }
     }
 }
