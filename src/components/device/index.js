@@ -15,7 +15,6 @@ const Device = (props) => {
   return (
     <div className={className}>
       <Image
-        className='device__image'
         image_1x={image_1x}
         image_2x={image_2x}
         model={model}
