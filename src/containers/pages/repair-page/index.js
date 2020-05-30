@@ -2,22 +2,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useLocation } from 'react-router-dom'
-import { withDataService, ResetScroll } from '../../dev-helpers'
+import { withDataService } from '../../dev-helpers'
 import Title from '../../../components/title'
 import DeviceList from '../../device-list'
 import { MotivationLink } from '../../../components/motivation-links'
-import Copyright from '../../../components/copyright'
-import { NavBar } from '../../navbar'
-
-
+import PageSetup from '../page-setup'
 
 const RepairPage = ({ dataRepairPage, dataIphones, dataLink, generalInformation }) => {
   const { pathname } = useLocation();
-  const { copyright } = generalInformation;
   return (
-    <>
-      <ResetScroll />
-      <NavBar />
+    <PageSetup
+      navbar
+      copyright
+      resetScroll
+    >
       <div className='repair-page'>
         <Title
           className='pages__title_theme_indent'
@@ -34,11 +32,7 @@ const RepairPage = ({ dataRepairPage, dataIphones, dataLink, generalInformation 
           path={pathname + dataLink.other.path}
         />
       </div>
-      <Copyright
-        addCssClassName={'\trepair-page__copyright'}
-        title={copyright}
-      />
-    </>
+    </PageSetup>
   )
 }
 

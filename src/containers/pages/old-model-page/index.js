@@ -2,19 +2,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useLocation } from 'react-router-dom'
-import { withDataService, ResetScroll } from '../../dev-helpers'
+import { withDataService } from '../../dev-helpers'
 import { MotivationButtons, generateWhatsAppUrl } from '../../motivation-buttons'
 import { BreadCrumbs, generateHierarchyLinks } from '../../../components/bread-crumbs'
 import Title from '../../../components/title'
 import Detail from '../../../components/detail'
-import Copyright from '../../../components/copyright'
-import { NavBar } from '../../navbar'
-
+import PageSetup from '../page-setup'
 
 export const OldModelPage = ({ dataOldModelPage, dataMotivationButtons, dataLink, generalInformation }) => {
     const { header, details_more_time } = dataOldModelPage;
     const { pathname } = useLocation();
-    const { copyright } = generalInformation;
     const handleClick_MotivationButtons = (action) => {
         switch (action) {
             case 'write':
@@ -28,9 +25,11 @@ export const OldModelPage = ({ dataOldModelPage, dataMotivationButtons, dataLink
         }
     }
     return (
-        <>
-            <ResetScroll />
-            <NavBar />
+        <PageSetup
+            navbar
+            copyright
+            resetScroll
+        >
             <div className='old-model-page_container'>
                 <BreadCrumbs breadCrumbs={generateHierarchyLinks(dataLink, pathname, header.title)} />
                 <Title
@@ -52,11 +51,7 @@ export const OldModelPage = ({ dataOldModelPage, dataMotivationButtons, dataLink
                     callHoverLabel={dataMotivationButtons.call.tel}
                 />
             </div>
-            <Copyright
-                addCssClassName={'\tpages__copyright'}
-                title={copyright}
-            />
-        </>
+        </PageSetup>
     )
 }
 

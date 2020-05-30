@@ -1,13 +1,13 @@
 // import './about-us-page.scss'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withDataService, ResetScroll } from '../../dev-helpers'
+import { withDataService } from '../../dev-helpers'
 import Social from '../../../components/social'
 import Title from '../../../components/title'
 import Detail from '../../../components/detail'
 import { MapGoogle } from '../../../components/map'
-import Copyright from '../../../components/copyright'
-import { NavBar } from '../../navbar'
+import PageSetup from '../page-setup'
+
 
 
 export const AboutUsPage = ({ dataAboutUsPage, generalInformation }) => {
@@ -19,11 +19,12 @@ export const AboutUsPage = ({ dataAboutUsPage, generalInformation }) => {
         details_efficiency,
         details_responsiveness,
     } = dataAboutUsPage;
-    const { copyright } = generalInformation;
     return (
-        <>
-            <ResetScroll />
-            <NavBar/>
+        <PageSetup
+            navbar
+            copyright
+            resetScroll
+        >
             <div className='about-us-page'>
                 <Title
                     className='pages__title_theme_indent'
@@ -67,11 +68,7 @@ export const AboutUsPage = ({ dataAboutUsPage, generalInformation }) => {
                     }
                 />
             </div>
-            <Copyright
-                addCssClassName={'\tpages__copyright'}
-                title={copyright}
-            />
-        </>
+        </PageSetup>
     )
 }
 

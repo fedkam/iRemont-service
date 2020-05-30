@@ -1,15 +1,16 @@
 // import './modding-page.scss';
-import React from 'react';
+import React from 'react'
 import PropTypes from 'prop-types'
-import { withDataService, ResetScroll } from '../../dev-helpers';
-import Title from '../../../components/title';
-import Detail from '../../../components/detail';
-import Element from '../../../components/element';
+import { withDataService } from '../../dev-helpers'
+import Title from '../../../components/title'
+import Detail from '../../../components/detail'
+import Element from '../../../components/element'
 import { MotivationButtons, generateWhatsAppUrl } from '../../motivation-buttons'
-import { ReactComponent as IphonesIcon } from '../../../assets/images/icon-iPhones.svg';
-import { ReactComponent as LightAppleIcon } from '../../../assets/images/icon-lightApple.svg';
-import Copyright from '../../../components/copyright'
-import { NavBar } from '../../navbar'
+import { ReactComponent as IphonesIcon } from '../../../assets/images/icon-iPhones.svg'
+import { ReactComponent as LightAppleIcon } from '../../../assets/images/icon-lightApple.svg'
+import PageSetup from '../page-setup'
+
+
 
 const ModdingPage = ({ dataModdingPage, dataMotivationButtons, generalInformation }) => {
   const {
@@ -17,7 +18,6 @@ const ModdingPage = ({ dataModdingPage, dataMotivationButtons, generalInformatio
     details,
     elements,
   } = dataModdingPage;
-  const { copyright } = generalInformation;
   const handleClick_MotivationButtons = (action) => {
     switch (action) {
       case 'write':
@@ -31,9 +31,11 @@ const ModdingPage = ({ dataModdingPage, dataMotivationButtons, generalInformatio
     }
   }
   return (
-    <>
-      <ResetScroll />
-      <NavBar/>
+    <PageSetup
+      navbar
+      copyright
+      resetScroll
+    >
       <div className='modding-page'>
         <Title
           className='pages__title_theme_indent'
@@ -66,11 +68,7 @@ const ModdingPage = ({ dataModdingPage, dataMotivationButtons, generalInformatio
           callHoverLabel={dataMotivationButtons.call.tel}
         />
       </div>
-      <Copyright
-        addCssClassName={'\tpages__copyright'}
-        title={copyright}
-      />
-    </>
+    </PageSetup>
   )
 }
 

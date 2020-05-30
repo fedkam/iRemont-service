@@ -1,22 +1,21 @@
-// import './spare-parts-page.scss';
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withDataService, ResetScroll } from '../../dev-helpers';
-import Title from '../../../components/title';
-import Detail from '../../../components/detail';
-import { MotivationLinks } from '../../../components/motivation-links';
-import Copyright from '../../../components/copyright'
-import { NavBar } from '../../navbar'
-
+// import './spare-parts-page.scss'
+import React from 'react'
+import PropTypes from 'prop-types'
+import { withDataService } from '../../dev-helpers'
+import Title from '../../../components/title'
+import Detail from '../../../components/detail'
+import { MotivationLinks } from '../../../components/motivation-links'
+import PageSetup from '../page-setup'
 
 
 export const SparePartsPage = ({ dataSparePartsPage, dataLink, generalInformation }) => {
     const { header, details_original, details_сhineseСounterpart, details_offer, motivation } = dataSparePartsPage;
-    const { copyright } = generalInformation;
     return (
-        <>
-            <ResetScroll />
-            <NavBar />
+        <PageSetup
+            navbar
+            copyright
+            resetScroll
+        >
             <div className='spare-parts-page'>
                 <Title
                     className='pages__title_theme_indent'
@@ -49,11 +48,7 @@ export const SparePartsPage = ({ dataSparePartsPage, dataLink, generalInformatio
                     dataLink={dataLink}
                 />
             </div>
-            <Copyright
-                addCssClassName={'\tpages__copyright'}
-                title={copyright}
-            />
-        </>
+        </PageSetup>
     )
 }
 

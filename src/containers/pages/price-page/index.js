@@ -1,23 +1,20 @@
 // ОПТИМИЗИРОВАТЬ!
 //import './price-page.scss'
 import React, { useState } from 'react'
-import { withDataService, ResetScroll } from '../../dev-helpers'
+import { withDataService } from '../../dev-helpers'
 import { useLocation } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { BreadCrumbs, generateHierarchyLinks } from '../../../components/bread-crumbs'
 import Title from '../../../components/title'
 import PriceList from '../../price-list'
 import { MotivationButtons, generateWhatsAppUrl, generateMessage } from '../../../containers/motivation-buttons'
-import Copyright from '../../../components/copyright'
-import { NavBar } from '../../navbar'
-
+import PageSetup from '../page-setup'
 
 
 const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons, generalInformation }) => {
     const { header, priceLabel } = dataPricePage;
     const { pathname, state } = useLocation();
     const [price, setPrice] = useState(generatePrice());
-    const { copyright } = generalInformation;
 
     function generatePrice() {
         let devicePrice = [];
@@ -64,9 +61,11 @@ const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons, generalInfo
     }
 
     return (
-        <>
-            <ResetScroll />
-            <NavBar />
+        <PageSetup
+            navbar
+            copyright
+            resetScroll
+        >
             <div className='price-page_container'>
                 <BreadCrumbs breadCrumbs={generateHierarchyLinks(dataLink, pathname, state.model)} />
                 <Title
@@ -91,11 +90,7 @@ const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons, generalInfo
                     callHoverLabel={dataMotivationButtons.call.tel}
                 />
             </div>
-            <Copyright
-                addCssClassName={'\tpages__copyright'}
-                title={copyright}
-            />
-        </>
+        </PageSetup >
     )
 }
 
