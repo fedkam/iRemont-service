@@ -33,7 +33,7 @@ const BreadCrumbsItem = ({ breadCrumbsItem }) => {
 
 
 
-export const BreadCrumbs = ({ addCssClassName = '', breadCrumbs }) => {
+export const BreadCrumbs = React.memo(({ addCssClassName = '', breadCrumbs }) => {
     if (breadCrumbs.length >= 2) {
         return (
             <div className={'bread-crumbs' + addCssClassName}>
@@ -48,7 +48,7 @@ export const BreadCrumbs = ({ addCssClassName = '', breadCrumbs }) => {
     } else {
         return null;
     }
-}
+})
 
 
 

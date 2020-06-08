@@ -140,4 +140,4 @@ const mapMethodsToProps = (classDataService) => {
 
 
 
-export default withDataService(mapMethodsToProps)(NavBar);
+export default React.memo(withDataService(mapMethodsToProps)(NavBar));

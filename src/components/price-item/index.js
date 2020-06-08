@@ -15,7 +15,7 @@ const Checkbox = ({ isActive = false }) => {
 
 const PriceItem = ({ id, title, subtitle, cost, currency, handleClick, isActive }) => {
     return (
-        <div className='price-item' onClick={() => handleClick(id)}>
+        <div className='price-item' id={id} onClick={handleClick}>
             <div className='price-item__checkbox'>
                 <Checkbox isActive={isActive} />
             </div>
@@ -65,4 +65,25 @@ PriceItem.propTypes = {
 
 
 
-export default PriceItem
+export default React.memo(PriceItem);
+
+
+
+// function memoComparison(prevProps, nextProps) {
+//     /* Add in React.memo(PriceItem,memoComparison)*/
+//     nextProps.id==0 && console.log('\n')
+//     console.log("____id=", nextProps.id);
+//     prevProps.id !== nextProps.id && console.log("\tid changed");
+//     prevProps.isActive !== nextProps.isActive && console.log(`\tisActive changed for ${prevProps.isActive} --> ${nextProps.isActive}`);
+//     prevProps.handleClick !== nextProps.handleClick && console.log("\thandleClick changed");
+//     const ret = (
+//         prevProps.id === nextProps.id &&
+//         prevProps.title === nextProps.title &&
+//         prevProps.subtitle === nextProps.subtitle &&
+//         prevProps.cost === nextProps.cost &&
+//         prevProps.currency === nextProps.currency &&
+//         prevProps.handleClick === nextProps.handleClick &&
+//         prevProps.isActive === nextProps.isActive
+//     )
+//     return ret;
+// }

@@ -43,6 +43,7 @@
 
       &_theme_clean {
         background: $color-white;
+       
       }
     }
 
@@ -141,6 +142,7 @@
 
       &_theme_clean {
         padding-top: 46px;
+        transition: all 1s linear;
         box-shadow: none;
       }
     }
