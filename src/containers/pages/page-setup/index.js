@@ -5,6 +5,7 @@ import { NavBar } from '../../navbar'
 import Copyright from '../../../components/copyright'
 
 
+
 const PageSetup = ({ generalInformation, resetScroll, navbar, copyright, children }) => {
     return (
         <>
@@ -27,7 +28,7 @@ PageSetup.propTypes = {
     resetScroll: PropTypes.bool,
     navbar: PropTypes.bool,
     copyright: PropTypes.bool,
-    children: PropTypes.node
+    children: PropTypes.element
 }
 
 
@@ -40,4 +41,4 @@ const mapMethodsToProps = (classDataService) => {
 
 
 
-export default React.memo(withDataService(mapMethodsToProps)(PageSetup));
+export default withDataService(mapMethodsToProps)(PageSetup);

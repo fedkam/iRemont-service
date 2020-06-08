@@ -38,7 +38,7 @@ const Image = ({ className, model, image_1x, image_2x }) => {
             src={image_1x}
             srcSet={image_2x}
             alt={model}
-        //placeholder={<PlaceholderBackgroung />} //не получается прикрепить placeholder. РАЗОБРАТЬСЯ! <Suspense> как альтернатива
+        //placeholder={<PlaceholderBackgroung />} //не получается прикрепить placeholder. РАЗОБРАТЬСЯ!
         />
     )
 }

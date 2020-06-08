@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-
-
 const Copyright = ({ addCssClassName = '', title }) => {
     return (
         <div className={'copyright' + addCssClassName}>
@@ -11,13 +9,9 @@ const Copyright = ({ addCssClassName = '', title }) => {
     )
 }
 
-
-
 Copyright.propTypes = {
     addCssClassName: PropTypes.string,
     title: PropTypes.string
 }
 
-
-
-export default React.memo(Copyright);
+export default Copyright

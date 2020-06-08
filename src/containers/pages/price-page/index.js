@@ -1,5 +1,6 @@
+// ОПТИМИЗИРОВАТЬ!
 //import './price-page.scss'
-import React, { useState, useMemo, useCallback } from 'react'
+import React, { useState } from 'react'
 import { withDataService } from '../../dev-helpers'
 import { useLocation } from 'react-router-dom'
 import PropTypes from 'prop-types'
@@ -10,26 +11,7 @@ import { MotivationButtons, generateWhatsAppUrl, generateMessage } from '../../.
 import PageSetup from '../page-setup'
 
 
-
-const CustomTitle = React.memo(({ title, subtitleRegular, subtitleBold }) => {
-    const subtitle = useMemo(() => (
-        <>
-            <div className='price-page__subtitle_theme_size_r'>{subtitleRegular}</div>
-            <div className='price-page__subtitle_theme_size_b'>{subtitleBold}</div>
-        </>
-    ), [subtitleRegular, subtitleBold]); //подготовка для React.memo(Title) 
-    return (
-        <Title
-            className='price-page__title_theme_indent'
-            title={title}
-            subtitle={subtitle}
-        />
-    )
-})
-
-
-
-const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons }) => {
+const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons, generalInformation }) => {
     const { header, priceLabel } = dataPricePage;
     const { pathname, state } = useLocation();
     const [price, setPrice] = useState(generatePrice());
@@ -51,23 +33,18 @@ const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons }) => {
         return devicePrice;
     }
 
-    const handleClick_Price = useCallback(e => {
-        const id = e.currentTarget.id;
-        if (id) {
-            setPrice(prevPrice => {
-                let newPrice = JSON.parse(JSON.stringify(prevPrice)); 
-                if (newPrice[id].singleSelection) {
-                    const currentSelected = newPrice[id].isActive; // запомнить значение
-                    newPrice.map((priceItem) => priceItem.isActive = false); // сброс всех isActive, по нажатию "диагностика" или "нет в прайсе"
-                    newPrice[id].isActive = currentSelected; // восстановить значение
-                } else {
-                    newPrice.map((priceItem) => priceItem.singleSelection && (priceItem.isActive = false)) // сброс всех singleSelection
-                }
-                newPrice[id].isActive = !newPrice[id].isActive;
-                return newPrice;
-            });
+    const handleClick_Price = (id) => {
+        let modifPrice = JSON.parse(JSON.stringify(price)); // глубокая копия state
+        if (modifPrice[id].singleSelection) {
+            let currentSelected = modifPrice[id].isActive; // запомнить значение
+            modifPrice.map((priceItem) => priceItem.isActive = false); // сброс всех isActive, по нажатию "диагностика" или "нет в прайсе"
+            modifPrice[id].isActive = currentSelected; // восстановить значение
+        } else {
+            modifPrice.map((priceItem) => priceItem.singleSelection && (priceItem.isActive = false)) // сброс всех singleSelection
         }
-    },[])
+        modifPrice[id].isActive = !modifPrice[id].isActive; //инверсия значения
+        setPrice(modifPrice);
+    }
 
     const handleClick_MotivationButtons = (action) => {
         switch (action) {
@@ -83,8 +60,6 @@ const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons }) => {
         }
     }
 
-    const hierarchyLinks = useMemo(() => generateHierarchyLinks(dataLink, pathname, state.model), [dataLink, pathname, state.model])
-
     return (
         <PageSetup
             navbar
@@ -92,11 +67,16 @@ const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons }) => {
             resetScroll
         >
             <div className='price-page_container'>
-                <BreadCrumbs breadCrumbs={hierarchyLinks} />
-                <CustomTitle
+                <BreadCrumbs breadCrumbs={generateHierarchyLinks(dataLink, pathname, state.model)} />
+                <Title
+                    className='price-page__title_theme_indent'
                     title={header.title}
-                    subtitleRegular={header.subtitle_regular}
-                    subtitleBold={header.subtitle_bold}
+                    subtitle={
+                        <>
+                            <div className='price-page__subtitle_theme_size_r'>{header.subtitle_regular}</div>
+                            <div className='price-page__subtitle_theme_size_b'>{header.subtitle_bold}</div>
+                        </>
+                    }
                 />
                 <PriceList
                     className='price-page__price-list_theme_indent'

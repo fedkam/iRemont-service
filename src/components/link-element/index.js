@@ -26,4 +26,4 @@ LinkElement.propTypes = {
 
 
 
-export default React.memo(LinkElement);
+export default LinkElement;

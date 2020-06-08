@@ -35,7 +35,4 @@ Title.propTypes = {
 
 
 
-export default React.memo(Title);
-
-
-//аккуратнее при оптимизации при передаче сложных PropTypes.element
+export default Title;
