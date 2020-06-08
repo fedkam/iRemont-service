@@ -34,4 +34,4 @@ PriceList.propTypes = {
 
 
 
-export default PriceList
+export default React.memo(PriceList)

@@ -20,6 +20,7 @@
         @include font-regular(24px);
         color: $color-blye;
         margin: 8px 0 18px;
+        user-select: text;
     }
 
     &__map {
