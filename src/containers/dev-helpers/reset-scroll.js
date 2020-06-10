@@ -1,10 +1,10 @@
-import { useEffect } from 'react'
+import { memo, useEffect } from 'react'
 
 
 
-export default function ResetScroll() {
+export const ResetScroll = memo(({resetScroll}) => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
     return null;
-}
+})

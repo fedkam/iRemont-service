@@ -1,5 +1,5 @@
 import withDataService from './with-data-service'
-import ResetScroll from './reset-scroll'
+import {ResetScroll} from './reset-scroll'
 import findUrlName from './find-url-name'
 
 

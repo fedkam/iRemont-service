@@ -1,12 +1,15 @@
 //import './motivation-buttons.scss';
-import React, { useState } from 'react';
+import React, { useState, memo, useCallback } from 'react';
 import PropTypes from 'prop-types'
 
 
 
 export function generateMessage(price, model) {
   const hello = 'Здравствуйте,';
+  const specialItems = 2; //'Диагностика'(diagnostics),'Моей поломки нет в прайсе'(notFound).
   let selectedServices = [], lengthSelectedServices, selectedService;
+  let allBroken = 'Телефон в хламину...';
+
   price.map((priceItem) => {
     if (priceItem.isActive && priceItem.cost && selectedServices.length === 0) {
       selectedServices.push(priceItem.title.toLowerCase());
@@ -17,15 +20,20 @@ export function generateMessage(price, model) {
     }
     return 0;
   })
+
   lengthSelectedServices = selectedServices.length;
+  
   if (lengthSelectedServices) {
     let listSelectedServices;
+    if((price.length-specialItems) !== lengthSelectedServices){
+      allBroken = ''; //выбран ремонт некоторых деталей(не всех), т.е. телефон не в хламину =)
+    }
     if (lengthSelectedServices < 2) {
       listSelectedServices = selectedServices.join(',');
     } else {
       listSelectedServices = `${selectedServices.slice(0, lengthSelectedServices - 1).join(',')} и ${selectedServices[lengthSelectedServices - 1]}`;
     }
-    return (`${hello} для ${model} требуется ${listSelectedServices}.`);
+    return (`${hello} для ${model} требуется ${listSelectedServices}. ${allBroken}`);
   } else if (selectedService) {
     return (`${hello} ${selectedService} для ${model}. Описание поломки:`);
   } else if (!lengthSelectedServices && !selectedService) {
@@ -45,7 +53,7 @@ export function generateWhatsAppUrl(url, message) {
 
 
 
-export const HoverWrapper = ({ children }) => {
+export const HoverWrapper = memo(({ children }) => {
   const [isHover, setIsHover] = useState(false);
   return (
     <div
@@ -55,11 +63,11 @@ export const HoverWrapper = ({ children }) => {
       {children({ hover: isHover })}
     </div>
   )
-};
+});
 
 
 
-export const MotivationButton = (props) => {
+export const MotivationButton = memo((props) => {
   const {
     classNameButtonStyle = 'motivation-button_theme_primary',
     handleClick,
@@ -71,37 +79,40 @@ export const MotivationButton = (props) => {
       {children}
     </div>
   )
-}
+})
 
 
 
-export const MotivationButtons = (props) => {
+export const MotivationButtons = memo((props) => {
   const {
     addCssClassName = '',
     writeLabel,
     handleClick_Write,
     callLabel,
     callHoverLabel,
-    handleClick_Call = (() => document.location.href = 'tel:' + callHoverLabel)
+    handleClick_Call = useCallback(() => document.location.href = 'tel:' + callHoverLabel, [callHoverLabel])
   } = props;
+
+  const HoverMotivationButton = useCallback(({ hover }) => (
+    <MotivationButton
+      classNameButtonStyle='motivation-button_theme_outline'
+      handleClick={handleClick_Call}
+    >
+      {hover ? callHoverLabel : callLabel}
+    </MotivationButton>
+  ), [callHoverLabel, callLabel, handleClick_Call])
+
   return (
     <div className={'motivation-buttons' + addCssClassName}>
       <MotivationButton handleClick={handleClick_Write}>
         {writeLabel}
       </MotivationButton>
       <HoverWrapper>
-        {({ hover }) => (
-          <MotivationButton
-            classNameButtonStyle='motivation-button_theme_outline'
-            handleClick={handleClick_Call}
-          >
-            {hover ? callHoverLabel : callLabel}
-          </MotivationButton>
-        )}
+        {HoverMotivationButton}
       </HoverWrapper>
     </div>
   )
-};
+})
 
 
 
@@ -124,3 +135,4 @@ MotivationButtons.propTypes = {
   write: PropTypes.object,
   call: PropTypes.object
 }
+

@@ -1,14 +1,14 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { withDataService, ResetScroll } from '../../dev-helpers'
 import { NavBar } from '../../navbar'
 import Copyright from '../../../components/copyright'
 
 
-const PageSetup = ({ generalInformation, resetScroll, navbar, copyright, children }) => {
+const PageSetup = memo(({ generalInformation, resetScroll, navbar, copyright, children }) => {
     return (
         <>
-            {resetScroll && <ResetScroll />}
+            {resetScroll && <ResetScroll resetScroll/>}
             {navbar && <NavBar />}
             {children && children}
             {copyright &&
@@ -19,7 +19,7 @@ const PageSetup = ({ generalInformation, resetScroll, navbar, copyright, childre
             }
         </>
     )
-}
+})
 
 
 
@@ -40,4 +40,4 @@ const mapMethodsToProps = (classDataService) => {
 
 
 
-export default React.memo(withDataService(mapMethodsToProps)(PageSetup));
+export default withDataService(mapMethodsToProps)(PageSetup);

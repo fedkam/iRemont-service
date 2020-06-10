@@ -55,7 +55,7 @@ const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons }) => {
         const id = e.currentTarget.id;
         if (id) {
             setPrice(prevPrice => {
-                let newPrice = JSON.parse(JSON.stringify(prevPrice)); 
+                let newPrice = JSON.parse(JSON.stringify(prevPrice));
                 if (newPrice[id].singleSelection) {
                     const currentSelected = newPrice[id].isActive; // запомнить значение
                     newPrice.map((priceItem) => priceItem.isActive = false); // сброс всех isActive, по нажатию "диагностика" или "нет в прайсе"
@@ -67,9 +67,9 @@ const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons }) => {
                 return newPrice;
             });
         }
-    },[])
+    }, [])
 
-    const handleClick_MotivationButtons = (action) => {
+    const handleClick_MotivationButtons = (action) => () => {
         switch (action) {
             case 'write':
                 let url = generateWhatsAppUrl(dataMotivationButtons.write.url, generateMessage(price, state.model));
@@ -105,7 +105,7 @@ const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons }) => {
                 />
                 <MotivationButtons
                     writeLabel={dataMotivationButtons.write.name}
-                    handleClick_Write={() => handleClick_MotivationButtons('write')}
+                    handleClick_Write={handleClick_MotivationButtons('write')}
                     callLabel={dataMotivationButtons.call.name}
                     callHoverLabel={dataMotivationButtons.call.tel}
                 />
