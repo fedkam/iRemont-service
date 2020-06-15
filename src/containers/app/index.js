@@ -34,7 +34,7 @@ export default function App() {
                 <Route exact path='/modding' render={() => (<ModdingPage />)} />
                 <Route exact path='/about-modding' render={() => (<SparePartsPage />)} />
                 <Route exact path='/about-us' render={() => (<AboutUsPage />)} />
-                <Route render={() => (<ErrorPage subtitle={'404 Страница не найдена.'}/>)} />
+                <Route path='*' render={() => (<ErrorPage subtitle={'404 Страница не найдена.'}/>)} />
               </Switch>
             </Router>
           </BreakpointProvider>

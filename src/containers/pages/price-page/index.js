@@ -1,7 +1,7 @@
 //import './price-page.scss'
 import React, { useState, useMemo, useCallback } from 'react'
 import { withDataService } from '../../dev-helpers'
-import { useLocation } from 'react-router-dom'
+import { useLocation, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { BreadCrumbs, generateHierarchyLinks } from '../../../components/bread-crumbs'
 import Title from '../../../components/title'
@@ -36,18 +36,20 @@ const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons }) => {
 
     function generatePrice() {
         let devicePrice = [];
-        for (let label in state.priceCost) {
-            if (priceLabel[label]) {
-                devicePrice.push(
-                    {
-                        ...priceLabel[label],
-                        cost: state.priceCost[label],
-                        isActive: false
-                    }
-                );
+        if (state) {
+            for (let label in state.priceCost) {
+                if (priceLabel[label]) {
+                    devicePrice.push(
+                        {
+                            ...priceLabel[label],
+                            cost: state.priceCost[label],
+                            isActive: false
+                        }
+                    );
+                }
             }
+            devicePrice[0].singleSelection = devicePrice[devicePrice.length - 1].singleSelection = true;
         }
-        devicePrice[0].singleSelection = devicePrice[devicePrice.length - 1].singleSelection = true;
         return devicePrice;
     }
 
@@ -83,34 +85,41 @@ const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons }) => {
         }
     }
 
-    const hierarchyLinks = useMemo(() => generateHierarchyLinks(dataLink, pathname, state.model), [dataLink, pathname, state.model])
+    const hierarchyLinks = useMemo(() => {
+        if (state) {
+            return generateHierarchyLinks(dataLink, pathname, state.model)
+        }
+    }, [dataLink, pathname, state])
 
     return (
-        <PageSetup
-            navbar
-            copyright
-            resetScroll
-        >
-            <div className='price-page_container'>
-                <BreadCrumbs breadCrumbs={hierarchyLinks} />
-                <CustomTitle
-                    title={header.title}
-                    subtitleRegular={header.subtitle_regular}
-                    subtitleBold={header.subtitle_bold}
-                />
-                <PriceList
-                    className='price-page__price-list_theme_indent'
-                    price={price}
-                    handleClick={handleClick_Price}
-                />
-                <MotivationButtons
-                    writeLabel={dataMotivationButtons.write.name}
-                    handleClick_Write={handleClick_MotivationButtons('write')}
-                    callLabel={dataMotivationButtons.call.name}
-                    callHoverLabel={dataMotivationButtons.call.tel}
-                />
-            </div>
-        </PageSetup >
+        (pathname && state) ?
+            <PageSetup
+                navbar
+                copyright
+                resetScroll
+            >
+                <div className='price-page_container'>
+                    <BreadCrumbs breadCrumbs={hierarchyLinks} />
+                    <CustomTitle
+                        title={header.title}
+                        subtitleRegular={header.subtitle_regular}
+                        subtitleBold={header.subtitle_bold}
+                    />
+                    <PriceList
+                        className='price-page__price-list_theme_indent'
+                        price={price}
+                        handleClick={handleClick_Price}
+                    />
+                    <MotivationButtons
+                        writeLabel={dataMotivationButtons.write.name}
+                        handleClick_Write={handleClick_MotivationButtons('write')}
+                        callLabel={dataMotivationButtons.call.name}
+                        callHoverLabel={dataMotivationButtons.call.tel}
+                    />
+                </div>
+            </PageSetup >
+            :
+            <Redirect to="/repair" />
     )
 }
 
