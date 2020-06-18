@@ -8,25 +8,3 @@
 	font-style: normal;
 	font-display: swap;
 }
-
-@font-face {
-	font-family: "Open Sans SemiBold";
-	src: url("../assets/fonts/OpenSans-SemiBold.eot");
-	src: url("../assets/fonts/OpenSans-SemiBold.eot?#iefix") format("embedded-opentype"),
-		url("../assets/fonts/OpenSans-SemiBold.woff") format("woff"),
-		url("../assets/fonts/OpenSans-SemiBold.ttf") format("truetype");
-	font-weight: 600;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: "Open Sans Bold";
-	src: url("../assets/fonts/OpenSans-Bold.eot");
-	src: url("../assets/fonts/OpenSans-Bold.eot?#iefix") format("embedded-opentype"),
-		url("../assets/fonts/OpenSans-Bold.woff") format("woff"),
-		url("../assets/fonts/OpenSans-Bold.ttf") format("truetype");
-	font-weight: normal;
-	font-style: normal;
-	font-display: swap;
-}
