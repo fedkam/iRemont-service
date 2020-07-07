@@ -1,14 +1,17 @@
 import React, { useEffect, createRef } from "react";
 import lottie from "lottie-web";
+import PropTypes from 'prop-types'
 
-export default function LottieAnimation({ className, bodymovinAnimation, reserveStaticIcon }) {
+
+
+export default function LottieAnimation({ className, bodymovinAnimation, reserveStaticIcon, setLoop }) {
     let animationContainer = createRef();
 
     useEffect(() => {
         const anim = lottie.loadAnimation({
             container: animationContainer.current,
             renderer: "svg",
-            loop: false,
+            loop: setLoop,
             autoplay: true,
             animationData: bodymovinAnimation
         });
@@ -18,4 +21,17 @@ export default function LottieAnimation({ className, bodymovinAnimation, reserve
     return (
         bodymovinAnimation ? <div className={className} ref={animationContainer} /> : reserveStaticIcon
     )
+}
+
+
+
+LottieAnimation.propTypes = {
+    className: PropTypes.string,
+    bodymovinAnimation: PropTypes.element,
+    reserveStaticIcon: PropTypes.element,
+    setLoop: PropTypes.bool
+}
+
+LottieAnimation.defaultProps = {
+    setLoop: false
 }
