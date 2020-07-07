@@ -29,6 +29,7 @@ export const OldModelPage = ({ dataOldModelPage, dataMotivationButtons, dataLink
             navbar
             copyright
             resetScroll
+            transitionAnimationPages
         >
             <div className='old-model-page_container'>
                 <BreadCrumbs breadCrumbs={generateHierarchyLinks(dataLink, pathname, header.title)} />

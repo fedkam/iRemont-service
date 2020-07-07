@@ -35,6 +35,7 @@ const ModdingPage = ({ dataModdingPage, dataMotivationButtons, generalInformatio
       navbar
       copyright
       resetScroll
+      transitionAnimationPages
     >
       <div className='modding-page'>
         <Title

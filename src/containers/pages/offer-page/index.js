@@ -13,6 +13,7 @@ const OfferPage = ({ dataOfferPage, dataLink }) => (
   <PageSetup
     navbar
     resetScroll
+    transitionAnimationPages
   >
     <div className='offer-page__motivation'>
       <Title

@@ -24,6 +24,7 @@ export const AboutUsPage = ({ dataAboutUsPage, generalInformation }) => {
             navbar
             copyright
             resetScroll
+            transitionAnimationPages
         >
             <div className='about-us-page'>
                 <Title

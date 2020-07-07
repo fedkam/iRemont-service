@@ -15,6 +15,7 @@ export const SparePartsPage = ({ dataSparePartsPage, dataLink, generalInformatio
             navbar
             copyright
             resetScroll
+            transitionAnimationPages
         >
             <div className='spare-parts-page'>
                 <Title

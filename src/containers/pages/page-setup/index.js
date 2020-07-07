@@ -3,14 +3,17 @@ import PropTypes from 'prop-types'
 import { withDataService, ResetScroll } from '../../dev-helpers'
 import { NavBar } from '../../navbar'
 import Copyright from '../../../components/copyright'
+import TransitionAnimationPages from '../../../components/transition-animation-pages'
 
 
-const PageSetup = memo(({ generalInformation, resetScroll, navbar, copyright, children }) => {
+const PageSetup = memo(({ generalInformation, resetScroll, navbar, copyright, children, transitionAnimationPages }) => {
     return (
         <>
-            {resetScroll && <ResetScroll resetScroll/>}
+            {resetScroll && <ResetScroll resetScroll />}
             {navbar && <NavBar />}
-            {children && children}
+            {children &&
+                transitionAnimationPages ? <TransitionAnimationPages content={children} /> : children
+            }
             {copyright &&
                 <Copyright
                     addCssClassName={'\tpages__copyright'}

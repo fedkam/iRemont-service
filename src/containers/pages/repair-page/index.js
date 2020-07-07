@@ -15,6 +15,7 @@ const RepairPage = ({ dataRepairPage, dataIphones, dataLink, generalInformation 
       navbar
       copyright
       resetScroll
+      transitionAnimationPages
     >
       <div className='repair-page'>
         <Title

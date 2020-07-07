@@ -97,6 +97,7 @@ const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons }) => {
                 navbar
                 copyright
                 resetScroll
+                transitionAnimationPages
             >
                 <div className='price-page_container'>
                     <BreadCrumbs breadCrumbs={hierarchyLinks} />
