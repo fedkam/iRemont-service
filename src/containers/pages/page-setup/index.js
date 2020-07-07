@@ -6,13 +6,14 @@ import Copyright from '../../../components/copyright'
 import TransitionAnimationPages from '../../../components/transition-animation-pages'
 
 
+
 const PageSetup = memo(({ generalInformation, resetScroll, navbar, copyright, children, transitionAnimationPages }) => {
     return (
         <>
             {resetScroll && <ResetScroll resetScroll />}
             {navbar && <NavBar />}
             {children &&
-                transitionAnimationPages ? <TransitionAnimationPages content={children} /> : children
+                transitionAnimationPages ? <TransitionAnimationPages children={children} /> : children
             }
             {copyright &&
                 <Copyright

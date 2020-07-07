@@ -2,9 +2,9 @@ import React from 'react'
 
 
 
-const TransitionAnimationPages = ({ content }) => (
+const TransitionAnimationPages = ({ children }) => (
     <div className='transition-animation-pages'>
-        {content}
+        {children}
     </div>
 )
 

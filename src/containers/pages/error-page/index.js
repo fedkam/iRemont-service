@@ -4,6 +4,7 @@ import Title from '../../../components/title'
 import { MotivationLink } from '../../../components/motivation-links'
 import iremontBrokenJSON from '../../../assets/json-animation/iremontBroken.json'
 import LottieAnimation from '../../lottie-animation'
+import TransitionAnimationPages from '../../../components/transition-animation-pages'
 
 
 
@@ -41,7 +42,7 @@ const iremontBrokenAnimation = (
 
 const ErrorPage = ({ title, subtitle, motivationLink }) => {
     return (
-        <>
+        <TransitionAnimationPages>
             <div className='err-404-page__title'>
                 <Title
                     title={title}
@@ -56,7 +57,7 @@ const ErrorPage = ({ title, subtitle, motivationLink }) => {
                     />
                 }
             </div>
-        </>
+        </TransitionAnimationPages>
     )
 }
 
