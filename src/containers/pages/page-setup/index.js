@@ -31,7 +31,8 @@ PageSetup.propTypes = {
     resetScroll: PropTypes.bool,
     navbar: PropTypes.bool,
     copyright: PropTypes.bool,
-    children: PropTypes.node
+    children: PropTypes.node,
+    transitionAnimationPages: PropTypes.bool 
 }
 
 

@@ -14,6 +14,7 @@ import { ReactComponent as LogoIcon } from '../../assets/images/logo-iRemont.svg
 import NavBarContext from './navbar-context';
 
 
+
 const MenuList = ({ classNameElementMenu, isMobile = true }) => {
   const { dataNavBar, setSwitcherHamburgerMenu } = useContext(NavBarContext);
   (!isMobile) && setSwitcherHamburgerMenu(false); // если mobileMenu открыто, то закрыть при desktop
