@@ -1,7 +1,7 @@
 // как поддерживать все эти inline className непонятно => ~CssInJS или bem-react
 
 //import './menu-list.scss';
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useCallback, memo } from 'react';
 import PropTypes from 'prop-types';
 import { Breakpoint } from 'react-socks';
 import { CSSTransition } from 'react-transition-group';
@@ -15,39 +15,40 @@ import NavBarContext from './navbar-context';
 
 
 
-const MenuList = ({ classNameElementMenu, isMobile = true }) => {
-  const { dataNavBar, setSwitcherHamburgerMenu } = useContext(NavBarContext);
-  (!isMobile) && setSwitcherHamburgerMenu(false); // если mobileMenu открыто, то закрыть при desktop
+const MenuList = memo(function MenuList({ classNameElementMenu, isMobile = true }) {
+  const { dataNavBar, memoSetSwitcherHamburgerMenu } = useContext(NavBarContext);
+  (!isMobile) && memoSetSwitcherHamburgerMenu(false); // если mobileMenu открыто, то закрыть при desktop
   return (
     dataNavBar && dataNavBar.map((row, index) => (
       <LinkElement
         className={classNameElementMenu}
-        onClick={() => setSwitcherHamburgerMenu(false)}
+        onClick={() => memoSetSwitcherHamburgerMenu(false)}
         path={row.path}
         key={index}
       >
         {row.name}
       </LinkElement>))
   );
-};
+});
 
 
 
-const MenuTopLeft = () => {
-  const { switcherHamburgerMenu, setSwitcherHamburgerMenu } = useContext(NavBarContext);
+const MenuTopLeft = memo(function MenuTopLeft() {
+  const { switcherHamburgerMenu, memoSetSwitcherHamburgerMenu } = useContext(NavBarContext);
+  const closeHamburgerMenu = useCallback(() => memoSetSwitcherHamburgerMenu(false));
   return (
     <>
-      <LinkElement onClick={() => setSwitcherHamburgerMenu(false)}>
+      <LinkElement onClick={closeHamburgerMenu}>
         <LogoIcon className={switcherHamburgerMenu ? 'navbar__logo_active' : 'navbar__logo_inactive'} />
       </LinkElement>
     </>
   );
-};
+});
 
 
 
-const MenuTopRight = () => (
-  <>
+const MenuTopRight = memo(function MenuTopRight() {
+  return <>
     <Breakpoint small down>
       <HamburgerButton />
     </Breakpoint>
@@ -61,11 +62,11 @@ const MenuTopRight = () => (
       </div>
     </Breakpoint>
   </>
-);
+});
 
 
 
-const MenuTop = () => {
+const MenuTop = memo(function MenuTop() {
   const match = useRouteMatch({
     path: '/',
     exact: true
@@ -81,7 +82,7 @@ const MenuTop = () => {
       </div>
     </div>
   );
-};
+});
 
 
 
@@ -108,8 +109,9 @@ const MenuBottom = () => {
 
 const NavBar = ({ dataNavBar }) => {
   const [switcherHamburgerMenu, setSwitcherHamburgerMenu] = useState(false);
+  const memoSetSwitcherHamburgerMenu = useCallback(setSwitcherHamburgerMenu, [])
   return (
-    <NavBarContext.Provider value={{ dataNavBar, switcherHamburgerMenu, setSwitcherHamburgerMenu }}>
+    <NavBarContext.Provider value={{ dataNavBar, switcherHamburgerMenu, memoSetSwitcherHamburgerMenu }}>
       <MenuTop />
       <MenuBottom />
     </NavBarContext.Provider>
@@ -141,4 +143,4 @@ const mapMethodsToProps = (classDataService) => {
 
 
 
-export default React.memo(withDataService(mapMethodsToProps)(NavBar));
+export default memo(withDataService(mapMethodsToProps)(NavBar));

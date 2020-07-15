@@ -32,7 +32,6 @@ const ModdingPage = ({ dataModdingPage, dataMotivationButtons, generalInformatio
   }
   return (
     <PageSetup
-      navbar
       copyright
       resetScroll
       transitionAnimationPages

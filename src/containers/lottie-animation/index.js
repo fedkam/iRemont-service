@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 
 export default function LottieAnimation({ className, bodymovinAnimation, reserveStaticIcon, setLoop }) {
     let animationContainer = createRef();
-
+    
     useEffect(() => {
         const anim = lottie.loadAnimation({
             container: animationContainer.current,
@@ -27,7 +27,7 @@ export default function LottieAnimation({ className, bodymovinAnimation, reserve
 
 LottieAnimation.propTypes = {
     className: PropTypes.string,
-    bodymovinAnimation: PropTypes.element,
+    bodymovinAnimation: PropTypes.object,
     reserveStaticIcon: PropTypes.element,
     setLoop: PropTypes.bool
 }

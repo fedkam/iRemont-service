@@ -64,8 +64,14 @@ const ErrorPage = ({ title, subtitle, motivationLink }) => {
 
 
 ErrorPage.propTypes = {
-    title: PropTypes.string,
-    subtitle: PropTypes.string,
+    title: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.element
+    ]),
+    subtitle: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.element
+    ]),
     motivationLink: PropTypes.exact({
         name: PropTypes.string,
         path: PropTypes.string,

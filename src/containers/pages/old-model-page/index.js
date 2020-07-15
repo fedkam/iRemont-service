@@ -26,7 +26,6 @@ export const OldModelPage = ({ dataOldModelPage, dataMotivationButtons, dataLink
     }
     return (
         <PageSetup
-            navbar
             copyright
             resetScroll
             transitionAnimationPages

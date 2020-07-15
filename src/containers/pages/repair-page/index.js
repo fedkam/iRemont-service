@@ -12,7 +12,6 @@ const RepairPage = ({ dataRepairPage, dataIphones, dataLink, generalInformation 
   const { pathname } = useLocation();
   return (
     <PageSetup
-      navbar
       copyright
       resetScroll
       transitionAnimationPages

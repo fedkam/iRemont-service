@@ -21,7 +21,6 @@ export const AboutUsPage = ({ dataAboutUsPage, generalInformation }) => {
     } = dataAboutUsPage;
     return (
         <PageSetup
-            navbar
             copyright
             resetScroll
             transitionAnimationPages

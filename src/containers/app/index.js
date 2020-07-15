@@ -15,6 +15,7 @@ import {
   PricePage,
   ErrorPage
 } from '../pages'
+import { NavBar } from '../navbar'
 
 
 
@@ -22,20 +23,23 @@ export default function App() {
   const dataService = new DataService();
   return (
     <div className='App'>
-      <ErrorBoundary>
+      <ErrorBoundary motivationLink={null}>
         <DataServiceProvider value={dataService}>
           <BreakpointProvider>
             <Router>
-              <Switch>
-                <Route exact path='/' render={() => (<OfferPage />)} />
-                <Route exact path='/repair' render={() => (<RepairPage />)} />
-                <Route exact path='/repair/old-model' render={() => (<OldModelPage />)} />
-                <Route exact path='/repair/:id' render={() => (<PricePage />)} />
-                <Route exact path='/modding' render={() => (<ModdingPage />)} />
-                <Route exact path='/about-modding' render={() => (<SparePartsPage />)} />
-                <Route exact path='/about-us' render={() => (<AboutUsPage />)} />
-                <Route path='*' render={() => (<ErrorPage subtitle={'404 Страница не найдена.'}/>)} />
-              </Switch>
+              <ErrorBoundary>
+                <NavBar />
+                <Switch>
+                  <Route exact path='/' component={OfferPage} />
+                  <Route exact path='/repair' component={RepairPage} />
+                  <Route exact path='/repair/old-model' component={OldModelPage} />
+                  <Route exact path='/repair/:id' component={PricePage} />
+                  <Route exact path='/modding' component={ModdingPage} />
+                  <Route exact path='/about-modding' component={SparePartsPage} />
+                  <Route exact path='/about-us' component={AboutUsPage} />
+                  <Route path='*' render={() => (<ErrorPage subtitle={'404 Страница не найдена.'} />)} />
+                </Switch>
+              </ErrorBoundary>
             </Router>
           </BreakpointProvider>
         </DataServiceProvider>

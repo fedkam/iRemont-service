@@ -17,7 +17,12 @@ export default class ErrorBoundary extends React.Component {
 
   render() {
     if (this.state.hasError) {
-      return <ErrorPage motivationLink={null} />
+      return (
+        this.props.motivationLink ?
+          <ErrorPage motivationLink={this.props.motivationLink} />
+          :
+          <ErrorPage />
+      )
     }
     return this.props.children;
   }

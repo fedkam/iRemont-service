@@ -1,17 +1,15 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { withDataService, ResetScroll } from '../../dev-helpers'
-import { NavBar } from '../../navbar'
 import Copyright from '../../../components/copyright'
 import TransitionAnimationPages from '../../../components/transition-animation-pages'
 
 
 
-const PageSetup = memo(({ generalInformation, resetScroll, navbar, copyright, children, transitionAnimationPages }) => {
+const PageSetup = ({ generalInformation, resetScroll, copyright, children, transitionAnimationPages }) => {
     return (
         <>
             {resetScroll && <ResetScroll resetScroll />}
-            {navbar && <NavBar />}
             {children &&
                 transitionAnimationPages ? <TransitionAnimationPages children={children} /> : children
             }
@@ -23,13 +21,12 @@ const PageSetup = memo(({ generalInformation, resetScroll, navbar, copyright, ch
             }
         </>
     )
-})
+}
 
 
 
 PageSetup.propTypes = {
     resetScroll: PropTypes.bool,
-    navbar: PropTypes.bool,
     copyright: PropTypes.bool,
     children: PropTypes.node,
     transitionAnimationPages: PropTypes.bool 
@@ -45,4 +42,4 @@ const mapMethodsToProps = (classDataService) => {
 
 
 
-export default withDataService(mapMethodsToProps)(PageSetup);
+export default memo(withDataService(mapMethodsToProps)(PageSetup));

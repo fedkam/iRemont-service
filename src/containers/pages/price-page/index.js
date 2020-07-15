@@ -94,7 +94,6 @@ const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons }) => {
     return (
         (pathname && state) ?
             <PageSetup
-                navbar
                 copyright
                 resetScroll
                 transitionAnimationPages

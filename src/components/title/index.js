@@ -1,5 +1,5 @@
 //import './title.scss';
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes, { string } from 'prop-types'
 
 
@@ -35,7 +35,7 @@ Title.propTypes = {
 
 
 
-export default React.memo(Title);
+export default memo(Title);
 
 
 //аккуратнее при оптимизации при передаче сложных PropTypes.element

@@ -22,7 +22,6 @@ const iconApple = (
 
 const OfferPage = ({ dataOfferPage, dataLink }) => (
   <PageSetup
-    navbar
     resetScroll
     transitionAnimationPages
   >

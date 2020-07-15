@@ -12,7 +12,6 @@ export const SparePartsPage = ({ dataSparePartsPage, dataLink, generalInformatio
     const { header, details_original, details_сhineseСounterpart, details_offer, motivation } = dataSparePartsPage;
     return (
         <PageSetup
-            navbar
             copyright
             resetScroll
             transitionAnimationPages
