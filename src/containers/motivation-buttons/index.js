@@ -22,10 +22,10 @@ export function generateMessage(price, model) {
   })
 
   lengthSelectedServices = selectedServices.length;
-  
+
   if (lengthSelectedServices) {
     let listSelectedServices;
-    if((price.length-specialItems) !== lengthSelectedServices){
+    if ((price.length - specialItems) !== lengthSelectedServices) {
       allBroken = ''; //выбран ремонт некоторых деталей(не всех), т.е. телефон не в хламину =)
     }
     if (lengthSelectedServices < 2) {
@@ -53,7 +53,7 @@ export function generateWhatsAppUrl(url, message) {
 
 
 
-export const HoverWrapper = memo(({ children }) => {
+export const HoverWrapper = memo(function HoverWrapper({ children }){
   const [isHover, setIsHover] = useState(false);
   return (
     <div
@@ -67,7 +67,7 @@ export const HoverWrapper = memo(({ children }) => {
 
 
 
-export const MotivationButton = memo((props) => {
+export const MotivationButton = memo(function MotivationButton(props){
   const {
     classNameButtonStyle = 'motivation-button_theme_primary',
     handleClick,
@@ -83,24 +83,26 @@ export const MotivationButton = memo((props) => {
 
 
 
-export const MotivationButtons = memo((props) => {
+export const MotivationButtons = memo(function MotivationButtons(props){
   const {
     addCssClassName = '',
     writeLabel,
     handleClick_Write,
     callLabel,
     callHoverLabel,
-    handleClick_Call = useCallback(() => document.location.href = 'tel:' + callHoverLabel, [callHoverLabel])
+    handleClick_Call = () => document.location.href = 'tel:' + callHoverLabel
   } = props;
 
-  const HoverMotivationButton = useCallback(({ hover }) => (
+  const memoHandleClick_Call = useCallback(handleClick_Call, [callHoverLabel])
+
+  const memoHoverMotivationButton = useCallback(({ hover }) => (
     <MotivationButton
       classNameButtonStyle='motivation-button_theme_outline'
-      handleClick={handleClick_Call}
+      handleClick={memoHandleClick_Call}
     >
       {hover ? callHoverLabel : callLabel}
     </MotivationButton>
-  ), [callHoverLabel, callLabel, handleClick_Call])
+  ), [callHoverLabel, callLabel, memoHandleClick_Call])
 
   return (
     <div className={'motivation-buttons' + addCssClassName}>
@@ -108,7 +110,7 @@ export const MotivationButtons = memo((props) => {
         {writeLabel}
       </MotivationButton>
       <HoverWrapper>
-        {HoverMotivationButton}
+        {memoHoverMotivationButton}
       </HoverWrapper>
     </div>
   )

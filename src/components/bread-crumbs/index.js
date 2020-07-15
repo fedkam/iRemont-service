@@ -1,13 +1,17 @@
-import React from 'react'
+import React, {memo} from 'react'
 import PropTypes from 'prop-types'
 import LinkElement from '../link-element'
 import { findUrlName } from '../../containers/dev-helpers'
+
+
 
 export function generateHierarchyLinks(dataLink, pathname, currentPage) {
     let currentHierarchyLinks = findUrlName(pathname, dataLink);
     currentHierarchyLinks.push({ title: currentPage });
     return currentHierarchyLinks;
 }
+
+
 
 const BreadCrumbsItem = ({ breadCrumbsItem }) => {
     if (breadCrumbsItem.path) {
@@ -33,7 +37,7 @@ const BreadCrumbsItem = ({ breadCrumbsItem }) => {
 
 
 
-export const BreadCrumbs = React.memo(({ addCssClassName = '', breadCrumbs }) => {
+export const BreadCrumbs = memo(function BreadCrumbs({ addCssClassName = '', breadCrumbs }){
     if (breadCrumbs.length >= 2) {
         return (
             <div className={'bread-crumbs' + addCssClassName}>

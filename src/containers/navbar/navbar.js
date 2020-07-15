@@ -35,7 +35,7 @@ const MenuList = memo(function MenuList({ classNameElementMenu, isMobile = true 
 
 const MenuTopLeft = memo(function MenuTopLeft() {
   const { switcherHamburgerMenu, memoSetSwitcherHamburgerMenu } = useContext(NavBarContext);
-  const closeHamburgerMenu = useCallback(() => memoSetSwitcherHamburgerMenu(false));
+  const closeHamburgerMenu = useCallback(() => memoSetSwitcherHamburgerMenu(false), [memoSetSwitcherHamburgerMenu]);
   return (
     <>
       <LinkElement onClick={closeHamburgerMenu}>
