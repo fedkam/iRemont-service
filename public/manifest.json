@@ -1,9 +1,17 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [],
-  "start_url": ".",
+  "name": "iРемонт",
+  "short_name": "iРемонт",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "orientation":"any",
+  "background_color": "#FBFBFD",
+  "theme_color": "#FBFBFD",
+  "description": "Ремонт продукции Apple на Камчатке",
+  "icons": [
+    {
+      "src": "/favicons/favicon-android-base.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
 }

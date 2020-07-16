@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom';
 
@@ -26,4 +26,4 @@ LinkElement.propTypes = {
 
 
 
-export default React.memo(LinkElement);
+export default memo(LinkElement);
