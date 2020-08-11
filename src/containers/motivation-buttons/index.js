@@ -10,11 +10,12 @@ export function generateMessage(price, model) {
   let selectedServices = [], lengthSelectedServices, selectedService;
   let allBroken = 'Телефон в хламину...';
 
+  //генерация selectedServices (массив именами выделенных пунктов, с удаленными лишними словами и символами. Для генерации сообщения)
   price.map((priceItem) => {
     if (priceItem.isActive && priceItem.cost && selectedServices.length === 0) {
       selectedServices.push(priceItem.title.toLowerCase());
     } else if (priceItem.isActive && priceItem.cost && selectedServices.length !== 0) {
-      selectedServices.push(priceItem.title.replace(/Замена/gi, ""));
+      selectedServices.push(priceItem.title.replace(/Замена/gi, "").toLowerCase());
     } else if (priceItem.singleSelection && priceItem.isActive && !priceItem.cost) {
       selectedService = priceItem.title.toLowerCase().replace(/\u00AB|\u00BB/gi, "");
     }
@@ -23,6 +24,7 @@ export function generateMessage(price, model) {
 
   lengthSelectedServices = selectedServices.length;
 
+  //генерация сообщения
   if (lengthSelectedServices) {
     let listSelectedServices;
     if ((price.length - specialItems) !== lengthSelectedServices) {
