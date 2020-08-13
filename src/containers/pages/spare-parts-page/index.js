@@ -8,7 +8,7 @@ import { MotivationLinks } from '../../../components/motivation-links'
 import PageSetup from '../page-setup'
 
 
-export const SparePartsPage = ({ dataSparePartsPage, dataLink, generalInformation }) => {
+export const SparePartsPage = ({ dataSparePartsPage, dataLinks, generalInformation }) => {
     const { header, details_original, details_сhineseСounterpart, details_offer, motivation } = dataSparePartsPage;
     return (
         <PageSetup
@@ -45,7 +45,7 @@ export const SparePartsPage = ({ dataSparePartsPage, dataLink, generalInformatio
                 />
                 <MotivationLinks
                     addCssClassName={'\tspare-parts-page__motivation-links'}
-                    dataLink={dataLink}
+                    dataLinks={dataLinks}
                 />
             </div>
         </PageSetup>
@@ -55,7 +55,7 @@ export const SparePartsPage = ({ dataSparePartsPage, dataLink, generalInformatio
 
 
 SparePartsPage.propTypes = {
-    dataLink: PropTypes.object,
+    dataLinks: PropTypes.object,
     dataSparePartsPage: PropTypes.object
 }
 
@@ -63,7 +63,7 @@ SparePartsPage.propTypes = {
 
 const mapMethodsToProps = (classDataService) => {
     return {
-        dataLink: classDataService.getLinkData(),
+        dataLinks: classDataService.getLinksData(),
         dataSparePartsPage: classDataService.getSparePartsPageData(),
         generalInformation: classDataService.getGeneralInformation()
     }

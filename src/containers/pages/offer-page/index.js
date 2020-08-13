@@ -20,7 +20,7 @@ const iconApple = (
 
 
 
-const OfferPage = ({ dataOfferPage, dataLink }) => (
+const OfferPage = ({ dataOfferPage, dataLinks }) => (
   <PageSetup
     resetScroll
     transitionAnimationPages
@@ -30,7 +30,7 @@ const OfferPage = ({ dataOfferPage, dataLink }) => (
         title={<LogoIphone />}
         subtitle={dataOfferPage.subtitle}
       />
-      <MotivationLinks dataLink={dataLink} />
+      <MotivationLinks dataLinks={dataLinks} />
     </div>
     <div className='offer-page__background-wrap'>
       <LottieAnimation
@@ -47,7 +47,7 @@ const OfferPage = ({ dataOfferPage, dataLink }) => (
 
 OfferPage.propTypes = {
   dataOfferPage: PropTypes.object,
-  dataLink: PropTypes.object
+  dataLinks: PropTypes.object
 }
 
 
@@ -55,7 +55,7 @@ OfferPage.propTypes = {
 const mapMethodsToProps = (classDataService) => {
   return {
     dataOfferPage: classDataService.getOfferPageData(),
-    dataLink: classDataService.getLinkData()
+    dataLinks: classDataService.getLinksData()
   }
 };
 

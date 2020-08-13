@@ -10,7 +10,7 @@ import PageSetup from '../page-setup'
 
 
 
-export const AboutUsPage = ({ dataAboutUsPage, generalInformation }) => {
+export const AboutUsPage = ({ dataAboutUsPage, generalInformation, dataLinks }) => {
     const {
         header,
         contacts,
@@ -19,6 +19,11 @@ export const AboutUsPage = ({ dataAboutUsPage, generalInformation }) => {
         details_efficiency,
         details_responsiveness,
     } = dataAboutUsPage;
+    const {
+        whatsApp,
+        instagram,
+        vk
+    } = dataLinks;
     return (
         <PageSetup
             copyright
@@ -63,7 +68,11 @@ export const AboutUsPage = ({ dataAboutUsPage, generalInformation }) => {
                     subtitle={
                         <>
                             <div className='about-us-page__email-contact'>{contacts.email}</div>
-                            <Social />
+                            <Social
+                                whatsAppLink={whatsApp}
+                                instagramLink={instagram}
+                                vkLink={vk}
+                            />
                         </>
                     }
                 />
@@ -76,7 +85,7 @@ export const AboutUsPage = ({ dataAboutUsPage, generalInformation }) => {
 
 AboutUsPage.propTypes = {
     dataAboutUsPage: PropTypes.object,
-    dataLink: PropTypes.object
+    dataLinks: PropTypes.object
 }
 
 
@@ -84,7 +93,7 @@ AboutUsPage.propTypes = {
 const mapMethodsToProps = (classDataService) => {
     return {
         dataAboutUsPage: classDataService.getAboutUsPageData(),
-        dataLink: classDataService.getLinkData(),
+        dataLinks: classDataService.getLinksData(),
         generalInformation: classDataService.getGeneralInformation()
     }
 };

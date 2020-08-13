@@ -8,7 +8,7 @@ import DeviceList from '../../device-list'
 import { MotivationLink } from '../../../components/motivation-links'
 import PageSetup from '../page-setup'
 
-const RepairPage = ({ dataRepairPage, dataIphones, dataLink, generalInformation }) => {
+const RepairPage = ({ dataRepairPage, dataIphones, dataLinks, generalInformation }) => {
   const { pathname } = useLocation();
   return (
     <PageSetup
@@ -28,8 +28,8 @@ const RepairPage = ({ dataRepairPage, dataIphones, dataLink, generalInformation 
         />
         <MotivationLink
           addCssClassName={'\trepair-page__motivation-list'}
-          name={dataLink.other.name}
-          path={pathname + dataLink.other.path}
+          name={dataLinks.other.name}
+          path={pathname + dataLinks.other.path}
         />
       </div>
     </PageSetup>
@@ -39,7 +39,7 @@ const RepairPage = ({ dataRepairPage, dataIphones, dataLink, generalInformation 
 
 
 RepairPage.propTypes = {
-  dataLink: PropTypes.object,
+  dataLinks: PropTypes.object,
   dataIphones: PropTypes.array,
   dataRepairPage: PropTypes.object
 }
@@ -48,7 +48,7 @@ RepairPage.propTypes = {
 
 const mapMethodsToProps = (classDataService) => {
   return {
-    dataLink: classDataService.getLinkData(),
+    dataLinks: classDataService.getLinksData(),
     dataIphones: classDataService.getIphoneList(),
     dataRepairPage: classDataService.getRepairPageData(),
     generalInformation: classDataService.getGeneralInformation()

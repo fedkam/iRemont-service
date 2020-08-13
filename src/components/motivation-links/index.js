@@ -14,17 +14,17 @@ export const MotivationLink = ({ addCssClassName = '', name, path }) => (
 
 
 
-export const MotivationLinks = ({ addCssClassName = '', dataLink }) => (
+export const MotivationLinks = ({ addCssClassName = '', dataLinks }) => (
   <div className={'motivation-links__links' + addCssClassName}>
     <MotivationLink
       addCssClassName={'\tmotivation-links__link_theme_indent'}
-      name={dataLink.repair.name}
-      path={dataLink.repair.path}
+      name={dataLinks.repair.name}
+      path={dataLinks.repair.path}
     />
     <MotivationLink
       addCssClassName={'\tmotivation-links__link_theme_indent'}
-      name={dataLink.modding.name}
-      path={dataLink.modding.path}
+      name={dataLinks.modding.name}
+      path={dataLinks.modding.path}
     />
   </div>
 );

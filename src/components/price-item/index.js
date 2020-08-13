@@ -57,7 +57,7 @@ PriceItem.propTypes = {
     id: PropTypes.number,
     title: PropTypes.string,
     subtitle: PropTypes.string,
-    cost: PropTypes.number,
+    cost: PropTypes.string,
     currency: PropTypes.string,
     handleClick: PropTypes.func,
     isActive: PropTypes.bool

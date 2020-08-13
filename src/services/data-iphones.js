@@ -31,7 +31,7 @@ import iPhone_11_Pro_Max_2x from '../assets/images/iphones/iphone-11-Pro-Max-2x.
 import iPhone_SE_v2_1x from '../assets/images/iphones/iphone-SE-v2-1x.png';
 import iPhone_SE_v2_2x from '../assets/images/iphones/iphone-SE-v2-2x.png';
 
-export const PRICE_LABEL = {
+export const PRICE_LABEL_DEFAULT = {
   diagnostics: {
     title: 'Диагностика',
     subtitle: 'Бесплатно, в случае ремонта'
@@ -279,6 +279,11 @@ export const iPhone_XR = {
   model: 'XR',
   image_1x: iPhone_XR_1x,
   image_2x: iPhone_XR_2x,
+  priceCustomSubtitle:{
+    display: {
+      subtitle: 'Оригинал'
+    }
+  },
   priceCost: {
     diagnostics: '500',
     //safetyGlass:'9999',
@@ -300,6 +305,11 @@ export const iPhone_XS = {
   model: 'XS',
   image_1x: iPhone_XS_1x,
   image_2x: iPhone_XS_2x,
+  priceCustomSubtitle:{
+    display: {
+      subtitle: 'Китайский аналог'
+    }
+  },
   priceCost: {
     diagnostics: '500',
     //safetyGlass:'9999',
@@ -321,6 +331,11 @@ export const iPhone_XS_Max = {
   model: 'XS Max',
   image_1x: iPhone_XS_Max_1x,
   image_2x: iPhone_XS_Max_2x,
+  priceCustomSubtitle:{
+    display: {
+      subtitle: 'Китайский аналог'
+    }
+  },
   priceCost: {
     diagnostics: 500,
     //safetyGlass:'9999',
@@ -342,18 +357,23 @@ export const iPhone_11 = {
   model: '11',
   image_1x: iPhone_11_1x,
   image_2x: iPhone_11_2x,
+  priceCustomSubtitle:{
+    display: {
+      subtitle: 'Уточните в чате или по телефону'
+    }
+  },
   priceCost: {
-    diagnostics: 500,
+    diagnostics: '500',
     //safetyGlass:'9999',
-    display: '9999',
-    battery: '9999',
-    phoneCase: '9999',
-    camera: '9999',
-    homeButton: '9999',
-    powerButton: '9999',
-    volumeButtons: '9999',
-    speaker: '9999',
-    chargingСonnector: '9999',
+    display: '',
+    battery: '',
+    phoneCase: '',
+    camera: '',
+    homeButton: '',
+    powerButton: '',
+    volumeButtons: '',
+    speaker: '',
+    chargingСonnector: '',
     firmware: '500',
     notFound: null
   }
@@ -363,18 +383,23 @@ export const iPhone_11_Pro = {
   model: '11 Pro',
   image_1x: iPhone_11_Pro_1x,
   image_2x: iPhone_11_Pro_2x,
+  priceCustomSubtitle:{
+    display: {
+      subtitle: 'Уточните в чате или по телефону'
+    }
+  },
   priceCost: {
     diagnostics: '500',
     //safetyGlass:'9999',
-    display: '9999',
-    battery: '9999',
-    phoneCase: '9999',
-    camera: '9999',
-    homeButton: '9999',
-    powerButton: '9999',
-    volumeButtons: '9999',
-    speaker: '9999',
-    chargingСonnector: '9999',
+    display: '',
+    battery: '',
+    phoneCase: '',
+    camera: '',
+    homeButton: '',
+    powerButton: '',
+    volumeButtons: '',
+    speaker: '',
+    chargingСonnector: '',
     firmware: '500',
     notFound: null
   }
@@ -384,18 +409,23 @@ export const iPhone_11_Pro_Max = {
   model: '11 Pro Max',
   image_1x: iPhone_11_Pro_Max_1x,
   image_2x: iPhone_11_Pro_Max_2x,
+  priceCustomSubtitle:{
+    display: {
+      subtitle: 'Уточните в чате или по телефону'
+    }
+  },
   priceCost: {
     diagnostics: '500',
     //safetyGlass:'9999',
-    display: '9999',
-    battery: '9999',
-    phoneCase: '9999',
-    camera: '9999',
-    homeButton: '9999',
-    powerButton: '9999',
-    volumeButtons: '9999',
-    speaker: '9999',
-    chargingСonnector: '9999',
+    display: '',
+    battery: '',
+    phoneCase: '',
+    camera: '',
+    homeButton: '',
+    powerButton: '',
+    volumeButtons: '',
+    speaker: '',
+    chargingСonnector: '',
     firmware: '500',
     notFound: null
   }
@@ -405,18 +435,23 @@ export const iPhone_SE_v2 = {
   model: 'SE',
   image_1x: iPhone_SE_v2_1x,
   image_2x: iPhone_SE_v2_2x,
+  priceCustomSubtitle:{
+    display: {
+      subtitle: 'Уточните в чате или по телефону'
+    }
+  },
   priceCost: {
     diagnostics: '500',
     //safetyGlass:'9999',
-    display: '9999',
-    battery: '9999',
-    phoneCase: '9999',
-    camera: '9999',
-    homeButton: '9999',
-    powerButton: '9999',
-    volumeButtons: '9999',
-    speaker: '9999',
-    chargingСonnector: '9999',
+    display: '',
+    battery: '',
+    phoneCase: '',
+    camera: '',
+    homeButton: '',
+    powerButton: '',
+    volumeButtons: '',
+    speaker: '',
+    chargingСonnector: '',
     firmware: '500',
     notFound: null
   }

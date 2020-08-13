@@ -17,6 +17,7 @@ const DeviceList = ({ dataDevices, deviceName}) => {
             pathname: `${curentUrl.pathname}/${device.model.replace(/ /gi, "")}`,
             state: {
               model: `${deviceName} ${device.model}`,
+              priceCustomSubtitle: device.priceCustomSubtitle,
               priceCost: device.priceCost
             }
           }}

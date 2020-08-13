@@ -6,18 +6,19 @@ import PropTypes from 'prop-types'
 
 export function generateMessage(price, model) {
   const hello = 'Здравствуйте,';
-  const specialItems = 2; //'Диагностика'(diagnostics),'Моей поломки нет в прайсе'(notFound).
+  let specialItems = 0; //для подсчета количества пунктов одиночного выделения 'Диагностика'(diagnostics),'Моей поломки нет в прайсе'(notFound).
   let selectedServices = [], lengthSelectedServices, selectedService;
   let allBroken = 'Телефон в хламину...';
 
-  //генерация selectedServices (массив именами выделенных пунктов, с удаленными лишними словами и символами. Для генерации сообщения)
+  //парсинг priceItem и генерация selectedServices (массив с именами выделенных пунктов, с удаленными лишними словами и символами. Для генерации сообщения)
   price.map((priceItem) => {
-    if (priceItem.isActive && priceItem.cost && selectedServices.length === 0) {
-      selectedServices.push(priceItem.title.toLowerCase());
-    } else if (priceItem.isActive && priceItem.cost && selectedServices.length !== 0) {
-      selectedServices.push(priceItem.title.replace(/Замена/gi, "").toLowerCase());
+    if (priceItem.singleSelection) { specialItems += 1; }
+    if (priceItem.isActive && selectedServices.length === 0) {
+      selectedServices.push(priceItem.title.toLowerCase()); //первое добавление
+    } else if (priceItem.isActive && selectedServices.length !== 0) {
+      selectedServices.push(priceItem.title.replace(/Замена/gi, "").toLowerCase()); //последующие добавления
     } else if (priceItem.singleSelection && priceItem.isActive && !priceItem.cost) {
-      selectedService = priceItem.title.toLowerCase().replace(/\u00AB|\u00BB/gi, "");
+      selectedService = priceItem.title.toLowerCase().replace(/\u00AB|\u00BB/gi, ""); //удаление кавычек "" 
     }
     return 0;
   })
@@ -28,7 +29,7 @@ export function generateMessage(price, model) {
   if (lengthSelectedServices) {
     let listSelectedServices;
     if ((price.length - specialItems) !== lengthSelectedServices) {
-      allBroken = ''; //выбран ремонт некоторых деталей(не всех), т.е. телефон не в хламину =)
+      allBroken = ''; //выбран ремонт некоторых деталей(не всех), т.е. -"телефон не в хламину" =)
     }
     if (lengthSelectedServices < 2) {
       listSelectedServices = selectedServices.join(',');
@@ -55,7 +56,7 @@ export function generateWhatsAppUrl(url, message) {
 
 
 
-export const HoverWrapper = memo(function HoverWrapper({ children }){
+export const HoverWrapper = memo(function HoverWrapper({ children }) {
   const [isHover, setIsHover] = useState(false);
   return (
     <div
@@ -69,7 +70,7 @@ export const HoverWrapper = memo(function HoverWrapper({ children }){
 
 
 
-export const MotivationButton = memo(function MotivationButton(props){
+export const MotivationButton = memo(function MotivationButton(props) {
   const {
     classNameButtonStyle = 'motivation-button_theme_primary',
     handleClick,
@@ -85,7 +86,7 @@ export const MotivationButton = memo(function MotivationButton(props){
 
 
 
-export const MotivationButtons = memo(function MotivationButtons(props){
+export const MotivationButtons = memo(function MotivationButtons(props) {
   const {
     addCssClassName = '',
     writeLabel,

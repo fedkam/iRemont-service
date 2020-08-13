@@ -1,5 +1,5 @@
 import {
-  PRICE_LABEL,
+  PRICE_LABEL_DEFAULT,
   iPhone_6,
   iPhone_6_Plus,
   iPhone_6s,
@@ -52,7 +52,9 @@ export default class DataService {
     },
     whatsApp: 'https://wa.me/79146267319',
     phoneNumber: '+7 (914) 626 73-19',
-    email: 'iremont41@mail.ru',
+    email: 'iremont41@gmail.com',
+    instagram: 'https://www.instagram.com/iremont41',
+    vk: 'https://vk.com/iremont41'
   }
 
   MENU_LIST = [
@@ -100,7 +102,7 @@ export default class DataService {
       subtitle_regular: 'Запчасти включены в стоимость работы.',
       //subtitle_bold: 'Это окончательная цена.'
     },
-    priceLabel: PRICE_LABEL
+    priceLabelDefault: PRICE_LABEL_DEFAULT
   }
 
   MODDING_PAGE = {
@@ -233,7 +235,7 @@ export default class DataService {
     return JSON.parse(JSON.stringify(this.ABOUT_US_PAGE));
   }
 
-  getLinkData = () => {
+  getLinksData = () => {
     return JSON.parse(JSON.stringify(this.LINKS));
   }
 

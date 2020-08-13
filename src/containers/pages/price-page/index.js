@@ -29,8 +29,8 @@ const CustomTitle = React.memo(({ title, subtitleRegular, subtitleBold }) => {
 
 
 
-const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons }) => {
-    const { header, priceLabel } = dataPricePage;
+const PricePage = ({ dataPricePage, dataLinks, dataMotivationButtons }) => {
+    const { header, priceLabelDefault } = dataPricePage;
     const { pathname, state } = useLocation();
     const [price, setPrice] = useState(generatePrice());
 
@@ -38,10 +38,15 @@ const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons }) => {
         let devicePrice = [];
         if (state) {
             for (let label in state.priceCost) {
-                if (priceLabel[label]) {
+                if (priceLabelDefault[label]) {
+                    if(state.priceCustomSubtitle && state.priceCustomSubtitle[label]){
+                        // 1) если в price(iPhone) переопределен subtitle, то заменить.
+                        // 2) последовательные условия в if, из-за undefiend[label].
+                        priceLabelDefault[label].subtitle = state.priceCustomSubtitle[label].subtitle
+                    }
                     devicePrice.push(
                         {
-                            ...priceLabel[label],
+                            ...priceLabelDefault[label],
                             cost: state.priceCost[label],
                             isActive: false
                         }
@@ -54,6 +59,7 @@ const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons }) => {
     }
 
     const handleClick_Price = useCallback(e => {
+        // правила выделения в прайсе
         const id = e.currentTarget.id;
         if (id) {
             setPrice(prevPrice => {
@@ -87,9 +93,9 @@ const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons }) => {
 
     const hierarchyLinks = useMemo(() => {
         if (state) {
-            return generateHierarchyLinks(dataLink, pathname, state.model)
+            return generateHierarchyLinks(dataLinks, pathname, state.model)
         }
-    }, [dataLink, pathname, state])
+    }, [dataLinks, pathname, state])
 
     return (
         (pathname && state) ?
@@ -127,7 +133,7 @@ const PricePage = ({ dataPricePage, dataLink, dataMotivationButtons }) => {
 
 PricePage.propTypes = {
     dataPricePage: PropTypes.object,
-    dataLink: PropTypes.object,
+    dataLinks: PropTypes.object,
     dataMotivationButtons: PropTypes.object
 }
 
@@ -135,7 +141,7 @@ PricePage.propTypes = {
 
 const mapMethodsToProps = (classDataService) => {
     return {
-        dataLink: classDataService.getLinkData(),
+        dataLinks: classDataService.getLinksData(),
         dataPricePage: classDataService.getPricePageData(),
         dataMotivationButtons: classDataService.getMotivationButtonData(),
         generalInformation: classDataService.getGeneralInformation()

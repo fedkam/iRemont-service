@@ -9,7 +9,7 @@ import Title from '../../../components/title'
 import Detail from '../../../components/detail'
 import PageSetup from '../page-setup'
 
-export const OldModelPage = ({ dataOldModelPage, dataMotivationButtons, dataLink, generalInformation }) => {
+export const OldModelPage = ({ dataOldModelPage, dataMotivationButtons, dataLinks, generalInformation }) => {
     const { header, details_more_time } = dataOldModelPage;
     const { pathname } = useLocation();
     const handleClick_MotivationButtons = (action) => {
@@ -31,7 +31,7 @@ export const OldModelPage = ({ dataOldModelPage, dataMotivationButtons, dataLink
             transitionAnimationPages
         >
             <div className='old-model-page_container'>
-                <BreadCrumbs breadCrumbs={generateHierarchyLinks(dataLink, pathname, header.title)} />
+                <BreadCrumbs breadCrumbs={generateHierarchyLinks(dataLinks, pathname, header.title)} />
                 <Title
                     className='old-model-page__title_theme_indent'
                     title={header.title}
@@ -60,7 +60,7 @@ export const OldModelPage = ({ dataOldModelPage, dataMotivationButtons, dataLink
 OldModelPage.propTypes = {
     dataOldModelPage: PropTypes.object,
     dataMotivationButtons: PropTypes.object,
-    dataLink: PropTypes.object,
+    dataLinks: PropTypes.object,
     generalInformation: PropTypes.object
 }
 
@@ -68,7 +68,7 @@ OldModelPage.propTypes = {
 
 const mapMethodsToProps = (classDataService) => {
     return {
-        dataLink: classDataService.getLinkData(),
+        dataLinks: classDataService.getLinksData(),
         dataOldModelPage: classDataService.getOldModelPageData(),
         dataMotivationButtons: classDataService.getMotivationButtonData(),
         generalInformation: classDataService.getGeneralInformation()
