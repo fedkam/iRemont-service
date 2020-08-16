@@ -1,6 +1,12 @@
 .transition-animation-pages {
-    animation: appearance_of 0.5s linear;
+    animation: appearancePage 0.5s linear;
 }
 
-
-@keyframes appearance_of { from { opacity: 0%; } to { opacity: 100%; }  }
+@keyframes appearancePage {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
