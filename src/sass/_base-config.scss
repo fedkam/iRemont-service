@@ -10,8 +10,6 @@ body {
   background: $color-white;
   color: $color-black;
   @include initial-font(18px);
-  // overflow-x: hidden;
-  // overflow-y: auto;
 }
 
 a {
