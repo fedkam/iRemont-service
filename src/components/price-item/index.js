@@ -24,25 +24,25 @@ const PriceItem = ({ id, title, subtitle, cost, currency, handleClick, isActive 
             >
                 <div className='price-item__description-block'>
                     {title && (
-                        <div className='price-item__title'>
+                        <h3 className='price-item__title'>
                             {title}
-                        </div>
+                        </h3>
                     )}
                     {subtitle && (
-                        <div className='price-item__subtitle'>
+                        <h4 className='price-item__subtitle'>
                             {subtitle}
-                        </div>
+                        </h4>
                     )}
                 </div>
                 <div className='price-item__cost-block'>
                     {cost && (
                         <>
-                            <div className='price-item__cost'>
+                            <h3 className='price-item__cost'>
                                 {cost}
-                            </div>
-                            <div className='price-item__currency'>
+                            </h3>
+                            <h3 className='price-item__currency'>
                                 {currency}
-                            </div>
+                            </h3>
                         </>
                     )}
                 </div>
