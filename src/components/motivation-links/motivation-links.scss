@@ -6,13 +6,11 @@
   }
 
   &__link {
-    & > a {
-      @include font-regular(24px);
-      line-height: 33px;
-      letter-spacing: -0.01em;
-      text-align: center;
-      color: $color-blye;
-    }
+    @include font-regular(24px);
+    line-height: 33px;
+    letter-spacing: -0.01em;
+    text-align: center;
+    color: $color-blye;
 
     &_theme_indent {
       &:first-child {

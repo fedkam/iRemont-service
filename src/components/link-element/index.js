@@ -1,15 +1,13 @@
-import React, {memo} from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom';
 
 
 
 const LinkElement = ({ className, onClick, path = '/', children }) => (
-  <div className={className} onClick={onClick}>
-    <NavLink to={path}>
-      {children}
-    </NavLink>
-  </div>
+  <NavLink className={className} to={path} onClick={onClick}>
+    {children}
+  </NavLink>
 )
 
 

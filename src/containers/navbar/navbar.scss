@@ -2,10 +2,8 @@
 
 .navbar {
   &__link_theme_basic {
-    & > a {
-      color: $color-darkGrey;
-    }
-    & > a.active {
+    color: $color-darkGrey;
+    &.active {
       color: $color-black;
     }
   }
