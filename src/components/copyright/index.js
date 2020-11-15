@@ -5,9 +5,9 @@ import PropTypes from 'prop-types'
 
 const Copyright = ({ addCssClassName = '', title }) => {
     return (
-        <div className={'copyright' + addCssClassName}>
+        <h5 className={'copyright' + addCssClassName}>
             {title}
-        </div>
+        </h5>
     )
 }
 

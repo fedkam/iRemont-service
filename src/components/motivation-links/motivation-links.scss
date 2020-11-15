@@ -5,24 +5,25 @@
     margin-top: 8px;
   }
 
-  &__link {
+  &__title {
+    display: inline;
     @include font-regular(24px);
     line-height: 33px;
     letter-spacing: -0.01em;
     text-align: center;
     color: $color-blye;
-
-    &_theme_indent {
-      &:first-child {
-        margin-right: 48px;
-      }
-    }
   }
 
   &__arrow {
     margin-left: 10px;
     & > path {
       fill: $color-blye;
+    }
+  }
+
+  &__theme_indent {
+    &:first-child {
+      margin-right: 48px;
     }
   }
 }

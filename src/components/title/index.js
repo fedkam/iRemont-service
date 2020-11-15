@@ -7,14 +7,14 @@ import PropTypes, { string } from 'prop-types'
 const Title = ({ title, subtitle, className }) => (
   <div className={className}>
     {title && (
-      <div className='title__title'>
+      <h1 className='title__title'>
         {title}
-      </div>
+      </h1>
     )}
     {subtitle && (
-      <div className='title__subtitle'>
+      <h2 className='title__subtitle'>
         {subtitle}
-      </div>
+      </h2>
     )}
   </div>
 );

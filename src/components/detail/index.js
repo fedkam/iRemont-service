@@ -6,8 +6,8 @@ import PropTypes from 'prop-types'
 
 const Detail = ({ className, title, info }) => (
     <div className={className}>
-        <span className='detail__title'>{`${title} `}</span>
-        <span className='detail__info'>{info}</span>
+        <h3 className='detail__title'>{`${title} `}</h3>
+        <h4 className='detail__info'>{info}</h4>
     </div>
 )
 

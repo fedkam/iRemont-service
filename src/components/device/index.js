@@ -19,9 +19,9 @@ const Device = (props) => {
         image_2x={image_2x}
         model={model}
       />
-      <div className='device__model'>
+      <h3 className='device__model'>
         {device} {model}
-      </div>
+      </h3>
     </div>
   );
 };

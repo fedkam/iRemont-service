@@ -78,9 +78,9 @@ export const MotivationButton = memo(function MotivationButton(props) {
   } = props;
   const classNameTheme = 'motivation-button\t' + classNameButtonStyle;
   return (
-    <div className={classNameTheme} onClick={handleClick}>
+    <h5 className={classNameTheme} onClick={handleClick}>
       {children}
-    </div>
+    </h5>
   )
 })
 

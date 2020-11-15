@@ -1,10 +1,12 @@
 .detail {
 
     &__title {
+        display: inline;
         @include font-semibold(18px);
     }
 
     &__info {
+        display: inline;
         @include font-regular(18px);
     }
 }

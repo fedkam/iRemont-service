@@ -1,7 +1,7 @@
-/    /index.html   200
-/repair    /index.html   200
-/repair/*    /index.html   200
-/modding    /index.html   200
-/about-us    /index.html   200
-/about-modding    /index.html   200
-/*    /index.html   404
+/                   /index.htm      200
+/repair             /index.html     200
+/repair/*           /index.html     200
+/modding            /index.html     200
+/about-us           /index.html     200
+/about-modding      /index.html     200
+/*                  /index.html     404
