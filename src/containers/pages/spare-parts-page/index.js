@@ -1,7 +1,8 @@
 // import './spare-parts-page.scss'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withDataService } from '../../dev-helpers'
+import { withDataService, generateCanonicalUrl } from '../../dev-helpers'
+import { useLocation } from 'react-router-dom'
 import Title from '../../../components/title'
 import Detail from '../../../components/detail'
 import { MotivationLinks } from '../../../components/motivation-links'
@@ -10,11 +11,14 @@ import PageSetup from '../page-setup'
 
 export const SparePartsPage = ({ dataSparePartsPage, dataLinks, generalInformation }) => {
     const { header, details_original, details_сhineseСounterpart, details_offer, motivation } = dataSparePartsPage;
+    const { domainName } = generalInformation;
+    const { pathname } = useLocation();
     return (
         <PageSetup
             copyright
             resetScroll
             transitionAnimationPages
+            seo={generateCanonicalUrl(dataSparePartsPage.seo, domainName, pathname)}
         >
             <div className='spare-parts-page'>
                 <Title

@@ -1,7 +1,8 @@
 // import './offer-page.scss'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withDataService } from '../../dev-helpers'
+import { withDataService, generateCanonicalUrl } from '../../dev-helpers'
+import { useLocation } from 'react-router-dom'
 import Title from '../../../components/title'
 import { MotivationLinks } from '../../../components/motivation-links'
 import { ReactComponent as LogoIphone } from '../../../assets/images/logo-iPhone.svg'
@@ -20,28 +21,33 @@ const iconApple = (
 
 
 
-const OfferPage = ({ dataOfferPage, dataLinks }) => (
-  <PageSetup
-    resetScroll
-    transitionAnimationPages
-  >
-    <div className='offer-page__motivation'>
-      <Title
-        title={<LogoIphone />}
-        subtitle={dataOfferPage.subtitle}
-      />
-      <MotivationLinks dataLinks={dataLinks} />
-    </div>
-    <div className='offer-page__background-wrap'>
-      <LottieAnimation
-        className='offer-page__background'
-        bodymovinAnimation={appleJSON}
-        reserveStaticIcon={iconApple}
-        setLoop
-      />
-    </div>
-  </PageSetup >
-)
+const OfferPage = ({ dataOfferPage, dataLinks, generalInformation }) => {
+  const { domainName } = generalInformation;
+  const { pathname } = useLocation();
+  return (
+    <PageSetup
+      resetScroll
+      transitionAnimationPages
+      seo={generateCanonicalUrl(dataOfferPage.seo, domainName, pathname)}
+    >
+      <div className='offer-page__motivation'>
+        <Title
+          title={<LogoIphone />}
+          subtitle={dataOfferPage.subtitle}
+        />
+        <MotivationLinks dataLinks={dataLinks} />
+      </div>
+      <div className='offer-page__background-wrap'>
+        <LottieAnimation
+          className='offer-page__background'
+          bodymovinAnimation={appleJSON}
+          reserveStaticIcon={iconApple}
+          setLoop
+        />
+      </div>
+    </PageSetup >
+  )
+}
 
 
 
@@ -55,7 +61,8 @@ OfferPage.propTypes = {
 const mapMethodsToProps = (classDataService) => {
   return {
     dataOfferPage: classDataService.getOfferPageData(),
-    dataLinks: classDataService.getLinksData()
+    dataLinks: classDataService.getLinksData(),
+    generalInformation: classDataService.getGeneralInformation()
   }
 };
 

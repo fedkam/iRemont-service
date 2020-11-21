@@ -1,7 +1,8 @@
 // import './about-us-page.scss'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withDataService } from '../../dev-helpers'
+import { withDataService, generateCanonicalUrl } from '../../dev-helpers'
+import { useLocation } from 'react-router-dom'
 import Social from '../../../components/social'
 import Title from '../../../components/title'
 import Detail from '../../../components/detail'
@@ -24,11 +25,15 @@ export const AboutUsPage = ({ dataAboutUsPage, generalInformation, dataLinks }) 
         instagram,
         vk
     } = dataLinks;
+    const { domainName } = generalInformation;
+    const { pathname } = useLocation();
+
     return (
         <PageSetup
             copyright
             resetScroll
             transitionAnimationPages
+            seo={generateCanonicalUrl(dataAboutUsPage.seo, domainName, pathname)}
         >
             <div className='about-us-page'>
                 <Title

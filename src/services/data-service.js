@@ -23,6 +23,7 @@ import {
 export default class DataService {
   GENERAL_INFORMATION = {
     copyright: 'Copyright ‎\u00a9 2020 iРемонт. All rights reserved.',
+    domainName: 'https://fedoskamcha.com'
   }
 
   LINKS = {
@@ -77,12 +78,22 @@ export default class DataService {
   };
 
   OFFER_PAGE = {
-    subtitle: 'Подари вторую жизнь.'
+    subtitle: 'Подари вторую жизнь.',
+    seo: {
+      //title: 'Ремонт iPhone | Моддинг iPhone | iRemont.41 | iРемонт | Камчатка | Петропавловск-Камчатский',
+      title: 'Ремонт и моддинг iPhone — iРемонт (Камчатка Петропавловск-Камчатский) iRemont.41 | Ремонт iPhone | Моддинг iPhone',
+      description: 'Получите профессиональную помощь по спасению вашего iPhone! Производим ремонт iPhone любой модели и в любом состоянии. Имеется услуга Помощь при покупке бывшего в употреблении iPhone. Улучшаем внешний вид заменой корпуса и других деталей.'
+    }
   }
 
   REPAIR_PAGE = {
     title: 'Ремонт',
-    subtitle: 'Найди свой.'
+    subtitle: 'Найди свой.',
+    seo: {
+      //title: 'Ремонт iPhone | iРемонт | Камчатка | Петропавловск-Камчатский',
+      title: 'Ремонт iPhone — iРемонт (Камчатка Петропавловск-Камчатский) Ремонт iPhone | Моддинг iPhone',
+      description: 'Получите профессиональную помощь по спасению вашего iPhone! Производим ремонт iPhone любой модели и в любом состоянии.'
+    }
   }
 
   OLD_MODEL_PAGE = {
@@ -94,6 +105,11 @@ export default class DataService {
       title: 'Дополнительное время.',
       info: 'Мы готовы взяться за любой iPhone, но в связи с возможным дефицитом запчастей, может понадобиться дополнительное время.'
     },
+    seo: {
+      //title: 'Ремонт устаревшей модели iPhone | iРемонт | Камчатка | Петропавловск-Камчатский',
+      title: 'Ремонт устаревшей модели iPhone — iРемонт (Камчатка Петропавловск-Камчатский) Ремонт iPhone | Моддинг iPhone',
+      description: 'Получите профессиональную помощь по спасению вашего iPhone! Производим ремонт iPhone любой модели и в любом состоянии.'
+    }
   }
 
   PRICE_PAGE = {
@@ -102,7 +118,12 @@ export default class DataService {
       subtitle_regular: 'Запчасти включены в стоимость работы.',
       //subtitle_bold: 'Это окончательная цена.'
     },
-    priceLabelDefault: PRICE_LABEL_DEFAULT
+    priceLabelDefault: PRICE_LABEL_DEFAULT,
+    seo: {
+      //title: 'Ремонт iPhone | iРемонт | Камчатка | Петропавловск-Камчатский',
+      title: 'Ремонт iPhone — iРемонт (Камчатка Петропавловск-Камчатский) Ремонт iPhone | Моддинг iPhone',
+      description: 'Получите профессиональную помощь по спасению вашего iPhone! Производим ремонт iPhone любой модели и в любом состоянии.'
+    }
   }
 
   MODDING_PAGE = {
@@ -123,6 +144,11 @@ export default class DataService {
         title: 'Светояблоко',
         subtitle: 'Специальный тип корпуса, со светящимся яблоком позади.'
       }
+    },
+    seo: {
+      // title: 'Моддинг iPhone | iРемонт | Камчатка | Петропавловск-Камчатский',
+      title: 'Моддинг iPhone — iРемонт (Камчатка Петропавловск-Камчатский) Ремонт iPhone | Моддинг iPhone',
+      description: 'Улучшаем внешний вид заменой корпуса и других деталей.'
     }
   }
 
@@ -145,6 +171,11 @@ export default class DataService {
     },
     motivation: {
       title: 'Пора начать!'
+    },
+    seo: {
+      //title: 'О запчастях iPhone | Ремонт iPhone | iРемонт | Камчатка | Петропавловск-Камчатский',
+      title: 'О запчастях iPhone — iРемонт (Камчатка Петропавловск-Камчатский) Ремонт iPhone | Моддинг iPhone',
+      description: 'Мы сотрудничаем только с проверенными поставщиками запчастей, в связи с этим, оказываем более качественный ремонт iPhone'
     }
   }
 
@@ -172,6 +203,11 @@ export default class DataService {
     contacts: {
       title: 'Контакты',
       email: this.LINKS.email
+    },
+    seo: {
+      //title: 'О нас | Ремонт iPhone | Моддинг iPhone | iРемонт | Камчатка | Петропавловск-Камчатский',
+      title: 'О нас — iРемонт (Камчатка Петропавловск-Камчатский) Ремонт iPhone | Моддинг iPhone',
+      description: 'ABOUT_US'
     }
   }
 

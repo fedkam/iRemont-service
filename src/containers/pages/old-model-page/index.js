@@ -1,8 +1,8 @@
 // import './old-model-page.scss';
 import React from 'react'
 import PropTypes from 'prop-types'
+import { withDataService, generateCanonicalUrl } from '../../dev-helpers'
 import { useLocation } from 'react-router-dom'
-import { withDataService } from '../../dev-helpers'
 import { MotivationButtons, generateWhatsAppUrl } from '../../motivation-buttons'
 import { BreadCrumbs, generateHierarchyLinks } from '../../../components/bread-crumbs'
 import Title from '../../../components/title'
@@ -12,6 +12,7 @@ import PageSetup from '../page-setup'
 export const OldModelPage = ({ dataOldModelPage, dataMotivationButtons, dataLinks, generalInformation }) => {
     const { header, details_more_time } = dataOldModelPage;
     const { pathname } = useLocation();
+    const { domainName } = generalInformation;
     const handleClick_MotivationButtons = (action) => {
         switch (action) {
             case 'write':
@@ -29,6 +30,7 @@ export const OldModelPage = ({ dataOldModelPage, dataMotivationButtons, dataLink
             copyright
             resetScroll
             transitionAnimationPages
+            seo={generateCanonicalUrl(dataOldModelPage.seo, domainName, pathname)}
         >
             <div className='old-model-page_container'>
                 <BreadCrumbs breadCrumbs={generateHierarchyLinks(dataLinks, pathname, header.title)} />

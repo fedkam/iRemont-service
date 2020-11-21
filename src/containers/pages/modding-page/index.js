@@ -1,7 +1,8 @@
 // import './modding-page.scss';
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withDataService } from '../../dev-helpers'
+import { withDataService, generateCanonicalUrl } from '../../dev-helpers'
+import { useLocation } from 'react-router-dom'
 import Title from '../../../components/title'
 import Detail from '../../../components/detail'
 import Element from '../../../components/element'
@@ -18,6 +19,11 @@ const ModdingPage = ({ dataModdingPage, dataMotivationButtons, generalInformatio
     details,
     elements,
   } = dataModdingPage;
+
+  const { domainName } = generalInformation;
+
+  const { pathname } = useLocation();
+
   const handleClick_MotivationButtons = (action) => {
     switch (action) {
       case 'write':
@@ -35,6 +41,7 @@ const ModdingPage = ({ dataModdingPage, dataMotivationButtons, generalInformatio
       copyright
       resetScroll
       transitionAnimationPages
+      seo={generateCanonicalUrl(dataModdingPage.seo, domainName, pathname)}
     >
       <div className='modding-page'>
         <Title

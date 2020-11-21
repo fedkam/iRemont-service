@@ -1,6 +1,6 @@
 //import './price-page.scss'
 import React, { useState, useMemo, useCallback } from 'react'
-import { withDataService } from '../../dev-helpers'
+import { withDataService, generateCanonicalUrl } from '../../dev-helpers'
 import { useLocation, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { BreadCrumbs, generateHierarchyLinks } from '../../../components/bread-crumbs'
@@ -29,17 +29,18 @@ const CustomTitle = React.memo(({ title, subtitleRegular, subtitleBold }) => {
 
 
 
-const PricePage = ({ dataPricePage, dataLinks, dataMotivationButtons }) => {
+const PricePage = ({ dataPricePage, dataLinks, dataMotivationButtons, generalInformation }) => {
     const { header, priceLabelDefault } = dataPricePage;
     const { pathname, state } = useLocation();
     const [price, setPrice] = useState(generatePrice());
+    const { domainName } = generalInformation;
 
     function generatePrice() {
         let devicePrice = [];
         if (state) {
             for (let label in state.priceCost) {
                 if (priceLabelDefault[label]) {
-                    if(state.priceCustomSubtitle && state.priceCustomSubtitle[label]){
+                    if (state.priceCustomSubtitle && state.priceCustomSubtitle[label]) {
                         // 1) если в price(iPhone) переопределен subtitle, то заменить.
                         // 2) последовательные условия в if, из-за undefiend[label].
                         priceLabelDefault[label].subtitle = state.priceCustomSubtitle[label].subtitle
@@ -103,6 +104,7 @@ const PricePage = ({ dataPricePage, dataLinks, dataMotivationButtons }) => {
                 copyright
                 resetScroll
                 transitionAnimationPages
+                seo={generateCanonicalUrl(dataPricePage.seo, domainName, pathname)}
             >
                 <div className='price-page_container'>
                     <BreadCrumbs breadCrumbs={hierarchyLinks} />

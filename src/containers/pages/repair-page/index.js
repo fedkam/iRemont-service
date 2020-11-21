@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useLocation } from 'react-router-dom'
-import { withDataService } from '../../dev-helpers'
+import { withDataService, generateCanonicalUrl } from '../../dev-helpers'
 import Title from '../../../components/title'
 import DeviceList from '../../device-list'
 import { MotivationLink } from '../../../components/motivation-links'
@@ -10,11 +10,13 @@ import PageSetup from '../page-setup'
 
 const RepairPage = ({ dataRepairPage, dataIphones, dataLinks, generalInformation }) => {
   const { pathname } = useLocation();
+  const { domainName } = generalInformation;
   return (
     <PageSetup
       copyright
       resetScroll
       transitionAnimationPages
+      seo={generateCanonicalUrl(dataRepairPage.seo, domainName, pathname)}
     >
       <div className='repair-page'>
         <Title
