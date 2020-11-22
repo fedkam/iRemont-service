@@ -23,7 +23,7 @@ import {
 export default class DataService {
   GENERAL_INFORMATION = {
     copyright: 'Copyright ‎\u00a9 2020 iРемонт. All rights reserved.',
-    domainName: 'https://fedoskamcha.com'
+    domainName: 'https://fedoskamcha.com', /* в файле sitemap-builder.js явно указан сайт*/
   }
 
   LINKS = {
