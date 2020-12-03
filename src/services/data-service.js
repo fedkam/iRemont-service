@@ -202,7 +202,8 @@ export default class DataService {
     },
     contacts: {
       title: 'Контакты',
-      email: this.LINKS.email
+      email: this.LINKS.email,
+      phoneNumber: this.LINKS.phoneNumber
     },
     seo: {
       //title: 'О нас | Ремонт iPhone | Моддинг iPhone | iРемонт | Камчатка | Петропавловск-Камчатский',

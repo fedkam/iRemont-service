@@ -72,7 +72,15 @@ export const AboutUsPage = ({ dataAboutUsPage, generalInformation, dataLinks }) 
                     title={contacts.title}
                     subtitle={
                         <>
-                            <div className='about-us-page__email-contact'>{contacts.email}</div>
+                            <div className='about-us-page__contact'>
+                                <div>{contacts.email}</div>
+                                <a
+                                    className='about-us-page__contact_number-phone'
+                                    href={"tel:" + contacts.phoneNumber}
+                                >
+                                    {contacts.phoneNumber}
+                                </a>
+                            </div>
                             <Social
                                 whatsAppLink={whatsApp}
                                 instagramLink={instagram}
