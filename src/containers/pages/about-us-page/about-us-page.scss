@@ -19,8 +19,10 @@
     &__contact {
         @include font-regular(24px);
         color: $color-blye;
-        user-select: text;
         margin-bottom: 18px;
+        &_email {
+            user-select: text;
+        }
         &_number-phone {
             display: inline;
         }
