@@ -14,7 +14,7 @@ const DeviceList = ({ dataDevices, deviceName }) => {
       {dataDevices.map((device, index) => (
         <LinkElement
           path={{
-            pathname: `${curentUrl.pathname}/${device.model.replace(/ /gi, "")}`
+            pathname: `${curentUrl.pathname}/${device.model.replace(/ /gi, "").toLowerCase()}`
           }}
           key={index}
         >

@@ -37,7 +37,7 @@ const PricePage = ({ dataPricePage, dataLinks, dataMotivationButtons, generalInf
 
     const currentPhone = useMemo(() => (
         dataIphones.find((phone) => {
-            return phone && phone.model.replace(/ /gi, "") === urlParams.id;
+            return phone && phone.model.replace(/ /gi, "").toLowerCase() === urlParams.id.toLowerCase();
         })
     ), [dataIphones, urlParams]);
 
