@@ -1,7 +1,7 @@
 //import './price-page.scss'
 import React, { useState, useMemo, useCallback } from 'react'
 import { withDataService, generateCanonicalUrl } from '../../dev-helpers'
-import { useLocation, Redirect } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { BreadCrumbs, generateHierarchyLinks } from '../../../components/bread-crumbs'
 import Title from '../../../components/title'
@@ -29,26 +29,35 @@ const CustomTitle = React.memo(({ title, subtitleRegular, subtitleBold }) => {
 
 
 
-const PricePage = ({ dataPricePage, dataLinks, dataMotivationButtons, generalInformation }) => {
+const PricePage = ({ dataPricePage, dataLinks, dataMotivationButtons, generalInformation, dataIphones, deviceName = 'iPhone' }) => {
     const { header, priceLabelDefault } = dataPricePage;
-    const { pathname, state } = useLocation();
-    const [price, setPrice] = useState(generatePrice());
+    const { pathname } = useLocation();
+    const urlParams = useParams();
     const { domainName } = generalInformation;
+
+    const currentPhone = useMemo(() => (
+        dataIphones.find((phone) => {
+            return phone && phone.model.replace(/ /gi, "") === urlParams.id;
+        })
+    ), [dataIphones, urlParams]);
+
+    const fullNamePhone = `${deviceName} ${currentPhone.model}`
+    const [price, setPrice] = useState(generatePrice());
 
     function generatePrice() {
         let devicePrice = [];
-        if (state) {
-            for (let label in state.priceCost) {
+        if (currentPhone) {
+            for (let label in currentPhone.priceCost) {
                 if (priceLabelDefault[label]) {
-                    if (state.priceCustomSubtitle && state.priceCustomSubtitle[label]) {
+                    if (currentPhone.priceCustomSubtitle && currentPhone.priceCustomSubtitle[label]) {
                         // 1) если в price(iPhone) переопределен subtitle, то заменить.
                         // 2) последовательные условия в if, из-за undefiend[label].
-                        priceLabelDefault[label].subtitle = state.priceCustomSubtitle[label].subtitle
+                        priceLabelDefault[label].subtitle = currentPhone.priceCustomSubtitle[label].subtitle
                     }
                     devicePrice.push(
                         {
                             ...priceLabelDefault[label],
-                            cost: state.priceCost[label],
+                            cost: currentPhone.priceCost[label],
                             isActive: false
                         }
                     );
@@ -81,7 +90,7 @@ const PricePage = ({ dataPricePage, dataLinks, dataMotivationButtons, generalInf
     const handleClick_MotivationButtons = (action) => () => {
         switch (action) {
             case 'write':
-                let url = generateWhatsAppUrl(dataMotivationButtons.write.url, generateMessage(price, state.model));
+                let url = generateWhatsAppUrl(dataMotivationButtons.write.url, generateMessage(price, fullNamePhone));
                 document.location.href = url;
                 break;
             case 'call':
@@ -93,41 +102,38 @@ const PricePage = ({ dataPricePage, dataLinks, dataMotivationButtons, generalInf
     }
 
     const hierarchyLinks = useMemo(() => {
-        if (state) {
-            return generateHierarchyLinks(dataLinks, pathname, state.model)
+        if (currentPhone) {
+            return generateHierarchyLinks(dataLinks, pathname, fullNamePhone)
         }
-    }, [dataLinks, pathname, state])
+    }, [dataLinks, pathname, currentPhone, fullNamePhone])
 
     return (
-        (pathname && state) ?
-            <PageSetup
-                copyright
-                resetScroll
-                transitionAnimationPages
-                seo={generateCanonicalUrl(dataPricePage.seo, domainName, pathname)}
-            >
-                <div className='price-page_container'>
-                    <BreadCrumbs breadCrumbs={hierarchyLinks} />
-                    <CustomTitle
-                        title={header.title}
-                        subtitleRegular={header.subtitle_regular}
-                        subtitleBold={header.subtitle_bold}
-                    />
-                    <PriceList
-                        className='price-page__price-list_theme_indent'
-                        price={price}
-                        handleClick={handleClick_Price}
-                    />
-                    <MotivationButtons
-                        writeLabel={dataMotivationButtons.write.name}
-                        handleClick_Write={handleClick_MotivationButtons('write')}
-                        callLabel={dataMotivationButtons.call.name}
-                        callHoverLabel={dataMotivationButtons.call.tel}
-                    />
-                </div>
-            </PageSetup >
-            :
-            <Redirect to="/repair" />
+        <PageSetup
+            copyright
+            resetScroll
+            transitionAnimationPages
+            seo={generateCanonicalUrl(dataPricePage.seo, domainName, pathname)}
+        >
+            <div className='price-page_container'>
+                <BreadCrumbs breadCrumbs={hierarchyLinks} />
+                <CustomTitle
+                    title={header.title}
+                    subtitleRegular={header.subtitle_regular}
+                    subtitleBold={header.subtitle_bold}
+                />
+                <PriceList
+                    className='price-page__price-list_theme_indent'
+                    price={price}
+                    handleClick={handleClick_Price}
+                />
+                <MotivationButtons
+                    writeLabel={dataMotivationButtons.write.name}
+                    handleClick_Write={handleClick_MotivationButtons('write')}
+                    callLabel={dataMotivationButtons.call.name}
+                    callHoverLabel={dataMotivationButtons.call.tel}
+                />
+            </div>
+        </PageSetup >
     )
 }
 
@@ -136,13 +142,15 @@ const PricePage = ({ dataPricePage, dataLinks, dataMotivationButtons, generalInf
 PricePage.propTypes = {
     dataPricePage: PropTypes.object,
     dataLinks: PropTypes.object,
-    dataMotivationButtons: PropTypes.object
+    dataMotivationButtons: PropTypes.object,
+    dataIphones: PropTypes.array
 }
 
 
 
 const mapMethodsToProps = (classDataService) => {
     return {
+        dataIphones: classDataService.getIphoneList(),
         dataLinks: classDataService.getLinksData(),
         dataPricePage: classDataService.getPricePageData(),
         dataMotivationButtons: classDataService.getMotivationButtonData(),
