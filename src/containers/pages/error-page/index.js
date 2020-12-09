@@ -5,7 +5,7 @@ import { MotivationLink } from '../../../components/motivation-links'
 import iremontBrokenJSON from '../../../assets/json-animation/iremontBroken.json'
 import LottieAnimation from '../../lottie-animation'
 import TransitionAnimationPages from '../../../components/transition-animation-pages'
-
+import { Helmet } from "react-helmet";
 
 
 const iconBrokenIremont = (
@@ -43,6 +43,9 @@ const iremontBrokenAnimation = (
 const ErrorPage = ({ title, subtitle, motivationLink }) => {
     return (
         <TransitionAnimationPages>
+            <Helmet>
+                <meta name="prerender-status-code" content="404" />
+            </Helmet>
             <div className='err-404-page__title'>
                 <Title
                     title={title}
