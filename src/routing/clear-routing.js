@@ -8,7 +8,6 @@ import { Switch, Route } from 'react-router-dom'
 
 export default (
     <Switch>
-        <Route exact path='/' />
         <Route exact path='/repair/old-model' />
         <Route exact path='/modding' />
         <Route exact path='/about-modding' />
@@ -30,5 +29,6 @@ export default (
         <Route exact path='/repair/6s' />
         <Route exact path='/repair/6plus' />
         <Route exact path='/repair/6' />
+        <Route exact path='/' />
     </Switch>
 )
