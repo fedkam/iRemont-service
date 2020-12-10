@@ -14,14 +14,14 @@ export default (
         <Route exact path='/about-modding' />
         <Route exact path='/about-us' />
         <Route exact path='/repair' />
-        <Route exact path='/repair/SE' />
+        <Route exact path='/repair/se' />
         <Route exact path='/repair/11promax' />
         <Route exact path='/repair/11pro' />
         <Route exact path='/repair/11' />
         <Route exact path='/repair/xsmax' />
         <Route exact path='/repair/xs' />
         <Route exact path='/repair/xr' />
-        <Route exact path='/repair/x)' />
+        <Route exact path='/repair/x' />
         <Route exact path='/repair/8plus' />
         <Route exact path='/repair/8' />
         <Route exact path='/repair/7plus' />
